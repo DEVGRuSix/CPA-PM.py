@@ -1,0 +1,3910 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<log xes.version="1.0" xmlns="http://www.xes-standard.org/">
+	<extension name="concept" prefix="concept" uri="http://www.xes-standard.org/concept.xesext" />
+	<extension name="time" prefix="time" uri="http://www.xes-standard.org/time.xesext" />
+	<extension name="lifecycle" prefix="lifecycle" uri="http://www.xes-standard.org/lifecycle.xesext" />
+	<classifier name="Activity classifier" keys="concept:name lifecycle:transition" />
+	<string key="origin" value="csv" />
+	<string key="concept:name" value="log" />
+	<string key="creator" value="CPA_PM Python Tool" />
+	<trace>
+		<string key="concept:name" value="b8610d38ddca3692d34a55594e0b4df5" />
+		<event>
+			<int key="Unnamed: 0" value="1" />
+			<int key="X." value="1" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="Theme" value="Dark" />
+			<float key="Account.Users" value="1.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="unknown" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<float key="number.of.graphs" value="47.0" />
+			<date key="time:timestamp" value="2018-08-01T00:00:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="Fargo" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="24.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Direct" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="unknown" />
+			<float key="source" value="24.0" />
+			<string key="Graph.Origin.1" value="unknown" />
+			<string key="Guide.Name" value="unknown" />
+			<string key="Guide.Type" value="unknown" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<int key="Unnamed: 0" value="3" />
+			<int key="X." value="3" />
+			<string key="concept:name" value="Edit Graphs" />
+			<string key="Theme" value="unknown" />
+			<float key="Account.Users" value="1.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="Custom" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<float key="number.of.graphs" value="47.0" />
+			<date key="time:timestamp" value="2018-08-01T00:00:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="Fargo" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="24.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Direct" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="unknown" />
+			<float key="source" value="24.0" />
+			<string key="Graph.Origin.1" value="Custom" />
+			<string key="Guide.Name" value="unknown" />
+			<string key="Guide.Type" value="unknown" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<int key="Unnamed: 0" value="6" />
+			<int key="X." value="6" />
+			<string key="concept:name" value="Create Data Source" />
+			<string key="Theme" value="unknown" />
+			<float key="Account.Users" value="1.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="unknown" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<float key="number.of.graphs" value="47.0" />
+			<date key="time:timestamp" value="2018-08-01T00:00:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="Fargo" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="24.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Direct" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="unknown" />
+			<float key="source" value="24.0" />
+			<string key="Graph.Origin.1" value="unknown" />
+			<string key="Guide.Name" value="unknown" />
+			<string key="Guide.Type" value="unknown" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<int key="Unnamed: 0" value="7" />
+			<int key="X." value="7" />
+			<string key="concept:name" value="Connector Search" />
+			<string key="Theme" value="unknown" />
+			<float key="Account.Users" value="1.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="unknown" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<float key="number.of.graphs" value="47.0" />
+			<date key="time:timestamp" value="2018-08-01T00:00:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="Fargo" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="24.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Direct" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="unknown" />
+			<float key="source" value="24.0" />
+			<string key="Graph.Origin.1" value="unknown" />
+			<string key="Guide.Name" value="unknown" />
+			<string key="Guide.Type" value="unknown" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<int key="Unnamed: 0" value="8" />
+			<int key="X." value="8" />
+			<string key="concept:name" value="Data Source Connector" />
+			<string key="Theme" value="unknown" />
+			<float key="Account.Users" value="1.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="unknown" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<float key="number.of.graphs" value="47.0" />
+			<date key="time:timestamp" value="2018-08-01T00:00:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="Fargo" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="24.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Direct" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="unknown" />
+			<float key="source" value="24.0" />
+			<string key="Graph.Origin.1" value="unknown" />
+			<string key="Guide.Name" value="unknown" />
+			<string key="Guide.Type" value="unknown" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<int key="Unnamed: 0" value="9" />
+			<int key="X." value="9" />
+			<string key="concept:name" value="DS Template Selected" />
+			<string key="Theme" value="unknown" />
+			<float key="Account.Users" value="1.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="unknown" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<float key="number.of.graphs" value="47.0" />
+			<date key="time:timestamp" value="2018-08-01T00:00:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="Fargo" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="24.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Direct" />
+			<string key="dashboard.Template.Name" value="Create a custom graph" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="unknown" />
+			<float key="source" value="24.0" />
+			<string key="Graph.Origin.1" value="unknown" />
+			<string key="Guide.Name" value="unknown" />
+			<string key="Guide.Type" value="unknown" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<int key="Unnamed: 0" value="10" />
+			<int key="X." value="10" />
+			<string key="concept:name" value="Data Source Created" />
+			<string key="Theme" value="unknown" />
+			<float key="Account.Users" value="1.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="unknown" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<float key="number.of.graphs" value="50.0" />
+			<date key="time:timestamp" value="2018-08-01T00:00:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="unknown" />
+			<string key="Connector.Backend" value="google" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="26.0" />
+			<string key="Data.Format" value="xls" />
+			<string key="Account.Type" value="Direct" />
+			<string key="dashboard.Template.Name" value="Create a custom graph" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="unknown" />
+			<float key="source" value="26.0" />
+			<string key="Graph.Origin.1" value="unknown" />
+			<string key="Guide.Name" value="unknown" />
+			<string key="Guide.Type" value="unknown" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<int key="Unnamed: 0" value="25" />
+			<int key="X." value="25" />
+			<string key="concept:name" value="Edit Graphs" />
+			<string key="Theme" value="unknown" />
+			<float key="Account.Users" value="1.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="Custom" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<float key="number.of.graphs" value="47.0" />
+			<date key="time:timestamp" value="2018-08-01T00:01:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="Fargo" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="24.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Direct" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="unknown" />
+			<float key="source" value="24.0" />
+			<string key="Graph.Origin.1" value="Custom" />
+			<string key="Guide.Name" value="unknown" />
+			<string key="Guide.Type" value="unknown" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<int key="Unnamed: 0" value="28" />
+			<int key="X." value="28" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="Theme" value="Dark" />
+			<float key="Account.Users" value="1.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="unknown" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<float key="number.of.graphs" value="47.0" />
+			<date key="time:timestamp" value="2018-08-01T00:02:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="Fargo" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="24.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Direct" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="unknown" />
+			<float key="source" value="24.0" />
+			<string key="Graph.Origin.1" value="unknown" />
+			<string key="Guide.Name" value="unknown" />
+			<string key="Guide.Type" value="unknown" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<int key="Unnamed: 0" value="108" />
+			<int key="X." value="108" />
+			<string key="concept:name" value="Build Graph from Template" />
+			<string key="Theme" value="unknown" />
+			<float key="Account.Users" value="1.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="unknown" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<float key="number.of.graphs" value="50.0" />
+			<date key="time:timestamp" value="2018-08-01T00:11:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="unknown" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="26.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Direct" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="unknown" />
+			<float key="source" value="26.0" />
+			<string key="Graph.Origin.1" value="unknown" />
+			<string key="Guide.Name" value="unknown" />
+			<string key="Guide.Type" value="unknown" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<int key="Unnamed: 0" value="110" />
+			<int key="X." value="110" />
+			<string key="concept:name" value="Edit Graphs" />
+			<string key="Theme" value="unknown" />
+			<float key="Account.Users" value="1.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="Custom" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<float key="number.of.graphs" value="47.0" />
+			<date key="time:timestamp" value="2018-08-01T00:11:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="Fargo" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="24.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Direct" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="unknown" />
+			<float key="source" value="24.0" />
+			<string key="Graph.Origin.1" value="Custom" />
+			<string key="Guide.Name" value="unknown" />
+			<string key="Guide.Type" value="unknown" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<int key="Unnamed: 0" value="120" />
+			<int key="X." value="120" />
+			<string key="concept:name" value="Edit Graphs" />
+			<string key="Theme" value="unknown" />
+			<float key="Account.Users" value="1.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="Custom" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<float key="number.of.graphs" value="47.0" />
+			<date key="time:timestamp" value="2018-08-01T00:13:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="Fargo" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="24.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Direct" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="unknown" />
+			<float key="source" value="24.0" />
+			<string key="Graph.Origin.1" value="Custom" />
+			<string key="Guide.Name" value="unknown" />
+			<string key="Guide.Type" value="unknown" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<int key="Unnamed: 0" value="121" />
+			<int key="X." value="121" />
+			<string key="concept:name" value="Edit Graphs" />
+			<string key="Theme" value="unknown" />
+			<float key="Account.Users" value="1.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="Custom" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<float key="number.of.graphs" value="47.0" />
+			<date key="time:timestamp" value="2018-08-01T00:14:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="Fargo" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="24.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Direct" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="unknown" />
+			<float key="source" value="24.0" />
+			<string key="Graph.Origin.1" value="Custom" />
+			<string key="Guide.Name" value="unknown" />
+			<string key="Guide.Type" value="unknown" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<int key="Unnamed: 0" value="122" />
+			<int key="X." value="122" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="Theme" value="Dark" />
+			<float key="Account.Users" value="1.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="unknown" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<float key="number.of.graphs" value="47.0" />
+			<date key="time:timestamp" value="2018-08-01T00:14:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="Fargo" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="24.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Direct" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="unknown" />
+			<float key="source" value="24.0" />
+			<string key="Graph.Origin.1" value="unknown" />
+			<string key="Guide.Name" value="unknown" />
+			<string key="Guide.Type" value="unknown" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="6c5941a5643cbcc803d42298adec6661" />
+		<event>
+			<int key="Unnamed: 0" value="2" />
+			<int key="X." value="2" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="Theme" value="Light" />
+			<float key="Account.Users" value="41.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="unknown" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<float key="number.of.graphs" value="0.0" />
+			<date key="time:timestamp" value="2018-08-01T00:00:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="Ottawa" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="0.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Partner" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="Phone App" />
+			<float key="source" value="0.0" />
+			<string key="Graph.Origin.1" value="unknown" />
+			<string key="Guide.Name" value="unknown" />
+			<string key="Guide.Type" value="unknown" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<int key="Unnamed: 0" value="50" />
+			<int key="X." value="50" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="Theme" value="Light" />
+			<float key="Account.Users" value="41.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="unknown" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<float key="number.of.graphs" value="0.0" />
+			<date key="time:timestamp" value="2018-08-01T00:06:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="unknown" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="0.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Partner" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="Phone App" />
+			<float key="source" value="0.0" />
+			<string key="Graph.Origin.1" value="unknown" />
+			<string key="Guide.Name" value="unknown" />
+			<string key="Guide.Type" value="unknown" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<int key="Unnamed: 0" value="85" />
+			<int key="X." value="85" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="Theme" value="Light" />
+			<float key="Account.Users" value="41.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="unknown" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<float key="number.of.graphs" value="0.0" />
+			<date key="time:timestamp" value="2018-08-01T00:09:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="unknown" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="0.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Partner" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="Phone App" />
+			<float key="source" value="0.0" />
+			<string key="Graph.Origin.1" value="unknown" />
+			<string key="Guide.Name" value="unknown" />
+			<string key="Guide.Type" value="unknown" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="51b809b091fc0f51dc7aca9ddc486bfe" />
+		<event>
+			<int key="Unnamed: 0" value="4" />
+			<int key="X." value="4" />
+			<string key="concept:name" value="Graph Saved" />
+			<string key="Theme" value="unknown" />
+			<float key="Account.Users" value="1.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="Custom" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<float key="number.of.graphs" value="15.0" />
+			<date key="time:timestamp" value="2018-08-01T00:00:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="unknown" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="3.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Direct" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="unknown" />
+			<float key="source" value="3.0" />
+			<string key="Graph.Origin.1" value="Custom" />
+			<string key="Guide.Name" value="unknown" />
+			<string key="Guide.Type" value="unknown" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<int key="Unnamed: 0" value="5" />
+			<int key="X." value="5" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="Theme" value="Light" />
+			<float key="Account.Users" value="1.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="unknown" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<float key="number.of.graphs" value="8.0" />
+			<date key="time:timestamp" value="2018-08-01T00:00:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="Pittsfield" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="2.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Direct" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="unknown" />
+			<float key="source" value="2.0" />
+			<string key="Graph.Origin.1" value="unknown" />
+			<string key="Guide.Name" value="unknown" />
+			<string key="Guide.Type" value="unknown" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<int key="Unnamed: 0" value="15" />
+			<int key="X." value="15" />
+			<string key="concept:name" value="Edit Graph from Dashboard" />
+			<string key="Theme" value="unknown" />
+			<float key="Account.Users" value="1.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="Custom" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<float key="number.of.graphs" value="8.0" />
+			<date key="time:timestamp" value="2018-08-01T00:01:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="Pittsfield" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="2.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Direct" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="unknown" />
+			<float key="source" value="2.0" />
+			<string key="Graph.Origin.1" value="Custom" />
+			<string key="Guide.Name" value="unknown" />
+			<string key="Guide.Type" value="unknown" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<int key="Unnamed: 0" value="17" />
+			<int key="X." value="17" />
+			<string key="concept:name" value="Edit Graphs" />
+			<string key="Theme" value="unknown" />
+			<float key="Account.Users" value="1.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="Custom" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<float key="number.of.graphs" value="8.0" />
+			<date key="time:timestamp" value="2018-08-01T00:01:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="Pittsfield" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="2.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Direct" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="unknown" />
+			<float key="source" value="2.0" />
+			<string key="Graph.Origin.1" value="Custom" />
+			<string key="Guide.Name" value="unknown" />
+			<string key="Guide.Type" value="unknown" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<int key="Unnamed: 0" value="26" />
+			<int key="X." value="26" />
+			<string key="concept:name" value="Graph Saved" />
+			<string key="Theme" value="unknown" />
+			<float key="Account.Users" value="1.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="Custom" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<float key="number.of.graphs" value="15.0" />
+			<date key="time:timestamp" value="2018-08-01T00:01:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="unknown" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="3.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Direct" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="unknown" />
+			<float key="source" value="3.0" />
+			<string key="Graph.Origin.1" value="Custom" />
+			<string key="Guide.Name" value="unknown" />
+			<string key="Guide.Type" value="unknown" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<int key="Unnamed: 0" value="27" />
+			<int key="X." value="27" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="Theme" value="Dark" />
+			<float key="Account.Users" value="1.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="unknown" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<float key="number.of.graphs" value="8.0" />
+			<date key="time:timestamp" value="2018-08-01T00:02:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="Pittsfield" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="2.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Direct" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="unknown" />
+			<float key="source" value="2.0" />
+			<string key="Graph.Origin.1" value="unknown" />
+			<string key="Guide.Name" value="unknown" />
+			<string key="Guide.Type" value="unknown" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<int key="Unnamed: 0" value="34" />
+			<int key="X." value="34" />
+			<string key="concept:name" value="Add Button" />
+			<string key="Theme" value="unknown" />
+			<float key="Account.Users" value="1.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="unknown" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<float key="number.of.graphs" value="8.0" />
+			<date key="time:timestamp" value="2018-08-01T00:03:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="Pittsfield" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="2.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Direct" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="unknown" />
+			<float key="source" value="2.0" />
+			<string key="Graph.Origin.1" value="unknown" />
+			<string key="Guide.Name" value="unknown" />
+			<string key="Guide.Type" value="unknown" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<int key="Unnamed: 0" value="35" />
+			<int key="X." value="35" />
+			<string key="concept:name" value="Create New Graph" />
+			<string key="Theme" value="unknown" />
+			<float key="Account.Users" value="1.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="unknown" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<float key="number.of.graphs" value="8.0" />
+			<date key="time:timestamp" value="2018-08-01T00:04:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="Pittsfield" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="2.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Direct" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="unknown" />
+			<float key="source" value="2.0" />
+			<string key="Graph.Origin.1" value="unknown" />
+			<string key="Guide.Name" value="unknown" />
+			<string key="Guide.Type" value="unknown" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<int key="Unnamed: 0" value="36" />
+			<int key="X." value="36" />
+			<string key="concept:name" value="Edit Graphs" />
+			<string key="Theme" value="unknown" />
+			<float key="Account.Users" value="1.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="Custom" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<float key="number.of.graphs" value="8.0" />
+			<date key="time:timestamp" value="2018-08-01T00:04:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="Pittsfield" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="2.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Direct" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="unknown" />
+			<float key="source" value="2.0" />
+			<string key="Graph.Origin.1" value="Custom" />
+			<string key="Guide.Name" value="unknown" />
+			<string key="Guide.Type" value="unknown" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<int key="Unnamed: 0" value="75" />
+			<int key="X." value="75" />
+			<string key="concept:name" value="Create Data Source" />
+			<string key="Theme" value="unknown" />
+			<float key="Account.Users" value="1.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="unknown" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<float key="number.of.graphs" value="8.0" />
+			<date key="time:timestamp" value="2018-08-01T00:08:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="Pittsfield" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="2.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Direct" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="unknown" />
+			<float key="source" value="2.0" />
+			<string key="Graph.Origin.1" value="unknown" />
+			<string key="Guide.Name" value="unknown" />
+			<string key="Guide.Type" value="unknown" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<int key="Unnamed: 0" value="79" />
+			<int key="X." value="79" />
+			<string key="concept:name" value="Data Source Connector" />
+			<string key="Theme" value="unknown" />
+			<float key="Account.Users" value="1.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="unknown" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<float key="number.of.graphs" value="8.0" />
+			<date key="time:timestamp" value="2018-08-01T00:08:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="Pittsfield" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="2.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Direct" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="unknown" />
+			<float key="source" value="2.0" />
+			<string key="Graph.Origin.1" value="unknown" />
+			<string key="Guide.Name" value="unknown" />
+			<string key="Guide.Type" value="unknown" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<int key="Unnamed: 0" value="90" />
+			<int key="X." value="90" />
+			<string key="concept:name" value="Create Data Source" />
+			<string key="Theme" value="unknown" />
+			<float key="Account.Users" value="1.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="unknown" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<float key="number.of.graphs" value="8.0" />
+			<date key="time:timestamp" value="2018-08-01T00:10:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="Pittsfield" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="2.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Direct" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="unknown" />
+			<float key="source" value="2.0" />
+			<string key="Graph.Origin.1" value="unknown" />
+			<string key="Guide.Name" value="unknown" />
+			<string key="Guide.Type" value="unknown" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<int key="Unnamed: 0" value="92" />
+			<int key="X." value="92" />
+			<string key="concept:name" value="Data Source Connector" />
+			<string key="Theme" value="unknown" />
+			<float key="Account.Users" value="1.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="unknown" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<float key="number.of.graphs" value="8.0" />
+			<date key="time:timestamp" value="2018-08-01T00:10:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="Pittsfield" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="2.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Direct" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="unknown" />
+			<float key="source" value="2.0" />
+			<string key="Graph.Origin.1" value="unknown" />
+			<string key="Guide.Name" value="unknown" />
+			<string key="Guide.Type" value="unknown" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<int key="Unnamed: 0" value="100" />
+			<int key="X." value="100" />
+			<string key="concept:name" value="Data Source Created" />
+			<string key="Theme" value="unknown" />
+			<float key="Account.Users" value="1.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="unknown" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<float key="number.of.graphs" value="15.0" />
+			<date key="time:timestamp" value="2018-08-01T00:10:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="unknown" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="4.0" />
+			<string key="Data.Format" value="csv" />
+			<string key="Account.Type" value="Direct" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="unknown" />
+			<float key="source" value="4.0" />
+			<string key="Graph.Origin.1" value="unknown" />
+			<string key="Guide.Name" value="unknown" />
+			<string key="Guide.Type" value="unknown" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<int key="Unnamed: 0" value="109" />
+			<int key="X." value="109" />
+			<string key="concept:name" value="Graph Saved" />
+			<string key="Theme" value="unknown" />
+			<float key="Account.Users" value="1.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="Custom" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<float key="number.of.graphs" value="15.0" />
+			<date key="time:timestamp" value="2018-08-01T00:11:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="unknown" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="4.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Direct" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="unknown" />
+			<float key="source" value="4.0" />
+			<string key="Graph.Origin.1" value="Custom" />
+			<string key="Guide.Name" value="unknown" />
+			<string key="Guide.Type" value="unknown" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<int key="Unnamed: 0" value="111" />
+			<int key="X." value="111" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="Theme" value="Dark" />
+			<float key="Account.Users" value="1.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="unknown" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<float key="number.of.graphs" value="8.0" />
+			<date key="time:timestamp" value="2018-08-01T00:11:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="Pittsfield" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="2.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Direct" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="unknown" />
+			<float key="source" value="2.0" />
+			<string key="Graph.Origin.1" value="unknown" />
+			<string key="Guide.Name" value="unknown" />
+			<string key="Guide.Type" value="unknown" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<int key="Unnamed: 0" value="123" />
+			<int key="X." value="123" />
+			<string key="concept:name" value="Edit Graph from Dashboard" />
+			<string key="Theme" value="unknown" />
+			<float key="Account.Users" value="1.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="Custom" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<float key="number.of.graphs" value="8.0" />
+			<date key="time:timestamp" value="2018-08-01T00:14:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="Pittsfield" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="2.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Direct" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="unknown" />
+			<float key="source" value="2.0" />
+			<string key="Graph.Origin.1" value="Custom" />
+			<string key="Guide.Name" value="unknown" />
+			<string key="Guide.Type" value="unknown" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="f9375b795735486891aae3367d0adc7b" />
+		<event>
+			<int key="Unnamed: 0" value="11" />
+			<int key="X." value="11" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="Theme" value="Light" />
+			<float key="Account.Users" value="11.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="unknown" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<float key="number.of.graphs" value="0.0" />
+			<date key="time:timestamp" value="2018-08-01T00:00:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="Salt Lake City" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="0.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Partner" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="Phone App" />
+			<float key="source" value="0.0" />
+			<string key="Graph.Origin.1" value="unknown" />
+			<string key="Guide.Name" value="unknown" />
+			<string key="Guide.Type" value="unknown" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<int key="Unnamed: 0" value="12" />
+			<int key="X." value="12" />
+			<string key="concept:name" value="Change Tab" />
+			<string key="Theme" value="unknown" />
+			<float key="Account.Users" value="11.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="unknown" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<float key="number.of.graphs" value="0.0" />
+			<date key="time:timestamp" value="2018-08-01T00:00:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="Salt Lake City" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="0.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Partner" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="Phone App" />
+			<float key="source" value="0.0" />
+			<string key="Graph.Origin.1" value="unknown" />
+			<string key="Guide.Name" value="unknown" />
+			<string key="Guide.Type" value="unknown" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="0350cd2785e3e1565e068c557ebb8f1a" />
+		<event>
+			<int key="Unnamed: 0" value="13" />
+			<int key="X." value="13" />
+			<string key="concept:name" value="Switch" />
+			<string key="Theme" value="unknown" />
+			<float key="Account.Users" value="17.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="unknown" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<float key="number.of.graphs" value="0.0" />
+			<date key="time:timestamp" value="2018-08-01T00:00:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="Bengaluru" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="0.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Direct" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="Phone App" />
+			<float key="source" value="0.0" />
+			<string key="Graph.Origin.1" value="unknown" />
+			<string key="Guide.Name" value="unknown" />
+			<string key="Guide.Type" value="unknown" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<int key="Unnamed: 0" value="24" />
+			<int key="X." value="24" />
+			<string key="concept:name" value="Switch" />
+			<string key="Theme" value="unknown" />
+			<float key="Account.Users" value="17.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="unknown" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<float key="number.of.graphs" value="0.0" />
+			<date key="time:timestamp" value="2018-08-01T00:01:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="Bengaluru" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="0.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Direct" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="Phone App" />
+			<float key="source" value="0.0" />
+			<string key="Graph.Origin.1" value="unknown" />
+			<string key="Guide.Name" value="unknown" />
+			<string key="Guide.Type" value="unknown" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<int key="Unnamed: 0" value="56" />
+			<int key="X." value="56" />
+			<string key="concept:name" value="Switch" />
+			<string key="Theme" value="unknown" />
+			<float key="Account.Users" value="17.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="unknown" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<float key="number.of.graphs" value="0.0" />
+			<date key="time:timestamp" value="2018-08-01T00:06:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="Bengaluru" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="0.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Direct" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="Phone App" />
+			<float key="source" value="0.0" />
+			<string key="Graph.Origin.1" value="unknown" />
+			<string key="Guide.Name" value="unknown" />
+			<string key="Guide.Type" value="unknown" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<int key="Unnamed: 0" value="81" />
+			<int key="X." value="81" />
+			<string key="concept:name" value="Switch" />
+			<string key="Theme" value="unknown" />
+			<float key="Account.Users" value="17.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="unknown" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<float key="number.of.graphs" value="0.0" />
+			<date key="time:timestamp" value="2018-08-01T00:09:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="Bengaluru" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="0.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Direct" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="Phone App" />
+			<float key="source" value="0.0" />
+			<string key="Graph.Origin.1" value="unknown" />
+			<string key="Guide.Name" value="unknown" />
+			<string key="Guide.Type" value="unknown" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="197c731783a51319754597fea6c43112" />
+		<event>
+			<int key="Unnamed: 0" value="14" />
+			<int key="X." value="14" />
+			<string key="concept:name" value="Switch" />
+			<string key="Theme" value="unknown" />
+			<float key="Account.Users" value="112.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="unknown" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<float key="number.of.graphs" value="0.0" />
+			<date key="time:timestamp" value="2018-08-01T00:01:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="Bangkok" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="0.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Direct" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="Phone App" />
+			<float key="source" value="0.0" />
+			<string key="Graph.Origin.1" value="unknown" />
+			<string key="Guide.Name" value="unknown" />
+			<string key="Guide.Type" value="unknown" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="3cdc5e38a59a03a8e1b03abfb748b59a" />
+		<event>
+			<int key="Unnamed: 0" value="16" />
+			<int key="X." value="16" />
+			<string key="concept:name" value="Trial Sign Up Completed" />
+			<string key="Theme" value="unknown" />
+			<float key="Account.Users" value="1.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="unknown" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<float key="number.of.graphs" value="8.0" />
+			<date key="time:timestamp" value="2018-08-01T00:01:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="Christchurch" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="2.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Direct" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="unknown" />
+			<float key="source" value="2.0" />
+			<string key="Graph.Origin.1" value="unknown" />
+			<string key="Guide.Name" value="unknown" />
+			<string key="Guide.Type" value="unknown" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<int key="Unnamed: 0" value="18" />
+			<int key="X." value="18" />
+			<string key="concept:name" value="Guide Start" />
+			<string key="Theme" value="unknown" />
+			<float key="Account.Users" value="1.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="unknown" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<float key="number.of.graphs" value="8.0" />
+			<date key="time:timestamp" value="2018-08-01T00:01:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="Christchurch" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="2.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Direct" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="unknown" />
+			<float key="source" value="2.0" />
+			<string key="Graph.Origin.1" value="unknown" />
+			<string key="Guide.Name" value="NavBar Intro Tour - Automatic" />
+			<string key="Guide.Type" value="walkthrough" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<int key="Unnamed: 0" value="19" />
+			<int key="X." value="19" />
+			<string key="concept:name" value="Guide Exit" />
+			<string key="Theme" value="unknown" />
+			<float key="Account.Users" value="1.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="unknown" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<float key="number.of.graphs" value="8.0" />
+			<date key="time:timestamp" value="2018-08-01T00:01:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="Christchurch" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="2.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Direct" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="unknown" />
+			<float key="source" value="2.0" />
+			<string key="Graph.Origin.1" value="unknown" />
+			<string key="Guide.Name" value="NavBar Intro Tour - Automatic" />
+			<string key="Guide.Type" value="walkthrough" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<int key="Unnamed: 0" value="20" />
+			<int key="X." value="20" />
+			<string key="concept:name" value="Guide Start" />
+			<string key="Theme" value="unknown" />
+			<float key="Account.Users" value="1.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="unknown" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<float key="number.of.graphs" value="8.0" />
+			<date key="time:timestamp" value="2018-08-01T00:01:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="Christchurch" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="2.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Direct" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="unknown" />
+			<float key="source" value="2.0" />
+			<string key="Graph.Origin.1" value="unknown" />
+			<string key="Guide.Name" value="NavBar Intro Tour - Automatic" />
+			<string key="Guide.Type" value="walkthrough" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<int key="Unnamed: 0" value="21" />
+			<int key="X." value="21" />
+			<string key="concept:name" value="Guide Start" />
+			<string key="Theme" value="unknown" />
+			<float key="Account.Users" value="1.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="unknown" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<float key="number.of.graphs" value="8.0" />
+			<date key="time:timestamp" value="2018-08-01T00:01:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="Christchurch" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="2.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Direct" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="unknown" />
+			<float key="source" value="2.0" />
+			<string key="Graph.Origin.1" value="unknown" />
+			<string key="Guide.Name" value="NavBar_Resumetour_Dashboard" />
+			<string key="Guide.Type" value="tooltip" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<int key="Unnamed: 0" value="32" />
+			<int key="X." value="32" />
+			<string key="concept:name" value="Create Data Source" />
+			<string key="Theme" value="unknown" />
+			<float key="Account.Users" value="1.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="unknown" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<float key="number.of.graphs" value="8.0" />
+			<date key="time:timestamp" value="2018-08-01T00:03:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="unknown" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="2.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Direct" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="unknown" />
+			<float key="source" value="2.0" />
+			<string key="Graph.Origin.1" value="unknown" />
+			<string key="Guide.Name" value="unknown" />
+			<string key="Guide.Type" value="unknown" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<int key="Unnamed: 0" value="33" />
+			<int key="X." value="33" />
+			<string key="concept:name" value="Data Source Connector" />
+			<string key="Theme" value="unknown" />
+			<float key="Account.Users" value="1.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="unknown" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<float key="number.of.graphs" value="8.0" />
+			<date key="time:timestamp" value="2018-08-01T00:03:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="Christchurch" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="2.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Direct" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="unknown" />
+			<float key="source" value="2.0" />
+			<string key="Graph.Origin.1" value="unknown" />
+			<string key="Guide.Name" value="unknown" />
+			<string key="Guide.Type" value="unknown" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<int key="Unnamed: 0" value="37" />
+			<int key="X." value="37" />
+			<string key="concept:name" value="DS Template Selected" />
+			<string key="Theme" value="unknown" />
+			<float key="Account.Users" value="1.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="unknown" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<float key="number.of.graphs" value="8.0" />
+			<date key="time:timestamp" value="2018-08-01T00:04:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="Christchurch" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="2.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Direct" />
+			<string key="dashboard.Template.Name" value="LinkedIn Company Statistics" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="unknown" />
+			<float key="source" value="2.0" />
+			<string key="Graph.Origin.1" value="unknown" />
+			<string key="Guide.Name" value="unknown" />
+			<string key="Guide.Type" value="unknown" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<int key="Unnamed: 0" value="47" />
+			<int key="X." value="47" />
+			<string key="concept:name" value="Data Source Created" />
+			<string key="Theme" value="unknown" />
+			<float key="Account.Users" value="1.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="unknown" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<float key="number.of.graphs" value="8.0" />
+			<date key="time:timestamp" value="2018-08-01T00:05:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="unknown" />
+			<string key="Connector.Backend" value="local file" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="3.0" />
+			<string key="Data.Format" value="json" />
+			<string key="Account.Type" value="Direct" />
+			<string key="dashboard.Template.Name" value="LinkedIn Company Statistics" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="unknown" />
+			<float key="source" value="3.0" />
+			<string key="Graph.Origin.1" value="unknown" />
+			<string key="Guide.Name" value="unknown" />
+			<string key="Guide.Type" value="unknown" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<int key="Unnamed: 0" value="51" />
+			<int key="X." value="51" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="Theme" value="Light" />
+			<float key="Account.Users" value="1.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="unknown" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<float key="number.of.graphs" value="8.0" />
+			<date key="time:timestamp" value="2018-08-01T00:06:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="Christchurch" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="2.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Direct" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="unknown" />
+			<float key="source" value="2.0" />
+			<string key="Graph.Origin.1" value="unknown" />
+			<string key="Guide.Name" value="unknown" />
+			<string key="Guide.Type" value="unknown" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<int key="Unnamed: 0" value="55" />
+			<int key="X." value="55" />
+			<string key="concept:name" value="Add Blank Tab" />
+			<string key="Theme" value="unknown" />
+			<float key="Account.Users" value="1.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="unknown" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<float key="number.of.graphs" value="8.0" />
+			<date key="time:timestamp" value="2018-08-01T00:06:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="Christchurch" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="2.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Direct" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="unknown" />
+			<float key="source" value="2.0" />
+			<string key="Graph.Origin.1" value="unknown" />
+			<string key="Guide.Name" value="unknown" />
+			<string key="Guide.Type" value="unknown" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<int key="Unnamed: 0" value="65" />
+			<int key="X." value="65" />
+			<string key="concept:name" value="Build Graph from Template" />
+			<string key="Theme" value="unknown" />
+			<float key="Account.Users" value="1.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="unknown" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<float key="number.of.graphs" value="8.0" />
+			<date key="time:timestamp" value="2018-08-01T00:07:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="unknown" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="3.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Direct" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="unknown" />
+			<float key="source" value="3.0" />
+			<string key="Graph.Origin.1" value="unknown" />
+			<string key="Guide.Name" value="unknown" />
+			<string key="Guide.Type" value="unknown" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<int key="Unnamed: 0" value="67" />
+			<int key="X." value="67" />
+			<string key="concept:name" value="Edit Graphs" />
+			<string key="Theme" value="unknown" />
+			<float key="Account.Users" value="1.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="Custom" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<float key="number.of.graphs" value="8.0" />
+			<date key="time:timestamp" value="2018-08-01T00:07:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="Christchurch" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="2.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Direct" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="unknown" />
+			<float key="source" value="2.0" />
+			<string key="Graph.Origin.1" value="Custom" />
+			<string key="Guide.Name" value="unknown" />
+			<string key="Guide.Type" value="unknown" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<int key="Unnamed: 0" value="70" />
+			<int key="X." value="70" />
+			<string key="concept:name" value="Guide Start" />
+			<string key="Theme" value="unknown" />
+			<float key="Account.Users" value="1.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="unknown" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<float key="number.of.graphs" value="8.0" />
+			<date key="time:timestamp" value="2018-08-01T00:08:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="Christchurch" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="2.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Direct" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="unknown" />
+			<float key="source" value="2.0" />
+			<string key="Graph.Origin.1" value="unknown" />
+			<string key="Guide.Name" value="Editor_Resumetour" />
+			<string key="Guide.Type" value="tooltip" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<int key="Unnamed: 0" value="82" />
+			<int key="X." value="82" />
+			<string key="concept:name" value="Edit Graphs" />
+			<string key="Theme" value="unknown" />
+			<float key="Account.Users" value="1.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="Custom" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<float key="number.of.graphs" value="8.0" />
+			<date key="time:timestamp" value="2018-08-01T00:09:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="Christchurch" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="2.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Direct" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="unknown" />
+			<float key="source" value="2.0" />
+			<string key="Graph.Origin.1" value="Custom" />
+			<string key="Guide.Name" value="unknown" />
+			<string key="Guide.Type" value="unknown" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="296411f5ce302103d499ca4656fb8c71" />
+		<event>
+			<int key="Unnamed: 0" value="22" />
+			<int key="X." value="22" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="Theme" value="Light" />
+			<float key="Account.Users" value="1.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="unknown" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<float key="number.of.graphs" value="8.0" />
+			<date key="time:timestamp" value="2018-08-01T00:01:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="Ho Chi Minh City" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="2.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Direct" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="unknown" />
+			<float key="source" value="2.0" />
+			<string key="Graph.Origin.1" value="unknown" />
+			<string key="Guide.Name" value="unknown" />
+			<string key="Guide.Type" value="unknown" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="2a3c721d40a0b403125991ca1cf77a28" />
+		<event>
+			<int key="Unnamed: 0" value="23" />
+			<int key="X." value="23" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="Theme" value="Light" />
+			<float key="Account.Users" value="32.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="unknown" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<float key="number.of.graphs" value="0.0" />
+			<date key="time:timestamp" value="2018-08-01T00:01:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="Peshawar" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="0.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Partner" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="Phone App" />
+			<float key="source" value="0.0" />
+			<string key="Graph.Origin.1" value="unknown" />
+			<string key="Guide.Name" value="unknown" />
+			<string key="Guide.Type" value="unknown" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<int key="Unnamed: 0" value="29" />
+			<int key="X." value="29" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="Theme" value="Light" />
+			<float key="Account.Users" value="32.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="unknown" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<float key="number.of.graphs" value="0.0" />
+			<date key="time:timestamp" value="2018-08-01T00:02:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="Peshawar" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="0.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Partner" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="Phone App" />
+			<float key="source" value="0.0" />
+			<string key="Graph.Origin.1" value="unknown" />
+			<string key="Guide.Name" value="unknown" />
+			<string key="Guide.Type" value="unknown" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="ea0a1aa5119972fc3c8b79db33fcc37b" />
+		<event>
+			<int key="Unnamed: 0" value="30" />
+			<int key="X." value="30" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="Theme" value="Light" />
+			<float key="Account.Users" value="2.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="unknown" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<float key="number.of.graphs" value="60.0" />
+			<date key="time:timestamp" value="2018-08-01T00:02:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="Los Angeles" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="15.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Direct" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="Phone App" />
+			<float key="source" value="15.0" />
+			<string key="Graph.Origin.1" value="unknown" />
+			<string key="Guide.Name" value="unknown" />
+			<string key="Guide.Type" value="unknown" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="b9ad6d74631f80d4fc1384c0fcf5f115" />
+		<event>
+			<int key="Unnamed: 0" value="31" />
+			<int key="X." value="31" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="Theme" value="Light" />
+			<float key="Account.Users" value="4.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="unknown" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<float key="number.of.graphs" value="121.0" />
+			<date key="time:timestamp" value="2018-08-01T00:03:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="Porto Alegre" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="100.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Direct" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="Phone App" />
+			<float key="source" value="100.0" />
+			<string key="Graph.Origin.1" value="unknown" />
+			<string key="Guide.Name" value="unknown" />
+			<string key="Guide.Type" value="unknown" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="31706a205dcad526617c7247ea535d98" />
+		<event>
+			<int key="Unnamed: 0" value="38" />
+			<int key="X." value="38" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="Theme" value="Light" />
+			<float key="Account.Users" value="2.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="unknown" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<float key="number.of.graphs" value="18.0" />
+			<date key="time:timestamp" value="2018-08-01T00:04:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="Ho Chi Minh City" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="3.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Direct" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="unknown" />
+			<float key="source" value="3.0" />
+			<string key="Graph.Origin.1" value="unknown" />
+			<string key="Guide.Name" value="unknown" />
+			<string key="Guide.Type" value="unknown" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="405d25d7e476a63d4cfc49f1c7cb38f0" />
+		<event>
+			<int key="Unnamed: 0" value="39" />
+			<int key="X." value="39" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="Theme" value="Light" />
+			<float key="Account.Users" value="1.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="unknown" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<float key="number.of.graphs" value="23.0" />
+			<date key="time:timestamp" value="2018-08-01T00:04:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="Ottawa" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="8.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Direct" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="unknown" />
+			<float key="source" value="8.0" />
+			<string key="Graph.Origin.1" value="unknown" />
+			<string key="Guide.Name" value="unknown" />
+			<string key="Guide.Type" value="unknown" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<int key="Unnamed: 0" value="41" />
+			<int key="X." value="41" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="Theme" value="Light" />
+			<float key="Account.Users" value="1.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="unknown" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<float key="number.of.graphs" value="23.0" />
+			<date key="time:timestamp" value="2018-08-01T00:04:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="Ottawa" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="8.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Direct" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="unknown" />
+			<float key="source" value="8.0" />
+			<string key="Graph.Origin.1" value="unknown" />
+			<string key="Guide.Name" value="unknown" />
+			<string key="Guide.Type" value="unknown" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<int key="Unnamed: 0" value="42" />
+			<int key="X." value="42" />
+			<string key="concept:name" value="Edit Graph from Dashboard" />
+			<string key="Theme" value="unknown" />
+			<float key="Account.Users" value="1.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="Custom" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<float key="number.of.graphs" value="23.0" />
+			<date key="time:timestamp" value="2018-08-01T00:04:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="Ottawa" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="8.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Direct" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="unknown" />
+			<float key="source" value="8.0" />
+			<string key="Graph.Origin.1" value="Custom" />
+			<string key="Guide.Name" value="unknown" />
+			<string key="Guide.Type" value="unknown" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<int key="Unnamed: 0" value="43" />
+			<int key="X." value="43" />
+			<string key="concept:name" value="Edit Graphs" />
+			<string key="Theme" value="unknown" />
+			<float key="Account.Users" value="1.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="Custom" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<float key="number.of.graphs" value="23.0" />
+			<date key="time:timestamp" value="2018-08-01T00:04:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="Ottawa" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="8.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Direct" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="unknown" />
+			<float key="source" value="8.0" />
+			<string key="Graph.Origin.1" value="Custom" />
+			<string key="Guide.Name" value="unknown" />
+			<string key="Guide.Type" value="unknown" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<int key="Unnamed: 0" value="59" />
+			<int key="X." value="59" />
+			<string key="concept:name" value="Graph Saved" />
+			<string key="Theme" value="unknown" />
+			<float key="Account.Users" value="1.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="Custom" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<float key="number.of.graphs" value="23.0" />
+			<date key="time:timestamp" value="2018-08-01T00:06:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="unknown" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="8.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Direct" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="unknown" />
+			<float key="source" value="8.0" />
+			<string key="Graph.Origin.1" value="Custom" />
+			<string key="Guide.Name" value="unknown" />
+			<string key="Guide.Type" value="unknown" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<int key="Unnamed: 0" value="60" />
+			<int key="X." value="60" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="Theme" value="Light" />
+			<float key="Account.Users" value="1.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="unknown" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<float key="number.of.graphs" value="23.0" />
+			<date key="time:timestamp" value="2018-08-01T00:06:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="Ottawa" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="8.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Direct" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="unknown" />
+			<float key="source" value="8.0" />
+			<string key="Graph.Origin.1" value="unknown" />
+			<string key="Guide.Name" value="unknown" />
+			<string key="Guide.Type" value="unknown" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="763bf501a2bf11277ac40a2b230f0c34" />
+		<event>
+			<int key="Unnamed: 0" value="40" />
+			<int key="X." value="40" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="Theme" value="Light" />
+			<float key="Account.Users" value="4.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="unknown" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<float key="number.of.graphs" value="0.0" />
+			<date key="time:timestamp" value="2018-08-01T00:04:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="Crows Nest" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="0.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Partner" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="Phone App" />
+			<float key="source" value="0.0" />
+			<string key="Graph.Origin.1" value="unknown" />
+			<string key="Guide.Name" value="unknown" />
+			<string key="Guide.Type" value="unknown" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<int key="Unnamed: 0" value="44" />
+			<int key="X." value="44" />
+			<string key="concept:name" value="Show More Graphs" />
+			<string key="Theme" value="unknown" />
+			<float key="Account.Users" value="4.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="unknown" />
+			<float key="Number.of.Graphs.on.Dashboard" value="15.0" />
+			<float key="number.of.graphs" value="0.0" />
+			<date key="time:timestamp" value="2018-08-01T00:04:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="Crows Nest" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="0.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Partner" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="Phone App" />
+			<float key="source" value="0.0" />
+			<string key="Graph.Origin.1" value="unknown" />
+			<string key="Guide.Name" value="unknown" />
+			<string key="Guide.Type" value="unknown" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<int key="Unnamed: 0" value="45" />
+			<int key="X." value="45" />
+			<string key="concept:name" value="Show More Graphs" />
+			<string key="Theme" value="unknown" />
+			<float key="Account.Users" value="4.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="unknown" />
+			<float key="Number.of.Graphs.on.Dashboard" value="15.0" />
+			<float key="number.of.graphs" value="0.0" />
+			<date key="time:timestamp" value="2018-08-01T00:04:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="Crows Nest" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="0.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Partner" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="Phone App" />
+			<float key="source" value="0.0" />
+			<string key="Graph.Origin.1" value="unknown" />
+			<string key="Guide.Name" value="unknown" />
+			<string key="Guide.Type" value="unknown" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="7d414a1fd535217b4c83ea005a5c686e" />
+		<event>
+			<int key="Unnamed: 0" value="46" />
+			<int key="X." value="46" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="Theme" value="Dark" />
+			<float key="Account.Users" value="2.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="unknown" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<float key="number.of.graphs" value="21.0" />
+			<date key="time:timestamp" value="2018-08-01T00:05:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="Prague" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="39.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Direct" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="unknown" />
+			<float key="source" value="39.0" />
+			<string key="Graph.Origin.1" value="unknown" />
+			<string key="Guide.Name" value="unknown" />
+			<string key="Guide.Type" value="unknown" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="4da83fc3e758478f4e0d92de1cd8da7e" />
+		<event>
+			<int key="Unnamed: 0" value="48" />
+			<int key="X." value="48" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="Theme" value="Light" />
+			<float key="Account.Users" value="181.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="unknown" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<float key="number.of.graphs" value="0.0" />
+			<date key="time:timestamp" value="2018-08-01T00:05:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="Tampa" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="0.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Direct" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="Phone App" />
+			<float key="source" value="0.0" />
+			<string key="Graph.Origin.1" value="unknown" />
+			<string key="Guide.Name" value="unknown" />
+			<string key="Guide.Type" value="unknown" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<int key="Unnamed: 0" value="49" />
+			<int key="X." value="49" />
+			<string key="concept:name" value="Change Tab" />
+			<string key="Theme" value="unknown" />
+			<float key="Account.Users" value="181.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="unknown" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<float key="number.of.graphs" value="0.0" />
+			<date key="time:timestamp" value="2018-08-01T00:06:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="Tampa" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="0.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Direct" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="Phone App" />
+			<float key="source" value="0.0" />
+			<string key="Graph.Origin.1" value="unknown" />
+			<string key="Guide.Name" value="unknown" />
+			<string key="Guide.Type" value="unknown" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<int key="Unnamed: 0" value="53" />
+			<int key="X." value="53" />
+			<string key="concept:name" value="Change Tab" />
+			<string key="Theme" value="unknown" />
+			<float key="Account.Users" value="181.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="unknown" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<float key="number.of.graphs" value="0.0" />
+			<date key="time:timestamp" value="2018-08-01T00:06:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="Tampa" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="0.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Direct" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="Phone App" />
+			<float key="source" value="0.0" />
+			<string key="Graph.Origin.1" value="unknown" />
+			<string key="Guide.Name" value="unknown" />
+			<string key="Guide.Type" value="unknown" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<int key="Unnamed: 0" value="57" />
+			<int key="X." value="57" />
+			<string key="concept:name" value="Change Tab" />
+			<string key="Theme" value="unknown" />
+			<float key="Account.Users" value="181.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="unknown" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<float key="number.of.graphs" value="0.0" />
+			<date key="time:timestamp" value="2018-08-01T00:06:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="Tampa" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="0.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Direct" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="Phone App" />
+			<float key="source" value="0.0" />
+			<string key="Graph.Origin.1" value="unknown" />
+			<string key="Guide.Name" value="unknown" />
+			<string key="Guide.Type" value="unknown" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<int key="Unnamed: 0" value="61" />
+			<int key="X." value="61" />
+			<string key="concept:name" value="Show More Graphs" />
+			<string key="Theme" value="unknown" />
+			<float key="Account.Users" value="181.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="unknown" />
+			<float key="Number.of.Graphs.on.Dashboard" value="7.0" />
+			<float key="number.of.graphs" value="0.0" />
+			<date key="time:timestamp" value="2018-08-01T00:06:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="Tampa" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="0.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Direct" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="Phone App" />
+			<float key="source" value="0.0" />
+			<string key="Graph.Origin.1" value="unknown" />
+			<string key="Guide.Name" value="unknown" />
+			<string key="Guide.Type" value="unknown" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="1fb0c38e91eb39efd7740c35b063fcaa" />
+		<event>
+			<int key="Unnamed: 0" value="52" />
+			<int key="X." value="52" />
+			<string key="concept:name" value="Graph Saved" />
+			<string key="Theme" value="unknown" />
+			<float key="Account.Users" value="1.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="Template" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<float key="number.of.graphs" value="9.0" />
+			<date key="time:timestamp" value="2018-08-01T00:06:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="unknown" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="4.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Direct" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="unknown" />
+			<float key="source" value="4.0" />
+			<string key="Graph.Origin.1" value="Template" />
+			<string key="Guide.Name" value="unknown" />
+			<string key="Guide.Type" value="unknown" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<int key="Unnamed: 0" value="54" />
+			<int key="X." value="54" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="Theme" value="Light" />
+			<float key="Account.Users" value="1.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="unknown" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<float key="number.of.graphs" value="8.0" />
+			<date key="time:timestamp" value="2018-08-01T00:06:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="Singapore" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="2.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Direct" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="unknown" />
+			<float key="source" value="2.0" />
+			<string key="Graph.Origin.1" value="unknown" />
+			<string key="Guide.Name" value="unknown" />
+			<string key="Guide.Type" value="unknown" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<int key="Unnamed: 0" value="72" />
+			<int key="X." value="72" />
+			<string key="concept:name" value="Add Button" />
+			<string key="Theme" value="unknown" />
+			<float key="Account.Users" value="1.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="unknown" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<float key="number.of.graphs" value="8.0" />
+			<date key="time:timestamp" value="2018-08-01T00:08:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="Singapore" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="2.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Direct" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="unknown" />
+			<float key="source" value="2.0" />
+			<string key="Graph.Origin.1" value="unknown" />
+			<string key="Guide.Name" value="unknown" />
+			<string key="Guide.Type" value="unknown" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<int key="Unnamed: 0" value="78" />
+			<int key="X." value="78" />
+			<string key="concept:name" value="Edit Graphs" />
+			<string key="Theme" value="unknown" />
+			<float key="Account.Users" value="1.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="Custom" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<float key="number.of.graphs" value="8.0" />
+			<date key="time:timestamp" value="2018-08-01T00:08:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="Singapore" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="2.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Direct" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="unknown" />
+			<float key="source" value="2.0" />
+			<string key="Graph.Origin.1" value="Custom" />
+			<string key="Guide.Name" value="unknown" />
+			<string key="Guide.Type" value="unknown" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="938922ddb1a818ff3b39b8178ba9a3a1" />
+		<event>
+			<int key="Unnamed: 0" value="58" />
+			<int key="X." value="58" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="Theme" value="Light" />
+			<float key="Account.Users" value="13.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="unknown" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<float key="number.of.graphs" value="0.0" />
+			<date key="time:timestamp" value="2018-08-01T00:06:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="Ho Chi Minh City" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="0.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Direct" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="Phone App" />
+			<float key="source" value="0.0" />
+			<string key="Graph.Origin.1" value="unknown" />
+			<string key="Guide.Name" value="unknown" />
+			<string key="Guide.Type" value="unknown" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<int key="Unnamed: 0" value="69" />
+			<int key="X." value="69" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="Theme" value="Light" />
+			<float key="Account.Users" value="13.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="unknown" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<float key="number.of.graphs" value="0.0" />
+			<date key="time:timestamp" value="2018-08-01T00:08:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="Ho Chi Minh City" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="0.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Direct" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="Phone App" />
+			<float key="source" value="0.0" />
+			<string key="Graph.Origin.1" value="unknown" />
+			<string key="Guide.Name" value="unknown" />
+			<string key="Guide.Type" value="unknown" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<int key="Unnamed: 0" value="74" />
+			<int key="X." value="74" />
+			<string key="concept:name" value="Show More Graphs" />
+			<string key="Theme" value="unknown" />
+			<float key="Account.Users" value="13.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="unknown" />
+			<float key="Number.of.Graphs.on.Dashboard" value="6.0" />
+			<float key="number.of.graphs" value="0.0" />
+			<date key="time:timestamp" value="2018-08-01T00:08:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="Ho Chi Minh City" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="0.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Direct" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="Phone App" />
+			<float key="source" value="0.0" />
+			<string key="Graph.Origin.1" value="unknown" />
+			<string key="Guide.Name" value="unknown" />
+			<string key="Guide.Type" value="unknown" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<int key="Unnamed: 0" value="88" />
+			<int key="X." value="88" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="Theme" value="Light" />
+			<float key="Account.Users" value="13.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="unknown" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<float key="number.of.graphs" value="0.0" />
+			<date key="time:timestamp" value="2018-08-01T00:10:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="Ho Chi Minh City" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="0.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Direct" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="Phone App" />
+			<float key="source" value="0.0" />
+			<string key="Graph.Origin.1" value="unknown" />
+			<string key="Guide.Name" value="unknown" />
+			<string key="Guide.Type" value="unknown" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<int key="Unnamed: 0" value="116" />
+			<int key="X." value="116" />
+			<string key="concept:name" value="Switch" />
+			<string key="Theme" value="unknown" />
+			<float key="Account.Users" value="13.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="unknown" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<float key="number.of.graphs" value="0.0" />
+			<date key="time:timestamp" value="2018-08-01T00:12:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="Ho Chi Minh City" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="0.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Direct" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="Phone App" />
+			<float key="source" value="0.0" />
+			<string key="Graph.Origin.1" value="unknown" />
+			<string key="Guide.Name" value="unknown" />
+			<string key="Guide.Type" value="unknown" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="933e7adea48e17154e5bab383c4de740" />
+		<event>
+			<int key="Unnamed: 0" value="62" />
+			<int key="X." value="62" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="Theme" value="Light" />
+			<float key="Account.Users" value="1.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="unknown" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<float key="number.of.graphs" value="8.0" />
+			<date key="time:timestamp" value="2018-08-01T00:06:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="Mexico City" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="2.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Direct" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="unknown" />
+			<float key="source" value="2.0" />
+			<string key="Graph.Origin.1" value="unknown" />
+			<string key="Guide.Name" value="unknown" />
+			<string key="Guide.Type" value="unknown" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="013e23de101611ec4ba9f65a089981aa" />
+		<event>
+			<int key="Unnamed: 0" value="63" />
+			<int key="X." value="63" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="Theme" value="Light" />
+			<float key="Account.Users" value="71.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="unknown" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<float key="number.of.graphs" value="7.0" />
+			<date key="time:timestamp" value="2018-08-01T00:07:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="Querétaro City" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="10.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Direct" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="Phone App" />
+			<float key="source" value="10.0" />
+			<string key="Graph.Origin.1" value="unknown" />
+			<string key="Guide.Name" value="unknown" />
+			<string key="Guide.Type" value="unknown" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<int key="Unnamed: 0" value="64" />
+			<int key="X." value="64" />
+			<string key="concept:name" value="Change Tab" />
+			<string key="Theme" value="unknown" />
+			<float key="Account.Users" value="71.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="unknown" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<float key="number.of.graphs" value="7.0" />
+			<date key="time:timestamp" value="2018-08-01T00:07:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="Querétaro City" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="10.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Direct" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="Phone App" />
+			<float key="source" value="10.0" />
+			<string key="Graph.Origin.1" value="unknown" />
+			<string key="Guide.Name" value="unknown" />
+			<string key="Guide.Type" value="unknown" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<int key="Unnamed: 0" value="76" />
+			<int key="X." value="76" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="Theme" value="Light" />
+			<float key="Account.Users" value="71.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="unknown" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<float key="number.of.graphs" value="7.0" />
+			<date key="time:timestamp" value="2018-08-01T00:08:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="Querétaro City" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="10.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Direct" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="Phone App" />
+			<float key="source" value="10.0" />
+			<string key="Graph.Origin.1" value="unknown" />
+			<string key="Guide.Name" value="unknown" />
+			<string key="Guide.Type" value="unknown" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<int key="Unnamed: 0" value="84" />
+			<int key="X." value="84" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="Theme" value="Light" />
+			<float key="Account.Users" value="71.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="unknown" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<float key="number.of.graphs" value="7.0" />
+			<date key="time:timestamp" value="2018-08-01T00:09:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="Querétaro City" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="10.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Direct" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="Phone App" />
+			<float key="source" value="10.0" />
+			<string key="Graph.Origin.1" value="unknown" />
+			<string key="Guide.Name" value="unknown" />
+			<string key="Guide.Type" value="unknown" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<int key="Unnamed: 0" value="93" />
+			<int key="X." value="93" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="Theme" value="Light" />
+			<float key="Account.Users" value="71.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="unknown" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<float key="number.of.graphs" value="7.0" />
+			<date key="time:timestamp" value="2018-08-01T00:10:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="Querétaro City" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="10.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Direct" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="Phone App" />
+			<float key="source" value="10.0" />
+			<string key="Graph.Origin.1" value="unknown" />
+			<string key="Guide.Name" value="unknown" />
+			<string key="Guide.Type" value="unknown" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<int key="Unnamed: 0" value="97" />
+			<int key="X." value="97" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="Theme" value="Light" />
+			<float key="Account.Users" value="71.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="unknown" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<float key="number.of.graphs" value="7.0" />
+			<date key="time:timestamp" value="2018-08-01T00:10:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="Querétaro City" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="10.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Direct" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="Phone App" />
+			<float key="source" value="10.0" />
+			<string key="Graph.Origin.1" value="unknown" />
+			<string key="Guide.Name" value="unknown" />
+			<string key="Guide.Type" value="unknown" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<int key="Unnamed: 0" value="104" />
+			<int key="X." value="104" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="Theme" value="Light" />
+			<float key="Account.Users" value="71.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="unknown" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<float key="number.of.graphs" value="7.0" />
+			<date key="time:timestamp" value="2018-08-01T00:10:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="Querétaro City" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="10.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Direct" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="Phone App" />
+			<float key="source" value="10.0" />
+			<string key="Graph.Origin.1" value="unknown" />
+			<string key="Guide.Name" value="unknown" />
+			<string key="Guide.Type" value="unknown" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<int key="Unnamed: 0" value="117" />
+			<int key="X." value="117" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="Theme" value="Light" />
+			<float key="Account.Users" value="71.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="unknown" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<float key="number.of.graphs" value="7.0" />
+			<date key="time:timestamp" value="2018-08-01T00:12:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="Querétaro City" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="10.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Direct" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="Phone App" />
+			<float key="source" value="10.0" />
+			<string key="Graph.Origin.1" value="unknown" />
+			<string key="Guide.Name" value="unknown" />
+			<string key="Guide.Type" value="unknown" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="d96cf694dc904841288eb48c58d05d72" />
+		<event>
+			<int key="Unnamed: 0" value="66" />
+			<int key="X." value="66" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="Theme" value="Light" />
+			<float key="Account.Users" value="3.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="unknown" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<float key="number.of.graphs" value="29.0" />
+			<date key="time:timestamp" value="2018-08-01T00:07:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="Auckland" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="14.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Direct" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="Phone App" />
+			<float key="source" value="14.0" />
+			<string key="Graph.Origin.1" value="unknown" />
+			<string key="Guide.Name" value="unknown" />
+			<string key="Guide.Type" value="unknown" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="d3a3f99b312aecb7ea7fdb88817ddbc4" />
+		<event>
+			<int key="Unnamed: 0" value="68" />
+			<int key="X." value="68" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="Theme" value="Light" />
+			<float key="Account.Users" value="118.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="unknown" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<float key="number.of.graphs" value="0.0" />
+			<date key="time:timestamp" value="2018-08-01T00:07:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="Frisco" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="0.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Direct" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="Phone App" />
+			<float key="source" value="0.0" />
+			<string key="Graph.Origin.1" value="unknown" />
+			<string key="Guide.Name" value="unknown" />
+			<string key="Guide.Type" value="unknown" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<int key="Unnamed: 0" value="71" />
+			<int key="X." value="71" />
+			<string key="concept:name" value="Add Existing Tab" />
+			<string key="Theme" value="unknown" />
+			<float key="Account.Users" value="118.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="unknown" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<float key="number.of.graphs" value="0.0" />
+			<date key="time:timestamp" value="2018-08-01T00:08:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="Frisco" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="0.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Direct" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="Phone App" />
+			<float key="source" value="0.0" />
+			<string key="Graph.Origin.1" value="unknown" />
+			<string key="Guide.Name" value="unknown" />
+			<string key="Guide.Type" value="unknown" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<int key="Unnamed: 0" value="77" />
+			<int key="X." value="77" />
+			<string key="concept:name" value="Show More Graphs" />
+			<string key="Theme" value="unknown" />
+			<float key="Account.Users" value="118.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="unknown" />
+			<float key="Number.of.Graphs.on.Dashboard" value="8.0" />
+			<float key="number.of.graphs" value="0.0" />
+			<date key="time:timestamp" value="2018-08-01T00:08:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="Frisco" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="0.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Direct" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="Phone App" />
+			<float key="source" value="0.0" />
+			<string key="Graph.Origin.1" value="unknown" />
+			<string key="Guide.Name" value="unknown" />
+			<string key="Guide.Type" value="unknown" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<int key="Unnamed: 0" value="80" />
+			<int key="X." value="80" />
+			<string key="concept:name" value="Switch" />
+			<string key="Theme" value="unknown" />
+			<float key="Account.Users" value="118.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="unknown" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<float key="number.of.graphs" value="0.0" />
+			<date key="time:timestamp" value="2018-08-01T00:09:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="Frisco" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="0.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Direct" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="Phone App" />
+			<float key="source" value="0.0" />
+			<string key="Graph.Origin.1" value="unknown" />
+			<string key="Guide.Name" value="unknown" />
+			<string key="Guide.Type" value="unknown" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<int key="Unnamed: 0" value="114" />
+			<int key="X." value="114" />
+			<string key="concept:name" value="Switch" />
+			<string key="Theme" value="unknown" />
+			<float key="Account.Users" value="118.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="unknown" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<float key="number.of.graphs" value="0.0" />
+			<date key="time:timestamp" value="2018-08-01T00:11:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="Frisco" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="0.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Direct" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="Phone App" />
+			<float key="source" value="0.0" />
+			<string key="Graph.Origin.1" value="unknown" />
+			<string key="Guide.Name" value="unknown" />
+			<string key="Guide.Type" value="unknown" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="02beb6333cf4c95ba91e1c9b0c0b4c18" />
+		<event>
+			<int key="Unnamed: 0" value="73" />
+			<int key="X." value="73" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="Theme" value="Dark" />
+			<string key="Account.Users" value="unknown" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="unknown" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<string key="number.of.graphs" value="unknown" />
+			<date key="time:timestamp" value="2018-08-01T00:08:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="Franklin Park" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<string key="Data.Sources.Owned" value="unknown" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="unknown" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="unknown" />
+			<string key="source" value="unknown" />
+			<string key="Graph.Origin.1" value="unknown" />
+			<string key="Guide.Name" value="unknown" />
+			<string key="Guide.Type" value="unknown" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="1caf640d9d16265cb7281cc7ccf8ab55" />
+		<event>
+			<int key="Unnamed: 0" value="83" />
+			<int key="X." value="83" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="Theme" value="Light" />
+			<float key="Account.Users" value="1.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="unknown" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<float key="number.of.graphs" value="8.0" />
+			<date key="time:timestamp" value="2018-08-01T00:09:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="Wellington" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="2.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Direct" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="unknown" />
+			<float key="source" value="2.0" />
+			<string key="Graph.Origin.1" value="unknown" />
+			<string key="Guide.Name" value="unknown" />
+			<string key="Guide.Type" value="unknown" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<int key="Unnamed: 0" value="87" />
+			<int key="X." value="87" />
+			<string key="concept:name" value="Trial Sign Up Completed" />
+			<string key="Theme" value="unknown" />
+			<float key="Account.Users" value="1.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="unknown" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<float key="number.of.graphs" value="8.0" />
+			<date key="time:timestamp" value="2018-08-01T00:10:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="Wellington" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="2.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Direct" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="unknown" />
+			<float key="source" value="2.0" />
+			<string key="Graph.Origin.1" value="unknown" />
+			<string key="Guide.Name" value="unknown" />
+			<string key="Guide.Type" value="unknown" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<int key="Unnamed: 0" value="89" />
+			<int key="X." value="89" />
+			<string key="concept:name" value="Guide Start" />
+			<string key="Theme" value="unknown" />
+			<float key="Account.Users" value="1.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="unknown" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<float key="number.of.graphs" value="8.0" />
+			<date key="time:timestamp" value="2018-08-01T00:10:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="Wellington" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="2.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Direct" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="unknown" />
+			<float key="source" value="2.0" />
+			<string key="Graph.Origin.1" value="unknown" />
+			<string key="Guide.Name" value="NavBar Intro Tour - Automatic" />
+			<string key="Guide.Type" value="walkthrough" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<int key="Unnamed: 0" value="94" />
+			<int key="X." value="94" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="Theme" value="Light" />
+			<float key="Account.Users" value="1.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="unknown" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<float key="number.of.graphs" value="8.0" />
+			<date key="time:timestamp" value="2018-08-01T00:10:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="Wellington" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="2.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Direct" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="unknown" />
+			<float key="source" value="2.0" />
+			<string key="Graph.Origin.1" value="unknown" />
+			<string key="Guide.Name" value="unknown" />
+			<string key="Guide.Type" value="unknown" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<int key="Unnamed: 0" value="95" />
+			<int key="X." value="95" />
+			<string key="concept:name" value="Guide Start" />
+			<string key="Theme" value="unknown" />
+			<float key="Account.Users" value="1.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="unknown" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<float key="number.of.graphs" value="8.0" />
+			<date key="time:timestamp" value="2018-08-01T00:10:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="Wellington" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="2.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Direct" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="unknown" />
+			<float key="source" value="2.0" />
+			<string key="Graph.Origin.1" value="unknown" />
+			<string key="Guide.Name" value="NavBar Intro Tour - Automatic" />
+			<string key="Guide.Type" value="walkthrough" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<int key="Unnamed: 0" value="96" />
+			<int key="X." value="96" />
+			<string key="concept:name" value="Guide Exit" />
+			<string key="Theme" value="unknown" />
+			<float key="Account.Users" value="1.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="unknown" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<float key="number.of.graphs" value="8.0" />
+			<date key="time:timestamp" value="2018-08-01T00:10:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="Wellington" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="2.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Direct" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="unknown" />
+			<float key="source" value="2.0" />
+			<string key="Graph.Origin.1" value="unknown" />
+			<string key="Guide.Name" value="NavBar Intro Tour - Automatic" />
+			<string key="Guide.Type" value="walkthrough" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<int key="Unnamed: 0" value="98" />
+			<int key="X." value="98" />
+			<string key="concept:name" value="Guide Start" />
+			<string key="Theme" value="unknown" />
+			<float key="Account.Users" value="1.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="unknown" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<float key="number.of.graphs" value="8.0" />
+			<date key="time:timestamp" value="2018-08-01T00:10:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="Wellington" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="2.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Direct" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="unknown" />
+			<float key="source" value="2.0" />
+			<string key="Graph.Origin.1" value="unknown" />
+			<string key="Guide.Name" value="NavBar Intro Tour - Automatic" />
+			<string key="Guide.Type" value="walkthrough" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<int key="Unnamed: 0" value="101" />
+			<int key="X." value="101" />
+			<string key="concept:name" value="Guide Exit" />
+			<string key="Theme" value="unknown" />
+			<float key="Account.Users" value="1.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="unknown" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<float key="number.of.graphs" value="8.0" />
+			<date key="time:timestamp" value="2018-08-01T00:10:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="Wellington" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="2.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Direct" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="unknown" />
+			<float key="source" value="2.0" />
+			<string key="Graph.Origin.1" value="unknown" />
+			<string key="Guide.Name" value="NavBar Intro Tour - Automatic" />
+			<string key="Guide.Type" value="walkthrough" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<int key="Unnamed: 0" value="102" />
+			<int key="X." value="102" />
+			<string key="concept:name" value="Guide Start" />
+			<string key="Theme" value="unknown" />
+			<float key="Account.Users" value="1.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="unknown" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<float key="number.of.graphs" value="8.0" />
+			<date key="time:timestamp" value="2018-08-01T00:10:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="Wellington" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="2.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Direct" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="unknown" />
+			<float key="source" value="2.0" />
+			<string key="Graph.Origin.1" value="unknown" />
+			<string key="Guide.Name" value="NavBar Intro Tour - Automatic" />
+			<string key="Guide.Type" value="walkthrough" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<int key="Unnamed: 0" value="103" />
+			<int key="X." value="103" />
+			<string key="concept:name" value="Add Blank Tab" />
+			<string key="Theme" value="unknown" />
+			<float key="Account.Users" value="1.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="unknown" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<float key="number.of.graphs" value="8.0" />
+			<date key="time:timestamp" value="2018-08-01T00:10:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="Wellington" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="2.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Direct" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="unknown" />
+			<float key="source" value="2.0" />
+			<string key="Graph.Origin.1" value="unknown" />
+			<string key="Guide.Name" value="unknown" />
+			<string key="Guide.Type" value="unknown" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<int key="Unnamed: 0" value="105" />
+			<int key="X." value="105" />
+			<string key="concept:name" value="Add Button" />
+			<string key="Theme" value="unknown" />
+			<float key="Account.Users" value="1.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="unknown" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<float key="number.of.graphs" value="8.0" />
+			<date key="time:timestamp" value="2018-08-01T00:10:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="Wellington" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="2.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Direct" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="unknown" />
+			<float key="source" value="2.0" />
+			<string key="Graph.Origin.1" value="unknown" />
+			<string key="Guide.Name" value="unknown" />
+			<string key="Guide.Type" value="unknown" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<int key="Unnamed: 0" value="106" />
+			<int key="X." value="106" />
+			<string key="concept:name" value="Guide Exit" />
+			<string key="Theme" value="unknown" />
+			<float key="Account.Users" value="1.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="unknown" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<float key="number.of.graphs" value="8.0" />
+			<date key="time:timestamp" value="2018-08-01T00:10:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="Wellington" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="2.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Direct" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="unknown" />
+			<float key="source" value="2.0" />
+			<string key="Graph.Origin.1" value="unknown" />
+			<string key="Guide.Name" value="NavBar Intro Tour - Automatic" />
+			<string key="Guide.Type" value="walkthrough" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<int key="Unnamed: 0" value="107" />
+			<int key="X." value="107" />
+			<string key="concept:name" value="Guide Start" />
+			<string key="Theme" value="unknown" />
+			<float key="Account.Users" value="1.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="unknown" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<float key="number.of.graphs" value="8.0" />
+			<date key="time:timestamp" value="2018-08-01T00:10:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="Wellington" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="2.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Direct" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="unknown" />
+			<float key="source" value="2.0" />
+			<string key="Graph.Origin.1" value="unknown" />
+			<string key="Guide.Name" value="NavBar Intro Tour - Automatic" />
+			<string key="Guide.Type" value="walkthrough" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<int key="Unnamed: 0" value="112" />
+			<int key="X." value="112" />
+			<string key="concept:name" value="Guide Exit" />
+			<string key="Theme" value="unknown" />
+			<float key="Account.Users" value="1.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="unknown" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<float key="number.of.graphs" value="8.0" />
+			<date key="time:timestamp" value="2018-08-01T00:11:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="Wellington" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="2.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Direct" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="unknown" />
+			<float key="source" value="2.0" />
+			<string key="Graph.Origin.1" value="unknown" />
+			<string key="Guide.Name" value="NavBar Intro Tour - Automatic" />
+			<string key="Guide.Type" value="walkthrough" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<int key="Unnamed: 0" value="113" />
+			<int key="X." value="113" />
+			<string key="concept:name" value="Edit Graphs" />
+			<string key="Theme" value="unknown" />
+			<float key="Account.Users" value="1.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="Custom" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<float key="number.of.graphs" value="8.0" />
+			<date key="time:timestamp" value="2018-08-01T00:11:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="Wellington" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="2.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Direct" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="unknown" />
+			<float key="source" value="2.0" />
+			<string key="Graph.Origin.1" value="Custom" />
+			<string key="Guide.Name" value="unknown" />
+			<string key="Guide.Type" value="unknown" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="1bc6375691d4a6f82025cf6c57709da5" />
+		<event>
+			<int key="Unnamed: 0" value="86" />
+			<int key="X." value="86" />
+			<string key="concept:name" value="Create Data Source" />
+			<string key="Theme" value="unknown" />
+			<float key="Account.Users" value="1.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="unknown" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<float key="number.of.graphs" value="14.0" />
+			<date key="time:timestamp" value="2018-08-01T00:10:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="unknown" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="3.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Direct" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="unknown" />
+			<float key="source" value="3.0" />
+			<string key="Graph.Origin.1" value="unknown" />
+			<string key="Guide.Name" value="unknown" />
+			<string key="Guide.Type" value="unknown" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="bb44ea9a534e3f0e0b6a723cf87eba42" />
+		<event>
+			<int key="Unnamed: 0" value="91" />
+			<int key="X." value="91" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="Theme" value="Light" />
+			<float key="Account.Users" value="69.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="unknown" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<float key="number.of.graphs" value="0.0" />
+			<date key="time:timestamp" value="2018-08-01T00:10:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="Canton" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="0.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Direct" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="Phone App" />
+			<float key="source" value="0.0" />
+			<string key="Graph.Origin.1" value="unknown" />
+			<string key="Guide.Name" value="unknown" />
+			<string key="Guide.Type" value="unknown" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<int key="Unnamed: 0" value="99" />
+			<int key="X." value="99" />
+			<string key="concept:name" value="Switch" />
+			<string key="Theme" value="unknown" />
+			<float key="Account.Users" value="69.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="unknown" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<float key="number.of.graphs" value="0.0" />
+			<date key="time:timestamp" value="2018-08-01T00:10:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="Canton" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="0.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Direct" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="Phone App" />
+			<float key="source" value="0.0" />
+			<string key="Graph.Origin.1" value="unknown" />
+			<string key="Guide.Name" value="unknown" />
+			<string key="Guide.Type" value="unknown" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="716710665c939a34c93ad4237340581a" />
+		<event>
+			<int key="Unnamed: 0" value="115" />
+			<int key="X." value="115" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="Theme" value="Light" />
+			<float key="Account.Users" value="5.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="unknown" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<float key="number.of.graphs" value="0.0" />
+			<date key="time:timestamp" value="2018-08-01T00:11:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="American Fork" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="0.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Direct" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="Phone App" />
+			<float key="source" value="0.0" />
+			<string key="Graph.Origin.1" value="unknown" />
+			<string key="Guide.Name" value="unknown" />
+			<string key="Guide.Type" value="unknown" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="0cb9a8a08a803866118c0d5aaea84ba7" />
+		<event>
+			<int key="Unnamed: 0" value="118" />
+			<int key="X." value="118" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="Theme" value="Light" />
+			<float key="Account.Users" value="1.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="unknown" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<float key="number.of.graphs" value="8.0" />
+			<date key="time:timestamp" value="2018-08-01T00:12:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="Yarraville" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="2.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Direct" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="unknown" />
+			<float key="source" value="2.0" />
+			<string key="Graph.Origin.1" value="unknown" />
+			<string key="Guide.Name" value="unknown" />
+			<string key="Guide.Type" value="unknown" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="d9e907d966a6cdbba901bb5e753459ba" />
+		<event>
+			<int key="Unnamed: 0" value="119" />
+			<int key="X." value="119" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="Theme" value="Light" />
+			<float key="Account.Users" value="50.0" />
+			<string key="Metric.Count" value="unknown" />
+			<string key="Graph.Origin" value="unknown" />
+			<string key="Number.of.Graphs.on.Dashboard" value="unknown" />
+			<float key="number.of.graphs" value="0.0" />
+			<date key="time:timestamp" value="2018-08-01T00:13:00+00:00" />
+			<string key="Graphs.owned" value="unknown" />
+			<string key="weekday" value="Wednesday" />
+			<string key="X_city" value="Sandy" />
+			<string key="Connector.Backend" value="unknown" />
+			<string key="Template" value="unknown" />
+			<float key="Data.Sources.Owned" value="0.0" />
+			<string key="Data.Format" value="unknown" />
+			<string key="Account.Type" value="Direct" />
+			<string key="dashboard.Template.Name" value="unknown" />
+			<string key="KPI.Count" value="unknown" />
+			<string key="Client" value="Phone App" />
+			<float key="source" value="0.0" />
+			<string key="Graph.Origin.1" value="unknown" />
+			<string key="Guide.Name" value="unknown" />
+			<string key="Guide.Type" value="unknown" />
+			<string key="Unnamed: 26" value="unknown" />
+			<string key="Unnamed: 27" value="unknown" />
+			<string key="Unnamed: 28" value="unknown" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+</log>
