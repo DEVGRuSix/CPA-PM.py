@@ -163,6 +163,7 @@ class CSV2XESConverter(QMainWindow):
                     self.show_csv_preview(self.df)
 
                     # 更新下拉框列名
+                    # 更新下拉框列名
                     columns = list(self.df.columns)
                     self.combo_caseid.clear()
                     self.combo_activity.clear()
@@ -170,6 +171,15 @@ class CSV2XESConverter(QMainWindow):
                     self.combo_caseid.addItems(columns)
                     self.combo_activity.addItems(columns)
                     self.combo_timestamp.addItems(columns)
+
+                    # 默认选择
+                    if "Company_ID" in columns:
+                        self.combo_caseid.setCurrentText("Company_ID")
+                    if "event" in columns:
+                        self.combo_activity.setCurrentText("event")
+                    if "time" in columns:
+                        self.combo_timestamp.setCurrentText("time")
+
                 except Exception as e:
                     QMessageBox.warning(self, "读取错误", f"无法读取CSV文件:\n{e}")
                     self.df = None
