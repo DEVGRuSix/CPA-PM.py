@@ -29,6 +29,7 @@ from PyQt5.QtWidgets import (QApplication, QMainWindow, QFileDialog,
                              QMessageBox, QGroupBox, QGridLayout, QCheckBox,
                              QRadioButton, QLineEdit)
 from PyQt5.QtCore import Qt
+import cpa_pm_preprocessing as cpa
 
 # PM4Py相关导入
 from pm4py.objects.log.exporter.xes import exporter as xes_exporter

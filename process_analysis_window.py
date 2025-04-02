@@ -31,6 +31,10 @@ class ProcessAnalysisWindow(QMainWindow):
         control_panel = QWidget()
         control_layout = QVBoxLayout()
 
+        btn_cpa_first_only = QPushButton("CPA：保留首次活动")
+        btn_cpa_first_only.clicked.connect(self.cpa_keep_first)
+        control_layout.addWidget(btn_cpa_first_only)
+
         lbl_freq = QLabel("过滤低频活动（最小出现次数）：")
         self.freq_spin = QSpinBox()
         self.freq_spin.setMinimum(1)
@@ -190,6 +194,25 @@ class ProcessAnalysisWindow(QMainWindow):
         act_percent = self.slider_act.value()
         edge_percent = self.slider_edge.value()
         self.graph_view.draw_from_event_log(self.current_log, act_percent=act_percent, edge_percent=edge_percent)
+
+    def cpa_keep_first(self):
+        from cpa_utils import keep_first_occurrence_only
+
+        try:
+            self.log_history.append(self.current_log)
+            new_log = keep_first_occurrence_only(self.current_log)
+            if not new_log:
+                QMessageBox.warning(self, "无数据", "执行后日志为空。")
+                self.log_history.pop()
+                return
+
+            self.current_log = new_log
+            self.update_graph_with_filter()
+            QMessageBox.information(self, "完成", "已保留每条trace的首次活动事件。")
+        except Exception as e:
+            if self.log_history:
+                self.log_history.pop()
+            QMessageBox.critical(self, "出错", str(e))
 
 
 def launch_analysis_window(event_log):
