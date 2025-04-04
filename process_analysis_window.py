@@ -54,6 +54,10 @@ class ProcessAnalysisWindow(QMainWindow):
         btn_undo_last = QPushButton("撤销上一步修改")
         btn_undo_last.clicked.connect(self.undo_last_change)
 
+        btn_keep_last = QPushButton("CPA: 保留最后一次事件")
+        btn_keep_last.clicked.connect(self.cpa_keep_last)
+        control_layout.addWidget(btn_keep_last)
+
         self.label_act_slider = QLabel("活动节点显示比例：")
         self.slider_act = QSlider(Qt.Horizontal)
         self.slider_act.setMinimum(1)
@@ -213,6 +217,18 @@ class ProcessAnalysisWindow(QMainWindow):
             if self.log_history:
                 self.log_history.pop()
             QMessageBox.critical(self, "出错", str(e))
+
+    def cpa_keep_last(self):
+        try:
+            from cpa_utils import cpa_keep_last
+            self.log_history.append(self.current_log)
+            self.current_log = cpa_keep_last(self.current_log)
+            self.update_graph_with_filter()
+            QMessageBox.information(self, "完成", "已保留每个活动的最后一次事件。")
+        except Exception as e:
+            if self.log_history:
+                self.log_history.pop()
+            QMessageBox.critical(self, "处理失败", f"CPA处理时出错：\n{e}")
 
 
 def launch_analysis_window(event_log):

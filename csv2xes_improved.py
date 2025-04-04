@@ -112,13 +112,24 @@ class CSV2XESConverter(QMainWindow):
 
         # 5) 自定义时间格式
         self.label_timeformat = QLabel("时间格式(可选)：")
-        self.edit_timeformat = QLineEdit()
-        self.edit_timeformat.setPlaceholderText("如：%Y/%m/%d %H:%M:%S，留空则自动检测")
+        self.combo_timeformat = QComboBox()
+        self.combo_timeformat.addItems([
+            "%m/%d/%Y %H:%M",
+            "%Y-%m-%d %H:%M:%S",
+            "%d-%m-%Y %H:%M",
+            "%Y/%m/%d %H:%M:%S",
+            "%Y.%m.%d %H:%M:%S",
+            "自动检测"
+        ])
+        self.combo_timeformat.setCurrentText("%m/%d/%Y %H:%M")
 
         mapping_layout.addWidget(self.label_timeformat, 7, 0)
-        mapping_layout.addWidget(self.edit_timeformat, 7, 1)
+        mapping_layout.addWidget(self.combo_timeformat, 7, 1)
 
         mapping_group.setLayout(mapping_layout)
+
+        # 添加：清洗后的DataFrame
+        self.cleaned_df = None
 
         # --- 导出与分析 按钮 ---
         self.btn_export_xes = QPushButton("导出XES文件")
@@ -127,10 +138,19 @@ class CSV2XESConverter(QMainWindow):
         self.btn_start_analysis = QPushButton("开始分析")
         self.btn_start_analysis.clicked.connect(self.start_analysis)
 
+        # --- 清洗 按钮 ---
+        self.btn_clean_data = QPushButton("清洗")
+        self.btn_clean_data.clicked.connect(self.clean_data)
+
         btn_layout = QHBoxLayout()
+        btn_layout.addWidget(self.btn_clean_data)
         btn_layout.addWidget(self.btn_export_xes)
         btn_layout.addWidget(self.btn_start_analysis)
         btn_layout.addStretch()
+
+
+
+
 
         # --- 整体布局 ---
         layout = QVBoxLayout(main_widget)
@@ -209,7 +229,7 @@ class CSV2XESConverter(QMainWindow):
         """
         将DataFrame的前5行显示到 QTableWidget 中
         """
-        preview_rows = min(len(df), 5)   # 只展示前5行
+        preview_rows = min(len(df), 20)   # 只展示前5行
         preview_cols = len(df.columns)
 
         self.table_preview.setRowCount(preview_rows)
@@ -414,36 +434,121 @@ class CSV2XESConverter(QMainWindow):
         except Exception as e:
             QMessageBox.critical(self, "导出失败", f"无法导出XES文件:\n{e}")
 
+    def clean_data(self):
+        """
+        根据界面勾选/设置，对原始df进行清洗，更新清洗结果到 self.cleaned_df
+        并刷新预览表格。
+        """
+        if self.df is None:
+            QMessageBox.warning(self, "无数据", "请先加载CSV文件。")
+            return
+
+        df = self.df.copy()
+
+        col_caseid = self.combo_caseid.currentText()
+        col_activity = self.combo_activity.currentText()
+        col_timestamp = self.combo_timestamp.currentText()
+
+        if not col_caseid or not col_activity or not col_timestamp:
+            QMessageBox.warning(self, "列未选择", "请先设置案例ID、活动名称、时间戳列。")
+            return
+
+        # 1. 活动名称大小写
+        try:
+            if self.radio_lower.isChecked():
+                df[col_activity] = df[col_activity].astype(str).str.lower()
+            elif self.radio_capitalize.isChecked():
+                df[col_activity] = df[col_activity].astype(str).str.capitalize()
+        except Exception as e:
+            QMessageBox.warning(self, "活动名称处理错误", str(e))
+            return
+
+        # 2. 空值处理
+        try:
+            if self.check_drop_empty_id.isChecked():
+                df = df.dropna(subset=[col_caseid, col_activity, col_timestamp], how='any')
+            if self.check_drop_empty_other.isChecked():
+                other_cols = [c for c in df.columns if c not in [col_caseid, col_activity, col_timestamp]]
+                df = df.dropna(subset=other_cols, how='any')
+        except Exception as e:
+            QMessageBox.warning(self, "空值清洗错误", str(e))
+            return
+
+        # 3. 时间格式处理
+        try:
+            fmt = self.combo_timeformat.currentText().strip()
+            if fmt != "自动检测":
+                df[col_timestamp] = pd.to_datetime(df[col_timestamp], format=fmt)
+            else:
+                df = dataframe_utils.convert_timestamp_columns_in_df(df, timest_columns=[col_timestamp])
+
+        except Exception as e:
+            QMessageBox.warning(self, "时间清洗错误", str(e))
+            return
+
+        # ✅ 清洗成功后保存副本，更新预览
+        self.cleaned_df = df
+        self.show_csv_preview(df)
+        QMessageBox.information(self, "清洗完成", "数据已清洗并更新预览。")
+
     def start_analysis(self):
-        if self.df is None or self.df.empty:
-            QMessageBox.information(self, "提示", "还没有有效数据，无法分析。")
+        """
+        使用清洗后的 self.cleaned_df 进行分析
+        """
+        if self.cleaned_df is None or self.cleaned_df.empty:
+            QMessageBox.warning(self, "无清洗数据", "请先点击“清洗”按钮。")
             return
 
         try:
-            # 字段重命名和转换
-            df = self.df.copy()
-            col_caseid = self.combo_caseid.currentText()
-            col_activity = self.combo_activity.currentText()
-            col_timestamp = self.combo_timestamp.currentText()
-
+            df = self.cleaned_df.copy()
             df = df.rename(columns={
-                col_caseid: "case:concept:name",
-                col_activity: "concept:name",
-                col_timestamp: "time:timestamp"
+                self.combo_caseid.currentText(): "case:concept:name",
+                self.combo_activity.currentText(): "concept:name",
+                self.combo_timestamp.currentText(): "time:timestamp"
             })
             df["lifecycle:transition"] = "complete"
 
             import numpy as np
             df = df.fillna("unknown")
 
-            from pm4py.objects.conversion.log import converter as log_converter
             event_log = log_converter.apply(df, variant=log_converter.Variants.TO_EVENT_LOG)
 
             from process_analysis_window import launch_analysis_window
             launch_analysis_window(event_log)
 
         except Exception as e:
-            QMessageBox.critical(self, "转换失败", f"无法进入分析阶段:\n{e}")
+            QMessageBox.critical(self, "分析失败", str(e))
+
+    # def start_analysis(self):
+    #     if self.df is None or self.df.empty:
+    #         QMessageBox.information(self, "提示", "还没有有效数据，无法分析。")
+    #         return
+    #
+    #     try:
+    #         # 字段重命名和转换
+    #         df = self.df.copy()
+    #         col_caseid = self.combo_caseid.currentText()
+    #         col_activity = self.combo_activity.currentText()
+    #         col_timestamp = self.combo_timestamp.currentText()
+    #
+    #         df = df.rename(columns={
+    #             col_caseid: "case:concept:name",
+    #             col_activity: "concept:name",
+    #             col_timestamp: "time:timestamp"
+    #         })
+    #         df["lifecycle:transition"] = "complete"
+    #
+    #         import numpy as np
+    #         df = df.fillna("unknown")
+    #
+    #         from pm4py.objects.conversion.log import converter as log_converter
+    #         event_log = log_converter.apply(df, variant=log_converter.Variants.TO_EVENT_LOG)
+    #
+    #         from process_analysis_window import launch_analysis_window
+    #         launch_analysis_window(event_log)
+    #
+    #     except Exception as e:
+    #         QMessageBox.critical(self, "转换失败", f"无法进入分析阶段:\n{e}")
 
 
 def main():
