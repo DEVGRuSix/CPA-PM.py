@@ -1,8 +1,10 @@
 # process_analysis_window.py
 import sys
+
+import pandas as pd
 from PyQt5.QtWidgets import (
     QApplication, QMainWindow, QWidget, QHBoxLayout, QVBoxLayout,
-    QPushButton, QSplitter, QLabel, QSpinBox, QMessageBox, QSlider
+    QPushButton, QSplitter, QLabel, QSpinBox, QMessageBox, QSlider, QGroupBox, QTableWidget, QTableWidgetItem
 )
 from PyQt5.QtCore import Qt
 from process_graph_view import ProcessGraphView
@@ -22,8 +24,33 @@ class ProcessAnalysisWindow(QMainWindow):
         # 日志历史栈（用于撤销上一操作）
         self.log_history = []
 
+        # 顶部数据集展示区（可折叠）
+        self.dataset_group = QGroupBox("▼ 数据集")
+        self.dataset_group.setCheckable(True)
+        self.dataset_group.setChecked(True)
+        self.dataset_group.clicked.connect(self.toggle_dataset_visibility)
+
+        self.dataset_table = QTableWidget()
+        self.dataset_table.setEditTriggers(QTableWidget.NoEditTriggers)
+        self.dataset_table.setColumnCount(0)
+        self.dataset_table.setRowCount(0)
+        self.dataset_table.setHorizontalScrollMode(QTableWidget.ScrollPerPixel)
+        self.dataset_table.setVerticalScrollMode(QTableWidget.ScrollPerPixel)
+        self.dataset_table.verticalScrollBar().valueChanged.connect(self.load_more_rows)
+
+        dataset_layout = QVBoxLayout()
+        dataset_layout.addWidget(self.dataset_table)
+        self.dataset_group.setLayout(dataset_layout)
+
+        self.visible_rows = 20  # 当前展示的行数
+
         splitter = QSplitter(Qt.Horizontal)
-        self.setCentralWidget(splitter)
+        main_layout = QVBoxLayout()
+        main_widget = QWidget()
+        main_layout.addWidget(self.dataset_group)
+        main_layout.addWidget(splitter)
+        main_widget.setLayout(main_layout)
+        self.setCentralWidget(main_widget)
 
         self.graph_view = ProcessGraphView()
         self.graph_view.draw_from_event_log(self.current_log)
@@ -45,8 +72,6 @@ class ProcessAnalysisWindow(QMainWindow):
         btn_filter_freq = QPushButton("应用频次过滤")
         btn_filter_freq.clicked.connect(self.filter_by_frequency)
 
-        btn_sort_merge = QPushButton("按时间排序 & 合并事件")
-        btn_sort_merge.clicked.connect(self.sort_and_merge)
 
         btn_reset = QPushButton("重置为原始日志")
         btn_reset.clicked.connect(self.reset_log)
@@ -58,6 +83,10 @@ class ProcessAnalysisWindow(QMainWindow):
         btn_keep_last = QPushButton("CPA: 保留最后一次事件")
         btn_keep_last.clicked.connect(self.cpa_keep_last)
         control_layout.addWidget(btn_keep_last)
+
+        btn_merge_cpa = QPushButton("CPA: 合并重复活动")
+        btn_merge_cpa.clicked.connect(self.cpa_merge_duplicates)
+        control_layout.addWidget(btn_merge_cpa)
 
         self.label_act_slider = QLabel("活动节点显示比例：")
         self.slider_act = QSlider(Qt.Horizontal)
@@ -77,7 +106,6 @@ class ProcessAnalysisWindow(QMainWindow):
         control_layout.addWidget(lbl_freq)
         control_layout.addWidget(self.freq_spin)
         control_layout.addWidget(btn_filter_freq)
-        control_layout.addWidget(btn_sort_merge)
         control_layout.addSpacing(20)
         control_layout.addWidget(btn_reset)
         control_layout.addWidget(btn_undo_last)
@@ -127,53 +155,7 @@ class ProcessAnalysisWindow(QMainWindow):
         except Exception as e:
             QMessageBox.critical(self, "过滤失败", str(e))
 
-    def sort_and_merge(self):
-        """
-        将同一Trace中重复的活动按时间进行合并 (演示用)。
-        """
-        try:
-            import pandas as pd
-
-            # 操作前存一下旧日志
-            self.log_history.append(self.current_log)
-
-            df = log_converter.apply(self.current_log, variant=log_converter.Variants.TO_DATA_FRAME)
-
-            if not pd.api.types.is_datetime64_any_dtype(df["time:timestamp"]):
-                df["time:timestamp"] = pd.to_datetime(df["time:timestamp"])
-
-            df = df.sort_values(by=["case:concept:name", "time:timestamp"])
-
-            grouped = df.groupby(["case:concept:name", "concept:name"], sort=False)
-            merged_records = []
-
-            for (case, activity), group in grouped:
-                if len(group) == 1:
-                    merged_records.append(group.iloc[0])
-                else:
-                    row = group.iloc[0].copy()
-                    row["time:timestamp"] = group["time:timestamp"].min()
-                    # 合并其它字段
-                    for col in group.columns:
-                        if col not in ["case:concept:name", "concept:name", "time:timestamp", "lifecycle:transition"]:
-                            values = group[col].dropna().astype(str).unique()
-                            row[col] = "|".join(values)
-                    merged_records.append(row)
-
-            merged_df = pd.DataFrame(merged_records)
-            merged_df = merged_df.sort_values(by=["case:concept:name", "time:timestamp"])
-
-            new_log = log_converter.apply(merged_df, variant=log_converter.Variants.TO_EVENT_LOG)
-            self.current_log = new_log
-
-            self.update_graph_with_filter()
-            QMessageBox.information(self, "完成", "事件已按时间排序并合并。")
-
-        except Exception as e:
-            # 如果出现异常，就把刚才入栈的也弹出（等于没有这步操作）
-            if self.log_history:
-                self.log_history.pop()
-            QMessageBox.critical(self, "处理失败", f"时间排序合并时出错：\n{e}")
+        self.update_dataset_preview()
 
     def reset_log(self):
         """
@@ -181,6 +163,8 @@ class ProcessAnalysisWindow(QMainWindow):
         """
         self.current_log = self.original_log
         self.update_graph_with_filter()
+
+        self.update_dataset_preview()
 
     def undo_last_change(self):
         """
@@ -191,6 +175,8 @@ class ProcessAnalysisWindow(QMainWindow):
             self.update_graph_with_filter()
         else:
             QMessageBox.information(self, "提示", "没有可以撤销的操作。")
+
+        self.update_dataset_preview()
 
     def update_graph_with_filter(self):
         """
@@ -218,6 +204,7 @@ class ProcessAnalysisWindow(QMainWindow):
             if self.log_history:
                 self.log_history.pop()
             QMessageBox.critical(self, "出错", str(e))
+        self.update_dataset_preview()
 
     def cpa_keep_last(self):
         try:
@@ -230,6 +217,69 @@ class ProcessAnalysisWindow(QMainWindow):
             if self.log_history:
                 self.log_history.pop()
             QMessageBox.critical(self, "处理失败", f"CPA处理时出错：\n{e}")
+        self.update_dataset_preview()
+
+
+    def cpa_merge_duplicates(self):
+        """
+        调用 cpa_utils 中的活动合并 API
+        """
+        try:
+            from cpa_utils import cpa_merge_duplicate_activities
+            self.log_history.append(self.current_log)
+            self.current_log = cpa_merge_duplicate_activities(self.current_log, time_strategy='min',
+                                                              agg_columns=["org:resource", "other:info"])
+            self.update_graph_with_filter()
+            QMessageBox.information(self, "完成", "重复活动已按 CPA 合并策略处理完成。")
+        except Exception as e:
+            if self.log_history:
+                self.log_history.pop()
+            QMessageBox.critical(self, "处理失败", f"合并出错：\n{e}")
+
+
+    def update_dataset_preview(self):
+        """
+        将 current_log 转为 DataFrame 并显示前 visible_rows 行
+        """
+        try:
+            df = log_converter.apply(self.current_log, variant=log_converter.Variants.TO_DATA_FRAME)
+            if not isinstance(df, pd.DataFrame) or df.empty:
+                self.dataset_table.clear()
+                return
+            self._dataset_df = df.reset_index(drop=True)
+            self.visible_rows = 20
+            self._refresh_dataset_table()
+        except Exception as e:
+            print("无法更新数据集展示：", e)
+
+    def _refresh_dataset_table(self):
+        df = self._dataset_df
+        nrows = min(self.visible_rows, len(df))
+
+        self.dataset_table.setRowCount(nrows)
+        self.dataset_table.setColumnCount(len(df.columns))
+        self.dataset_table.setHorizontalHeaderLabels(df.columns.tolist())
+
+        for r in range(nrows):
+            for c in range(len(df.columns)):
+                val = str(df.iloc[r, c])
+                item = QTableWidgetItem(val)
+                item.setFlags(item.flags() ^ Qt.ItemIsEditable)
+                self.dataset_table.setItem(r, c, item)
+
+    def load_more_rows(self):
+        """滚动到底时动态加载更多行"""
+        scroll_bar = self.dataset_table.verticalScrollBar()
+        if scroll_bar.value() == scroll_bar.maximum():
+            if self.visible_rows < len(self._dataset_df):
+                self.visible_rows += 20
+                self._refresh_dataset_table()
+
+    def toggle_dataset_visibility(self):
+        """展开/收起数据集展示"""
+        expanded = self.dataset_group.isChecked()
+        self.dataset_table.setVisible(expanded)
+        self.dataset_group.setTitle("▼ 数据集" if expanded else "▶ 数据集")
 
 
 def launch_analysis_window(event_log):

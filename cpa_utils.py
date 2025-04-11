@@ -62,3 +62,49 @@ def enrich_with_duration(df: pd.DataFrame, case_col: str, timestamp_col: str) ->
     df["duration"] = (df[timestamp_col] - df["prev_time"]).dt.total_seconds()
     df = df.drop(columns=["prev_time"])
     return df
+
+
+from pm4py.objects.conversion.log import converter as log_converter
+import pandas as pd
+
+def merge_duplicate_activities_user_config(df, case_col, activity_col, time_col, target_activity, agg_config):
+    """
+    将同一 trace 中重复的指定活动进行合并
+    agg_config 是一个 dict: {col_name: 'min'|'max'|'avg'|'join'}
+    """
+    import numpy as np
+    from collections import defaultdict
+
+    def aggregate_column(group, method):
+        if method == 'min':
+            return group.min()
+        elif method == 'max':
+            return group.max()
+        elif method == 'avg':
+            return group.mean(numeric_only=True)
+        elif method == 'join':
+            return '|'.join(group.dropna().astype(str).unique())
+        else:
+            return group.iloc[0]
+
+    df = df.sort_values([case_col, time_col])
+    records = []
+
+    for case_id, group in df.groupby(case_col):
+        group = group.copy()
+        sub = group[group[activity_col] == target_activity]
+        others = group[group[activity_col] != target_activity]
+
+        if len(sub) <= 1:
+            records.append(group)
+        else:
+            row = sub.iloc[0].copy()
+            row[time_col] = sub[time_col].min()
+            for col, method in agg_config.items():
+                if col in sub.columns:
+                    row[col] = aggregate_column(sub[col], method)
+            records.append(pd.concat([others, pd.DataFrame([row])]))
+
+    result_df = pd.concat(records).sort_values([case_col, time_col])
+    return result_df
+
