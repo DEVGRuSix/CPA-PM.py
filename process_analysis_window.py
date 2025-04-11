@@ -119,6 +119,7 @@ class ProcessAnalysisWindow(QMainWindow):
         control_panel.setLayout(control_layout)
         splitter.addWidget(control_panel)
         splitter.setSizes([800, 300])
+        self.update_dataset_preview()  # ⬅ 添加这一行，使得窗口一打开就显示数据集
 
     def filter_by_frequency(self):
         """
