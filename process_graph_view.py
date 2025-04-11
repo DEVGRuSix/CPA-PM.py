@@ -164,6 +164,14 @@ class ProcessGraphView(QGraphicsView):
             node_item.setData(0, act_name)
             node_item.mousePressEvent = self._make_node_click_handler(act_name, freq_count)
 
+    def wheelEvent(self, event):
+        if event.modifiers() == Qt.ControlModifier:
+            delta = event.angleDelta().y()
+            zoom_factor = 1.15 if delta > 0 else 1 / 1.15
+            self.scale(zoom_factor, zoom_factor)
+        else:
+            super().wheelEvent(event)
+
     def _make_node_click_handler(self, act, count):
         def handler(event):
             dialog = QDialog()
