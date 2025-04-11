@@ -28,20 +28,20 @@ def keep_first_occurrence_only(event_log):
 import pandas as pd
 from pm4py.objects.conversion.log import converter as log_converter
 
-def cpa_keep_last(event_log):
-    """
-    对于每个案例，每种活动保留最后一次出现的事件（按时间排序）
-    """
-    df = log_converter.apply(event_log, variant=log_converter.Variants.TO_DATA_FRAME)
-    if not pd.api.types.is_datetime64_any_dtype(df["time:timestamp"]):
-        df["time:timestamp"] = pd.to_datetime(df["time:timestamp"])
-
-    # 排序后保留最后一条
-    df_sorted = df.sort_values(by=["case:concept:name", "concept:name", "time:timestamp"], ascending=[True, True, True])
-    df_dedup = df_sorted.drop_duplicates(subset=["case:concept:name", "concept:name"], keep="last")
-
-    df_dedup = df_dedup.sort_values(by=["case:concept:name", "time:timestamp"])
-    return log_converter.apply(df_dedup, variant=log_converter.Variants.TO_EVENT_LOG)
+# def cpa_keep_last(event_log):
+#     """
+#     对于每个案例，每种活动保留最后一次出现的事件（按时间排序）
+#     """
+#     df = log_converter.apply(event_log, variant=log_converter.Variants.TO_DATA_FRAME)
+#     if not pd.api.types.is_datetime64_any_dtype(df["time:timestamp"]):
+#         df["time:timestamp"] = pd.to_datetime(df["time:timestamp"])
+#
+#     # 排序后保留最后一条
+#     df_sorted = df.sort_values(by=["case:concept:name", "concept:name", "time:timestamp"], ascending=[True, True, True])
+#     df_dedup = df_sorted.drop_duplicates(subset=["case:concept:name", "concept:name"], keep="last")
+#
+#     df_dedup = df_dedup.sort_values(by=["case:concept:name", "time:timestamp"])
+#     return log_converter.apply(df_dedup, variant=log_converter.Variants.TO_EVENT_LOG)
 
 
 def enrich_with_event_order(df: pd.DataFrame, case_col: str, timestamp_col: str) -> pd.DataFrame:
@@ -131,3 +131,47 @@ def filter_traces_by_end_event(event_log, required_end_event):
             filtered_log.append(trace)
     return filtered_log
 
+def apply_merge_operations(event_log, merge_ops):
+    from pm4py.objects.conversion.log import converter as log_converter
+    df = log_converter.apply(event_log, variant=log_converter.Variants.TO_DATA_FRAME)
+
+    if not pd.api.types.is_datetime64_any_dtype(df["time:timestamp"]):
+        df["time:timestamp"] = pd.to_datetime(df["time:timestamp"])
+
+    for op in merge_ops:
+        act = op["activity"]
+        strat = op["strategy"]
+        aggs = op["agg_cols"]
+        newcol = op["new_col"]
+
+        if strat == "保留首次":
+            df = df.sort_values("time:timestamp")
+            df = df.drop_duplicates(subset=["case:concept:name", "concept:name"], keep="first")
+            df = df[df["concept:name"] != act].append(
+                df[df["concept:name"] == act].drop_duplicates(["case:concept:name"], keep="first")
+            )
+        elif strat == "保留最后":
+            df = df.sort_values("time:timestamp")
+            df = df.drop_duplicates(subset=["case:concept:name", "concept:name"], keep="last")
+            df = df[df["concept:name"] != act].append(
+                df[df["concept:name"] == act].drop_duplicates(["case:concept:name"], keep="last")
+            )
+        elif strat == "合并全部":
+            df = df.sort_values(["case:concept:name", "time:timestamp"])
+            grouped = df.groupby(["case:concept:name", "concept:name"])
+            records = []
+            for (case, actname), group in grouped:
+                if actname != act:
+                    records.extend(group.to_dict(orient="records"))
+                else:
+                    row = group.iloc[0].copy()
+                    row["time:timestamp"] = group["time:timestamp"].min()
+                    for col in aggs:
+                        if col in group.columns:
+                            row[col] = group[col].agg(aggs[col]) if aggs[col] != "join" else ','.join(
+                                group[col].dropna().astype(str).unique())
+                    records.append(row)
+            df = pd.DataFrame(records)
+
+    df = df.sort_values(["case:concept:name", "time:timestamp"])
+    return log_converter.apply(df, variant=log_converter.Variants.TO_EVENT_LOG)
