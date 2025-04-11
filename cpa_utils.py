@@ -108,3 +108,26 @@ def merge_duplicate_activities_user_config(df, case_col, activity_col, time_col,
     result_df = pd.concat(records).sort_values([case_col, time_col])
     return result_df
 
+from pm4py.objects.conversion.log import converter as log_converter
+import pandas as pd
+
+def filter_traces_by_start_event(event_log, required_start_event):
+    '''
+    保留以 required_start_event 开头的 trace
+    '''
+    filtered_log = []
+    for trace in event_log:
+        if len(trace) > 0 and trace[0].get("concept:name") == required_start_event:
+            filtered_log.append(trace)
+    return filtered_log
+
+def filter_traces_by_end_event(event_log, required_end_event):
+    '''
+    保留以 required_end_event 结尾的 trace
+    '''
+    filtered_log = []
+    for trace in event_log:
+        if len(trace) > 0 and trace[-1].get("concept:name") == required_end_event:
+            filtered_log.append(trace)
+    return filtered_log
+

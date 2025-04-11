@@ -45,13 +45,6 @@ class ProcessAnalysisWindow(QMainWindow):
         self.visible_rows = 20  # 当前展示的行数
 
         splitter = QSplitter(Qt.Horizontal)
-        # main_layout = QVBoxLayout()
-        # main_widget = QWidget()
-        # main_layout.addWidget(self.dataset_group)
-        # main_layout.addWidget(splitter)
-        # main_widget.setLayout(main_layout)
-        # self.setCentralWidget(main_widget)
-
         from PyQt5.QtWidgets import QSizePolicy
 
         # 垂直分割器让顶部“数据集”与下方流程图&控制面板区域可调高度

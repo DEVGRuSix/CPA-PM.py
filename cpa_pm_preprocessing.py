@@ -74,3 +74,12 @@ def keep_last_occurrence(df, case_col, event_col):
     """
     df = df.sort_values("time:timestamp")
     return df.drop_duplicates(subset=[case_col, event_col], keep="last").copy()
+from pm4py.objects.conversion.log import converter as log_converter
+
+def extract_activities_from_log(event_log):
+    """
+    从 PM4Py EventLog 中提取所有唯一活动名称（字符串排序）
+    """
+    df = log_converter.apply(event_log, variant=log_converter.Variants.TO_DATA_FRAME)
+    activities = df["concept:name"].dropna().astype(str).unique().tolist()
+    return sorted(activities)
