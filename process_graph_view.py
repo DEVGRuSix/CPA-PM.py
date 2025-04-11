@@ -1,3 +1,4 @@
+# process_graph_view.py
 import networkx as nx
 from PyQt5.QtWidgets import (
     QGraphicsView, QGraphicsScene, QGraphicsPathItem, QGraphicsItem,

@@ -1,5 +1,7 @@
 # cpa_utils.py
 
+import pandas as pd
+
 def keep_first_occurrence_only(event_log):
     """
     对每个 trace，仅保留每个活动的第一次出现
@@ -40,3 +42,23 @@ def cpa_keep_last(event_log):
 
     df_dedup = df_dedup.sort_values(by=["case:concept:name", "time:timestamp"])
     return log_converter.apply(df_dedup, variant=log_converter.Variants.TO_EVENT_LOG)
+
+
+def enrich_with_event_order(df: pd.DataFrame, case_col: str, timestamp_col: str) -> pd.DataFrame:
+    """
+    对每个 case 内的事件按时间排序后，添加事件序号（event_index）
+    """
+    df = df.sort_values(by=[case_col, timestamp_col])
+    df["event_index"] = df.groupby(case_col).cumcount() + 1
+    return df
+
+
+def enrich_with_duration(df: pd.DataFrame, case_col: str, timestamp_col: str) -> pd.DataFrame:
+    """
+    添加 duration 字段，表示当前事件与前一事件之间的时间差（单位：秒）
+    """
+    df = df.sort_values(by=[case_col, timestamp_col])
+    df["prev_time"] = df.groupby(case_col)[timestamp_col].shift(1)
+    df["duration"] = (df[timestamp_col] - df["prev_time"]).dt.total_seconds()
+    df = df.drop(columns=["prev_time"])
+    return df
