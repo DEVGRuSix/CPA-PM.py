@@ -4,11 +4,12 @@ import pandas as pd
 from PyQt5.QtWidgets import (
     QApplication, QMainWindow, QWidget, QHBoxLayout, QVBoxLayout,
     QPushButton, QSplitter, QLabel, QSpinBox, QMessageBox, QSlider,
-    QGroupBox, QTableWidget, QTableWidgetItem, QListWidget
+    QGroupBox, QTableWidget, QTableWidgetItem, QListWidget, QDialog, QListWidgetItem
 )
 from PyQt5.QtCore import Qt
 from process_graph_view import ProcessGraphView
 from pm4py.objects.conversion.log import converter as log_converter
+from merge_activity_dialog import MergeActivityDialog
 
 
 class ProcessAnalysisWindow(QMainWindow):
@@ -103,6 +104,14 @@ class ProcessAnalysisWindow(QMainWindow):
         btn_merge_keep_config.clicked.connect(self.open_merge_keep_dialog)
         control_layout.addWidget(btn_merge_keep_config)
 
+        btn_merge_custom = QPushButton("活动合并设置")
+        btn_merge_custom.clicked.connect(self.open_merge_dialog)
+        control_layout.addWidget(btn_merge_custom)
+
+        btn_merge_activities = QPushButton("CPA: 合并多个活动为新事件")
+        btn_merge_activities.clicked.connect(self.open_merge_dialog)
+        control_layout.addWidget(btn_merge_activities)
+
         # 操作记录区域标题
         self.label_merge_ops = QLabel("已设置的合并/保留策略：")
         self.label_merge_ops.setStyleSheet("font-weight: bold; margin-top: 10px;")
@@ -157,6 +166,19 @@ class ProcessAnalysisWindow(QMainWindow):
         control_layout.addStretch()
         splitter_h.addWidget(control_panel)
         splitter_h.setSizes([800, 300])
+
+        self.merge_rules = []  # 每条规则是一个 dict
+        self.merge_list_panel = QWidget()
+        self.merge_list_layout = QVBoxLayout()
+        self.merge_list_panel.setLayout(self.merge_list_layout)
+        control_layout.addWidget(self.merge_list_panel)
+
+        self.merge_ops = []
+        self.merge_ops_label = QLabel("合并操作列表：")
+        control_layout.addWidget(self.merge_ops_label)
+
+        self.merge_ops_list = QListWidget()
+        control_layout.addWidget(self.merge_ops_list)
 
         # 让窗口初始化时直接展示数据
         self.update_dataset_preview()
@@ -496,6 +518,89 @@ class ProcessAnalysisWindow(QMainWindow):
         self.merge_operations.pop(row_idx)
         self.rebuild_merge_ops_ui()
         self.refresh_log_after_merge_ops()
+
+    def open_merge_dialog(self):
+        df = log_converter.apply(self.current_log, variant=log_converter.Variants.TO_DATA_FRAME)
+        if df is None or df.empty:
+            QMessageBox.warning(self, "数据缺失", "当前数据为空，无法设置活动合并。")
+            return
+
+        activity_list = sorted(df["concept:name"].unique())
+        field_list = [col for col in df.columns if
+                      col not in ["case:concept:name", "concept:name", "time:timestamp", "lifecycle:transition"]]
+
+        dialog = MergeActivityDialog(self, activity_list, field_list)
+        if dialog.exec_():
+            activities, new_name, strategy, fields = dialog.get_values()
+
+            if not activities or not new_name:
+                QMessageBox.warning(self, "输入不完整", "请至少选择活动，并填写合并后的名称。")
+                return
+
+            # 添加到操作列表
+            self.merge_ops.append({
+                "activities": activities,
+                "new_name": new_name,
+                "strategy": strategy,
+                "fields": fields
+            })
+
+            self.update_merge_ops_list()
+            self.refresh_log_after_merge_ops()
+
+    def add_merge_rule(self, rule_dict):
+        self.merge_rules.append(rule_dict)
+        self.refresh_merge_rule_list()
+        self.refresh_log_after_merge_ops()
+
+    def refresh_merge_rule_list(self):
+        for i in reversed(range(self.merge_list_layout.count())):
+            self.merge_list_layout.itemAt(i).widget().deleteLater()
+
+        for idx, rule in enumerate(self.merge_rules):
+            label = QLabel(
+                f"{idx + 1}. 合并: {rule['source_activities']} → {rule['target_activity']}，策略: {rule['strategy']}")
+            btn_del = QPushButton("删除")
+            btn_del.clicked.connect(lambda _, i=idx: self.delete_merge_rule(i))
+            row = QHBoxLayout()
+            row.addWidget(label)
+            row.addWidget(btn_del)
+            container = QWidget()
+            container.setLayout(row)
+            self.merge_list_layout.addWidget(container)
+
+    def delete_merge_rule(self, idx):
+        if idx < len(self.merge_rules):
+            self.merge_rules.pop(idx)
+            self.refresh_merge_rule_list()
+            self.refresh_log_after_merge_ops()
+
+    def refresh_log_after_merge_ops(self):
+        try:
+            from cpa_utils import apply_activity_merge_rules
+            self.log_history.append(self.current_log)
+            self.current_log = apply_activity_merge_rules(self.current_log, self.merge_rules)
+            self.update_graph_with_filter()
+            self.update_dataset_preview()
+        except Exception as e:
+            QMessageBox.critical(self, "执行失败", str(e))
+
+    def update_merge_ops_list(self):
+        self.merge_ops_list.clear()
+        for op in self.merge_ops:
+            summary = f"{' + '.join(op['activities'])} -> {op['new_name']} ({op['strategy']})"
+            item = QListWidgetItem(summary)
+            self.merge_ops_list.addItem(item)
+
+    def refresh_log_after_merge_ops(self):
+        from cpa_utils import apply_merge_operations
+        try:
+            self.log_history.append(self.current_log)
+            self.current_log = apply_merge_operations(self.original_log, self.merge_ops)
+            self.update_graph_with_filter()
+            self.update_dataset_preview()
+        except Exception as e:
+            QMessageBox.critical(self, "合并失败", str(e))
 
 
 def launch_analysis_window(event_log):

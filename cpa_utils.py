@@ -131,47 +131,85 @@ def filter_traces_by_end_event(event_log, required_end_event):
             filtered_log.append(trace)
     return filtered_log
 
-def apply_merge_operations(event_log, merge_ops):
-    from pm4py.objects.conversion.log import converter as log_converter
+def apply_merge_operations(event_log, ops_list):
     df = log_converter.apply(event_log, variant=log_converter.Variants.TO_DATA_FRAME)
 
+    for op in ops_list:
+        acts = op["activities"]
+        new_name = op["new_name"]
+        strategy = op["strategy"]
+        fields = op["fields"]
+
+        df = df[df["concept:name"].notna()]
+        df["is_merge_target"] = df["concept:name"].isin(acts)
+
+        grouped = df[df["is_merge_target"]].groupby("case:concept:name")
+
+        merged_rows = []
+        for case, group in grouped:
+            row = group.iloc[0].copy()
+            if strategy == "first":
+                row["time:timestamp"] = group["time:timestamp"].min()
+            elif strategy == "last":
+                row["time:timestamp"] = group["time:timestamp"].max()
+            else:
+                row["time:timestamp"] = group["time:timestamp"].min()
+
+            row["concept:name"] = new_name
+            for field in fields:
+                vals = group[field].dropna().astype(str).unique()
+                row[field] = "|".join(vals)
+            merged_rows.append(row)
+
+        df = df[~df["is_merge_target"]]
+        df = pd.concat([df] + merged_rows, ignore_index=True)
+        df = df.drop(columns=["is_merge_target"])
+        df = df.sort_values(by=["case:concept:name", "time:timestamp"])
+
+    return log_converter.apply(df, variant=log_converter.Variants.TO_EVENT_LOG)
+
+
+def apply_activity_merge_rules(event_log, rule_list):
+    """
+    根据多个 merge 规则合并事件
+    """
+    df = log_converter.apply(event_log, variant=log_converter.Variants.TO_DATA_FRAME)
+    df["lifecycle:transition"] = "complete"
     if not pd.api.types.is_datetime64_any_dtype(df["time:timestamp"]):
         df["time:timestamp"] = pd.to_datetime(df["time:timestamp"])
 
-    for op in merge_ops:
-        act = op["activity"]
-        strat = op["strategy"]
-        aggs = op["agg_cols"]
-        newcol = op["new_col"]
+    all_new_rows = []
+    for case, group in df.groupby("case:concept:name"):
+        new_rows = []
+        skip_idx = set()
+        for rule in rule_list:
+            src_acts = rule["source_activities"]
+            target = rule["target_activity"]
+            strategy = rule["strategy"]
+            agg_cols = rule.get("agg_columns", [])
 
-        if strat == "保留首次":
-            df = df.sort_values("time:timestamp")
-            df = df.drop_duplicates(subset=["case:concept:name", "concept:name"], keep="first")
-            df = df[df["concept:name"] != act].append(
-                df[df["concept:name"] == act].drop_duplicates(["case:concept:name"], keep="first")
-            )
-        elif strat == "保留最后":
-            df = df.sort_values("time:timestamp")
-            df = df.drop_duplicates(subset=["case:concept:name", "concept:name"], keep="last")
-            df = df[df["concept:name"] != act].append(
-                df[df["concept:name"] == act].drop_duplicates(["case:concept:name"], keep="last")
-            )
-        elif strat == "合并全部":
-            df = df.sort_values(["case:concept:name", "time:timestamp"])
-            grouped = df.groupby(["case:concept:name", "concept:name"])
-            records = []
-            for (case, actname), group in grouped:
-                if actname != act:
-                    records.extend(group.to_dict(orient="records"))
-                else:
-                    row = group.iloc[0].copy()
-                    row["time:timestamp"] = group["time:timestamp"].min()
-                    for col in aggs:
-                        if col in group.columns:
-                            row[col] = group[col].agg(aggs[col]) if aggs[col] != "join" else ','.join(
-                                group[col].dropna().astype(str).unique())
-                    records.append(row)
-            df = pd.DataFrame(records)
+            mask = group["concept:name"].isin(src_acts)
+            group_sub = group[mask]
+            if not group_sub.empty:
+                row = group_sub.iloc[0].copy()
+                row["concept:name"] = target
+                if strategy == "first":
+                    row["time:timestamp"] = group_sub["time:timestamp"].min()
+                elif strategy == "last":
+                    row["time:timestamp"] = group_sub["time:timestamp"].max()
+                elif strategy == "average":
+                    row["time:timestamp"] = group_sub["time:timestamp"].mean()
 
-    df = df.sort_values(["case:concept:name", "time:timestamp"])
-    return log_converter.apply(df, variant=log_converter.Variants.TO_EVENT_LOG)
+                for col in agg_cols:
+                    row[col] = "|".join(group_sub[col].dropna().astype(str).unique())
+                new_rows.append(row)
+                skip_idx.update(group_sub.index.tolist())
+
+        group_remain = group.drop(index=skip_idx)
+        all_new_rows.extend(group_remain.to_dict("records") + [r.to_dict() for r in new_rows])
+
+    new_df = pd.DataFrame(all_new_rows)
+    new_df = new_df.sort_values(by=["case:concept:name", "time:timestamp"])
+    new_df["lifecycle:transition"] = "complete"
+    return log_converter.apply(new_df, variant=log_converter.Variants.TO_EVENT_LOG)
+
