@@ -213,3 +213,38 @@ def apply_activity_merge_rules(event_log, rule_list):
     new_df["lifecycle:transition"] = "complete"
     return log_converter.apply(new_df, variant=log_converter.Variants.TO_EVENT_LOG)
 
+def merge_activities_in_event_log(event_log, activities_to_merge, new_activity="merged", keep="first"):
+    """
+    将多个活动合并为新活动名，保留其 first 或 last 出现时间。
+
+    Args:
+        event_log: PM4Py EventLog
+        activities_to_merge: 要合并的活动名列表
+        new_activity: 合并后的新活动名
+        keep: 保留 'first' 或 'last' 时间
+
+    Returns:
+        新 EventLog
+    """
+    df = log_converter.apply(event_log, variant=log_converter.Variants.TO_DATA_FRAME)
+    if not pd.api.types.is_datetime64_any_dtype(df["time:timestamp"]):
+        df["time:timestamp"] = pd.to_datetime(df["time:timestamp"])
+
+    df = df.sort_values(by=["case:concept:name", "time:timestamp"])
+
+    grouped = df[df["concept:name"].isin(activities_to_merge)].groupby("case:concept:name")
+    replace_df = []
+
+    for case, group in grouped:
+        if keep == "first":
+            row = group.iloc[0].copy()
+        else:
+            row = group.iloc[-1].copy()
+        row["concept:name"] = new_activity
+        replace_df.append(row)
+
+    df = df[~df["concept:name"].isin(activities_to_merge)]
+    df = pd.concat([df, pd.DataFrame(replace_df)], ignore_index=True)
+    df = df.sort_values(by=["case:concept:name", "time:timestamp"])
+
+    return log_converter.apply(df, variant=log_converter.Variants.TO_EVENT_LOG)
