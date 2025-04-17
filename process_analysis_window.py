@@ -99,18 +99,9 @@ class ProcessAnalysisWindow(QMainWindow):
         btn_undo_last.clicked.connect(self.undo_last_change)
         control_layout.addWidget(btn_undo_last)
 
-        # 配置活动合并/保留策略
-        btn_merge_keep_config = QPushButton("设置活动合并/保留策略")
-        btn_merge_keep_config.clicked.connect(self.open_merge_keep_dialog)
-        control_layout.addWidget(btn_merge_keep_config)
-
-        btn_merge_custom = QPushButton("活动合并设置")
-        btn_merge_custom.clicked.connect(self.open_merge_dialog)
-        control_layout.addWidget(btn_merge_custom)
-
-        btn_merge_activities = QPushButton("CPA: 合并多个活动为新事件")
-        btn_merge_activities.clicked.connect(self.open_merge_dialog)
-        control_layout.addWidget(btn_merge_activities)
+        btn_merge_activity = QPushButton("活动合并")
+        btn_merge_activity.clicked.connect(self.open_merge_activity_dialog)
+        control_layout.addWidget(btn_merge_activity)
 
         # 操作记录区域标题
         self.label_merge_ops = QLabel("已设置的合并/保留策略：")
@@ -128,12 +119,6 @@ class ProcessAnalysisWindow(QMainWindow):
         self.activity_ops = []
         self.activity_ops_list = QListWidget()
         self.activity_ops_list.setDragDropMode(QListWidget.InternalMove)
-        # 注意：.itemChanged.connect(...) 如果不是 "信号 -> 槽" 就需要用 lambda
-        # 但这里你写成了 .itemChanged.connect(self.refresh_log_after_merge_ops()) => 这会立即调用而不是监听
-        # 如果要在列表项目变化后动态更新，需要写成:
-        # self.activity_ops_list.itemChanged.connect(self.refresh_log_after_merge_ops)
-        # 这里先注释掉，以免造成死循环
-        # self.activity_ops_list.itemChanged.connect(self.refresh_log_after_merge_ops)
 
         btn_remove_selected_op = QPushButton("删除选中操作")
         btn_remove_selected_op.clicked.connect(self.remove_selected_activity_op)
@@ -173,12 +158,12 @@ class ProcessAnalysisWindow(QMainWindow):
         self.merge_list_panel.setLayout(self.merge_list_layout)
         control_layout.addWidget(self.merge_list_panel)
 
-        self.merge_ops = []
-        self.merge_ops_label = QLabel("合并操作列表：")
-        control_layout.addWidget(self.merge_ops_label)
+        # self.merge_ops = []
+        # self.merge_ops_label = QLabel("合并操作列表：")
+        # control_layout.addWidget(self.merge_ops_label)
 
-        self.merge_ops_list = QListWidget()
-        control_layout.addWidget(self.merge_ops_list)
+        # self.merge_ops_list = QListWidget()
+        # control_layout.addWidget(self.merge_ops_list)
 
         # 让窗口初始化时直接展示数据
         self.update_dataset_preview()
@@ -601,6 +586,32 @@ class ProcessAnalysisWindow(QMainWindow):
             self.update_dataset_preview()
         except Exception as e:
             QMessageBox.critical(self, "合并失败", str(e))
+
+    def open_merge_activity_dialog(self):
+        from merge_activity_dialog import MergeActivityDialog
+
+        df = log_converter.apply(self.current_log, variant=log_converter.Variants.TO_DATA_FRAME)
+        all_activities = df["concept:name"].dropna().unique().tolist()
+
+        dialog = MergeActivityDialog(all_activities, self)
+        if dialog.exec_():
+            selected_acts, new_name = dialog.selected_activities, dialog.new_activity_name
+
+            from cpa_utils import merge_activities_in_event_log
+            self.log_history.append(self.current_log)
+            try:
+                self.current_log = merge_activities_in_event_log(
+                    self.current_log,
+                    selected_acts,
+                    new_activity=new_name,
+                    keep="first"
+                )
+                self.update_graph_with_filter()
+                self.update_dataset_preview()
+                QMessageBox.information(self, "成功", f"已将活动合并为 {new_name}")
+            except Exception as e:
+                self.log_history.pop()
+                QMessageBox.critical(self, "出错", str(e))
 
 
 def launch_analysis_window(event_log):

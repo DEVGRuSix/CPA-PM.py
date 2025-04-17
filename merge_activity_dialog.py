@@ -1,67 +1,54 @@
 from PyQt5.QtWidgets import (
-    QDialog, QVBoxLayout, QLabel, QListWidget, QListWidgetItem, QComboBox,
-    QDialogButtonBox, QLineEdit, QCheckBox, QHBoxLayout, QMessageBox
+    QDialog, QVBoxLayout, QLabel, QHBoxLayout, QListWidget,
+    QLineEdit, QPushButton, QMessageBox, QAbstractItemView
 )
-from PyQt5.QtCore import Qt
 
 
 class MergeActivityDialog(QDialog):
-    def __init__(self, parent, activity_list, field_list):
+    def __init__(self, all_activities, parent=None):
         super().__init__(parent)
-        self.setWindowTitle("合并活动设置")
+        self.setWindowTitle("设置活动合并策略")
+        self.setMinimumWidth(400)
 
         self.selected_activities = []
-        self.keep_strategy = "first"
-        self.selected_fields = []
-        self.new_activity_name = ""
+        self.new_activity_name = None
 
         layout = QVBoxLayout()
 
-        # 选择要合并的活动（多选）
-        layout.addWidget(QLabel("选择要合并的活动："))
-        self.activity_list_widget = QListWidget()
-        self.activity_list_widget.setSelectionMode(QListWidget.MultiSelection)
-        for act in activity_list:
-            item = QListWidgetItem(act)
-            self.activity_list_widget.addItem(item)
-        layout.addWidget(self.activity_list_widget)
+        layout.addWidget(QLabel("选择要合并的活动（可多选）:"))
+        self.list_widget = QListWidget()
+        self.list_widget.addItems(sorted(all_activities))
+        self.list_widget.setSelectionMode(QAbstractItemView.MultiSelection)
+        layout.addWidget(self.list_widget)
 
-        # 合并后活动名称
-        layout.addWidget(QLabel("合并后活动名称："))
-        self.new_name_input = QLineEdit()
-        layout.addWidget(self.new_name_input)
+        layout.addWidget(QLabel("合并后的活动名称："))
+        self.name_input = QLineEdit()
+        layout.addWidget(self.name_input)
 
-        # 设置保留策略
-        layout.addWidget(QLabel("时间戳保留策略："))
-        self.strategy_box = QComboBox()
-        self.strategy_box.addItems(["first", "last", "min", "max"])
-        layout.addWidget(self.strategy_box)
+        btn_layout = QHBoxLayout()
+        self.btn_ok = QPushButton("确认合并")
+        self.btn_cancel = QPushButton("取消")
+        self.btn_ok.clicked.connect(self.accept)
+        self.btn_cancel.clicked.connect(self.reject)
+        btn_layout.addWidget(self.btn_ok)
+        btn_layout.addWidget(self.btn_cancel)
 
-        # 选择聚合字段
-        layout.addWidget(QLabel("选择要聚合的字段（多选）："))
-        self.field_checks = []
-        self.fields_layout = QVBoxLayout()
-        for field in field_list:
-            cb = QCheckBox(field)
-            self.field_checks.append(cb)
-            self.fields_layout.addWidget(cb)
-        layout.addLayout(self.fields_layout)
-
-        # 确认/取消按钮
-        buttons = QDialogButtonBox(QDialogButtonBox.Ok | QDialogButtonBox.Cancel)
-        buttons.accepted.connect(self.accept)
-        buttons.rejected.connect(self.reject)
-        layout.addWidget(buttons)
-
+        layout.addLayout(btn_layout)
         self.setLayout(layout)
 
-    def get_values(self):
-        self.selected_activities = [
-            item.text() for item in self.activity_list_widget.selectedItems()
-        ]
-        self.new_activity_name = self.new_name_input.text().strip()
-        self.keep_strategy = self.strategy_box.currentText()
-        self.selected_fields = [
-            cb.text() for cb in self.field_checks if cb.isChecked()
-        ]
-        return self.selected_activities, self.new_activity_name, self.keep_strategy, self.selected_fields
+    def get_result(self):
+        selected = [item.text() for item in self.list_widget.selectedItems()]
+        name = self.name_input.text().strip()
+        return selected, name
+
+    def accept(self):
+        selected, name = self.get_result()
+        if len(selected) < 2:
+            QMessageBox.warning(self, "警告", "至少选择两个活动进行合并。")
+            return
+        if not name:
+            QMessageBox.warning(self, "警告", "请输入合并后的活动名称。")
+            return
+        self.selected_activities = selected
+        self.new_activity_name = name
+        super().accept()
