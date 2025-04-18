@@ -497,7 +497,15 @@ class ProcessAnalysisWindow(QMainWindow):
             if op["type"] == "merge":
                 desc = f"合并 {' + '.join(op['activities'])} → {op['target']}"
             elif op["type"] == "aggregate":
-                desc = f"聚合 {op['activities'][0]}（保留 {op['strategy']}）"
+                target = op['activities'][0]
+                strategy = op['strategy']
+                fields = op.get("fields", [])
+                new_col = op.get("new_col", "")
+                field_str = " + ".join(fields) if fields else ""
+                if new_col:
+                    desc = f"聚合 {target} → {field_str} = {new_col}（保留 {strategy}）"
+                else:
+                    desc = f"聚合 {target}（保留 {strategy}）字段：{field_str}"
             elif op["type"] == "filter":
                 desc = f"过滤频次 < {op['threshold']}"
             elif op["type"] == "reset":
@@ -507,7 +515,6 @@ class ProcessAnalysisWindow(QMainWindow):
             self.activity_ops_list.addItem(QListWidgetItem(desc))
 
     def reapply_activity_ops(self):
-        from cpa_utils import merge_activities_in_event_log
         from pm4py.objects.conversion.log import converter as log_converter
 
         df = log_converter.apply(self.original_log, variant=log_converter.Variants.TO_DATA_FRAME)
