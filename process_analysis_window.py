@@ -31,7 +31,7 @@ class ProcessAnalysisWindow(QMainWindow):
         self.merge_operations = []
 
         # 顶部数据集展示区（可折叠）
-        self.dataset_group = QGroupBox("▼ 数据集")
+        self.dataset_group = QGroupBox("数据集 ▼")
         self.dataset_group.setCheckable(True)
         self.dataset_group.setChecked(True)
         self.dataset_group.clicked.connect(self.toggle_dataset_visibility)
@@ -51,17 +51,17 @@ class ProcessAnalysisWindow(QMainWindow):
         self.visible_rows = 20  # 当前展示的行数
 
         # 用垂直splitter分割“数据集面板”与“流程图+右侧控制面板”
-        splitter_main = QSplitter(Qt.Vertical)
-        self.setCentralWidget(splitter_main)
+        self.splitter_main = QSplitter(Qt.Vertical)
+        self.setCentralWidget(self.splitter_main)
 
         # 将顶部的“数据集”面板放入 splitter_main
-        splitter_main.addWidget(self.dataset_group)
+        self.splitter_main.addWidget(self.dataset_group)
 
         # 再创建一个水平splitter，用来分割左侧流程图与右侧控制区
         splitter_h = QSplitter(Qt.Horizontal)
-        splitter_main.addWidget(splitter_h)
+        self.splitter_main.addWidget(splitter_h)
 
-        splitter_main.setSizes([200, 500])  # 初始高度可自行调节
+        self.splitter_main.setSizes([200, 500])  # 初始高度可自行调节
 
         # 左侧流程图
         self.graph_view = ProcessGraphView()
@@ -318,10 +318,18 @@ class ProcessAnalysisWindow(QMainWindow):
                     self._refresh_dataset_table()
 
     def toggle_dataset_visibility(self):
-        """展开/收起数据集展示"""
+        """展开/收起数据集表格区域，仅隐藏表格，并调整最小高度"""
         expanded = self.dataset_group.isChecked()
-        self.dataset_table.setVisible(expanded)
-        self.dataset_group.setTitle("▼ 数据集" if expanded else "▶ 数据集")
+
+        self.dataset_table.setVisible(expanded)  # ✅ 控制表格可见性
+        self.dataset_group.setTitle("数据集 ▼" if expanded else "数据集 ▶")
+
+        if not expanded:
+            self.dataset_group.setMinimumHeight(30)  # ✅ 收起后最小高度（只显示标题栏）
+            self.dataset_group.setMaximumHeight(30)
+        else:
+            self.dataset_group.setMinimumHeight(100)  # ✅ 展开时允许恢复拖动
+            self.dataset_group.setMaximumHeight(16777215)  # 恢复最大高度为默认值
 
     def open_merge_keep_dialog(self):
         from PyQt5.QtWidgets import QDialog, QDialogButtonBox, QComboBox, QLineEdit, QFormLayout
