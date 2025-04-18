@@ -7,6 +7,7 @@ from PyQt5.QtWidgets import (
     QGroupBox, QTableWidget, QTableWidgetItem, QListWidget, QDialog, QListWidgetItem
 )
 from PyQt5.QtCore import Qt
+
 from process_graph_view import ProcessGraphView
 from pm4py.objects.conversion.log import converter as log_converter
 from merge_activity_dialog import MergeActivityDialog
@@ -94,38 +95,34 @@ class ProcessAnalysisWindow(QMainWindow):
         btn_reset.clicked.connect(self.reset_log)
         control_layout.addWidget(btn_reset)
 
-        # 撤销上一操作
-        btn_undo_last = QPushButton("撤销上一步修改")
-        btn_undo_last.clicked.connect(self.undo_last_change)
-        control_layout.addWidget(btn_undo_last)
-
         btn_merge_activity = QPushButton("活动合并")
         btn_merge_activity.clicked.connect(self.open_merge_activity_dialog)
         control_layout.addWidget(btn_merge_activity)
-
-        # 操作记录区域标题
-        self.label_merge_ops = QLabel("已设置的合并/保留策略：")
-        self.label_merge_ops.setStyleSheet("font-weight: bold; margin-top: 10px;")
-        control_layout.addWidget(self.label_merge_ops)
-
-        # merge_ops_list容器
-        self.merge_ops_list = QWidget()
-        self.merge_ops_layout = QVBoxLayout()
-        self.merge_ops_layout.setContentsMargins(0, 0, 0, 0)
-        self.merge_ops_list.setLayout(self.merge_ops_layout)
-        control_layout.addWidget(self.merge_ops_list)
 
         # 下方：可排序列表 + 删除按钮
         self.activity_ops = []
         self.activity_ops_list = QListWidget()
         self.activity_ops_list.setDragDropMode(QListWidget.InternalMove)
 
-        btn_remove_selected_op = QPushButton("删除选中操作")
-        btn_remove_selected_op.clicked.connect(self.remove_selected_activity_op)
-
         control_layout.addWidget(QLabel("已定义的活动处理操作（可排序）:"))
         control_layout.addWidget(self.activity_ops_list)
-        control_layout.addWidget(btn_remove_selected_op)
+
+        btns_layout = QHBoxLayout()
+        btn_remove_selected_op = QPushButton("删除选中操作")
+        btn_remove_selected_op.clicked.connect(self.remove_selected_activity_op)
+        btns_layout.addWidget(btn_remove_selected_op)
+
+        btn_undo_last = QPushButton("撤销上一步修改")
+        btn_undo_last.clicked.connect(self.undo_last_change)
+        btns_layout.addWidget(btn_undo_last)
+
+        btn_container = QWidget()
+        btn_container.setLayout(btns_layout)
+        control_layout.addWidget(btn_container)
+
+        btn_redo = QPushButton("重做上一步修改")
+        btn_redo.clicked.connect(self.redo_last_change)
+        btns_layout.addWidget(btn_redo)  # ✅ 放在撤销按钮后面
 
         # 活动节点显示比例
         self.label_act_slider = QLabel("活动节点显示比例：")
@@ -158,23 +155,22 @@ class ProcessAnalysisWindow(QMainWindow):
         self.merge_list_panel.setLayout(self.merge_list_layout)
         control_layout.addWidget(self.merge_list_panel)
 
-        # self.merge_ops = []
-        # self.merge_ops_label = QLabel("合并操作列表：")
-        # control_layout.addWidget(self.merge_ops_label)
 
-        # self.merge_ops_list = QListWidget()
-        # control_layout.addWidget(self.merge_ops_list)
 
         # 让窗口初始化时直接展示数据
         self.update_dataset_preview()
-
+        # 操作记录堆栈，用于支持撤销功能
+        self.activity_ops_history = []
+        self.redo_stack = []  # ✅ 初始化重做栈
 
     def filter_by_frequency(self):
         """
         根据活动出现的总频次进行过滤。
         若有活动 < 阈值，则丢弃包含该活动的整条Trace。
         """
-        threshold = self.freq_spin.value()
+        min_freq = self.freq_spin.value()
+        self.redo_stack.clear()  # ✅ 清空 redo 栈，防止误重做
+
         try:
             if self.current_log is None:
                 QMessageBox.critical(self, "错误", "当前日志为空，无法进行过滤。")
@@ -186,10 +182,9 @@ class ProcessAnalysisWindow(QMainWindow):
                 for event in trace:
                     act_counter[event.get("concept:name", "undefined")] += 1
 
-            low_freq_acts = {act for act, freq in act_counter.items() if freq < threshold}
+            low_freq_acts = {act for act, freq in act_counter.items() if freq < min_freq}
             filtered_log = []
             for trace in self.current_log:
-                # 如果trace里出现了低频活动，则整条丢弃
                 if any(event.get("concept:name") in low_freq_acts for event in trace):
                     continue
                 filtered_log.append(trace)
@@ -198,43 +193,28 @@ class ProcessAnalysisWindow(QMainWindow):
                 QMessageBox.warning(self, "无数据", "过滤后没有剩余日志。请降低阈值。")
                 return
 
-            # 操作前将当前日志压栈，以便“撤销”
             self.log_history.append(self.current_log)
-            # 更新 current_log
             self.current_log = filtered_log
 
             self.update_graph_with_filter()
+            self.update_dataset_preview()
+
+            # ✅ 更新操作记录（只执行一次）
+            self.activity_ops_history.append(self.activity_ops.copy())
+            self.redo_stack.clear()
+            self.activity_ops.append({"type": "filter", "threshold": min_freq})
+            self.update_activity_ops_list()
 
         except Exception as e:
             QMessageBox.critical(self, "过滤失败", str(e))
 
-        self.update_dataset_preview()
-
     def reset_log(self):
-        """
-        恢复到最初的原始日志（放弃所有操作）
-        """
-        # 将 current_log 还原成 original_log
-        self.current_log = self.original_log
-        # 清空操作列表（如你希望保留操作列表，可移除这行）
-        self.merge_operations.clear()
-        # 清空历史栈
-        self.log_history.clear()
+        self.activity_ops_history.append(self.activity_ops.copy())
+        self.redo_stack = []
+        self.activity_ops.append({"type": "reset"})
+        self.update_activity_ops_list()
 
-        self.update_graph_with_filter()
-        self.update_dataset_preview()
-
-    def undo_last_change(self):
-        """
-        撤销上一次对 current_log 的修改，回到修改前的状态
-        """
-        if self.log_history:
-            self.current_log = self.log_history.pop()
-            self.update_graph_with_filter()
-        else:
-            QMessageBox.information(self, "提示", "没有可以撤销的操作。")
-
-        self.update_dataset_preview()
+        self.reapply_activity_ops()
 
     def update_graph_with_filter(self):
         """
@@ -248,6 +228,15 @@ class ProcessAnalysisWindow(QMainWindow):
         edge_percent = self.slider_edge.value()
         self.graph_view.draw_from_event_log(self.current_log, act_percent=act_percent, edge_percent=edge_percent)
 
+    def undo_last_change(self):
+        if self.activity_ops_history:
+            self.redo_stack.append(self.activity_ops.copy())  # ✅ 添加当前状态进 redo
+            self.activity_ops = self.activity_ops_history.pop()
+            self.update_activity_ops_list()
+            self.reapply_activity_ops()
+        else:
+            QMessageBox.information(self, "提示", "没有可以撤销的操作。")
+
     def cpa_keep_first(self):
         """
         保留每条 trace 中每种活动的首次出现
@@ -255,6 +244,7 @@ class ProcessAnalysisWindow(QMainWindow):
         if self.current_log is None:
             QMessageBox.warning(self, "无数据", "当前日志为空，无法保留首次出现。")
             return
+        self.redo_stack.clear()
 
         try:
             from cpa_utils import keep_first_occurrence_only
@@ -275,6 +265,9 @@ class ProcessAnalysisWindow(QMainWindow):
             QMessageBox.critical(self, "出错", str(e))
 
         self.update_dataset_preview()
+        self.activity_ops_history.append(self.activity_ops.copy())  # ✅ 添加这一行
+        self.activity_ops.append({"type": "aggregate", "activities": ["ALL"], "strategy": "first"})
+        self.update_activity_ops_list()
 
     def update_dataset_preview(self):
         """
@@ -373,136 +366,32 @@ class ProcessAnalysisWindow(QMainWindow):
             strat = combo_strategy.currentText()
             aggs = [x.strip() for x in agg_input.text().split(",") if x.strip()]
             newcol = newcol_input.text().strip()
-            self.add_merge_operation(act, strat, aggs, newcol)
+
+            # 构造统一格式的操作记录
+            op = {
+                "type": "aggregate" if strat in ["保留首次", "保留最后"] else "merge",
+                "activities": [act],
+                "target": act if strat != "合并全部" else newcol or act,
+                "strategy": "first" if strat == "保留首次" else (
+                    "last" if strat == "保留最后" else "merge"
+                ),
+                "fields": aggs,
+                "new_col": newcol
+            }
+
+            self.activity_ops.append(op)
+            self.update_activity_ops_list()
+            self.reapply_activity_ops()
             dialog.accept()
 
-        buttons.accepted.connect(accept)
-        buttons.rejected.connect(dialog.reject)
-        dialog.exec_()
-
-    def add_merge_operation(self, activity, strategy, agg_columns, new_colname):
-        """
-        新增一条合并操作记录
-        """
-        from functools import partial
-        op = {
-            "activity": activity,
-            "strategy": strategy,
-            "agg_cols": agg_columns,
-            "new_col": new_colname
-        }
-
-        self.merge_operations.append(op)
-
-        row_widget = QWidget()
-        layout = QHBoxLayout()
-        layout.setContentsMargins(0, 0, 0, 0)
-
-        desc = f"{strategy}：{activity}"
-        if strategy == "合并全部":
-            desc += f"（聚合字段：{','.join(agg_columns)}"
-            if new_colname:
-                desc += f"，新列名：{new_colname}"
-            desc += "）"
-
-        label = QLabel(desc)
-        btn_del = QPushButton("删除")
-        btn_up = QPushButton("↑")
-        btn_down = QPushButton("↓")
-
-        idx = len(self.merge_operations) - 1
-        btn_del.clicked.connect(partial(self.remove_merge_operation, idx))
-        btn_up.clicked.connect(partial(self.move_merge_operation, idx, -1))
-        btn_down.clicked.connect(partial(self.move_merge_operation, idx, 1))
-
-        layout.addWidget(label)
-        layout.addStretch()
-        layout.addWidget(btn_up)
-        layout.addWidget(btn_down)
-        layout.addWidget(btn_del)
-        row_widget.setLayout(layout)
-        self.merge_ops_layout.addWidget(row_widget)
-
-        self.refresh_log_after_merge_ops()
-
-    def remove_merge_operation(self, idx):
-        """
-        从列表中删除某条操作
-        """
-        if idx < 0 or idx >= len(self.merge_operations):
-            return
-        # 从操作列表中移除
-        self.merge_operations.pop(idx)
-
-        # 重建UI
-        self.rebuild_merge_ops_ui()
-        self.refresh_log_after_merge_ops()
-
-    def move_merge_operation(self, idx, direction):
-        """
-        上移/下移操作顺序
-        """
-        new_idx = idx + direction
-        if 0 <= idx < len(self.merge_operations) and 0 <= new_idx < len(self.merge_operations):
-            self.merge_operations[idx], self.merge_operations[new_idx] = \
-                self.merge_operations[new_idx], self.merge_operations[idx]
-            self.rebuild_merge_ops_ui()
-            self.refresh_log_after_merge_ops()
-
-    def rebuild_merge_ops_ui(self):
-        # 清空布局
-        while self.merge_ops_layout.count():
-            w = self.merge_ops_layout.takeAt(0).widget()
-            if w: w.deleteLater()
-
-        # 重新添加所有操作
-        for op in self.merge_operations:
-            self.add_merge_operation(op["activity"], op["strategy"], op["agg_cols"], op["new_col"])
-
-    def refresh_log_after_merge_ops(self):
-        """
-        根据 self.merge_operations 从 self.original_log 重新生成 current_log
-        并刷新流程图 & 数据
-        """
-        if self.original_log is None:
-            QMessageBox.critical(self, "错误", "原始日志为空，无法重新应用操作。")
-            return
-        if not self.merge_operations:
-            # 如果没有操作，直接把 current_log 设为 original_log
-            self.current_log = self.original_log
-            self.update_graph_with_filter()
-            self.update_dataset_preview()
-            return
-
-        try:
-            from cpa_utils import apply_merge_operations
-
-            # 历史记录
-            self.log_history.append(self.current_log)
-            # 应用操作
-            self.current_log = apply_merge_operations(self.original_log, self.merge_operations)
-
-            if self.current_log is None:
-                QMessageBox.critical(self, "错误", "合并操作返回空日志，请检查配置。")
-                return
-
-            self.update_graph_with_filter()
-            self.update_dataset_preview()
-
-        except Exception as e:
-            QMessageBox.critical(self, "执行失败", str(e))
-
-
     def remove_selected_activity_op(self):
-        # 这里如需实现删除选中项，需要我们知道列表控件的行
+        self.redo_stack.clear()
         row_idx = self.activity_ops_list.currentRow()
-        if row_idx < 0 or row_idx >= len(self.merge_operations):
-            QMessageBox.information(self, "提示", "未选中任何操作。")
-            return
-
-        self.merge_operations.pop(row_idx)
-        self.rebuild_merge_ops_ui()
-        self.refresh_log_after_merge_ops()
+        if 0 <= row_idx < len(self.activity_ops):
+            self.activity_ops_history.append(self.activity_ops.copy())  # ✅ 添加这一行
+            self.activity_ops.pop(row_idx)
+            self.update_activity_ops_list()
+            self.reapply_activity_ops()
 
     def open_merge_dialog(self):
         df = log_converter.apply(self.current_log, variant=log_converter.Variants.TO_DATA_FRAME)
@@ -538,28 +427,6 @@ class ProcessAnalysisWindow(QMainWindow):
         self.refresh_merge_rule_list()
         self.refresh_log_after_merge_ops()
 
-    def refresh_merge_rule_list(self):
-        for i in reversed(range(self.merge_list_layout.count())):
-            self.merge_list_layout.itemAt(i).widget().deleteLater()
-
-        for idx, rule in enumerate(self.merge_rules):
-            label = QLabel(
-                f"{idx + 1}. 合并: {rule['source_activities']} → {rule['target_activity']}，策略: {rule['strategy']}")
-            btn_del = QPushButton("删除")
-            btn_del.clicked.connect(lambda _, i=idx: self.delete_merge_rule(i))
-            row = QHBoxLayout()
-            row.addWidget(label)
-            row.addWidget(btn_del)
-            container = QWidget()
-            container.setLayout(row)
-            self.merge_list_layout.addWidget(container)
-
-    def delete_merge_rule(self, idx):
-        if idx < len(self.merge_rules):
-            self.merge_rules.pop(idx)
-            self.refresh_merge_rule_list()
-            self.refresh_log_after_merge_ops()
-
     def refresh_log_after_merge_ops(self):
         try:
             from cpa_utils import apply_activity_merge_rules
@@ -570,12 +437,7 @@ class ProcessAnalysisWindow(QMainWindow):
         except Exception as e:
             QMessageBox.critical(self, "执行失败", str(e))
 
-    def update_merge_ops_list(self):
-        self.merge_ops_list.clear()
-        for op in self.merge_ops:
-            summary = f"{' + '.join(op['activities'])} -> {op['new_name']} ({op['strategy']})"
-            item = QListWidgetItem(summary)
-            self.merge_ops_list.addItem(item)
+
 
     def refresh_log_after_merge_ops(self):
         from cpa_utils import apply_merge_operations
@@ -597,21 +459,79 @@ class ProcessAnalysisWindow(QMainWindow):
         if dialog.exec_():
             selected_acts, new_name = dialog.selected_activities, dialog.new_activity_name
 
-            from cpa_utils import merge_activities_in_event_log
-            self.log_history.append(self.current_log)
-            try:
-                self.current_log = merge_activities_in_event_log(
-                    self.current_log,
-                    selected_acts,
-                    new_activity=new_name,
-                    keep="first"
+            if not selected_acts or not new_name:
+                QMessageBox.warning(self, "错误", "请选择至少一个活动，并输入合并后名称。")
+                return
+
+            self.redo_stack.clear()  # ✅ 清空重做栈，防止误重做
+
+            # 新建操作记录（合并操作）
+            operation = {
+                "type": "merge",
+                "activities": selected_acts,
+                "target": new_name,
+                "strategy": "first",
+                "fields": []
+            }
+
+            self.activity_ops_history.append(self.activity_ops.copy())  # ✅ 添加历史记录
+            self.activity_ops.append(operation)
+            self.update_activity_ops_list()
+            self.reapply_activity_ops()
+
+    def update_activity_ops_list(self):
+        self.activity_ops_list.clear()
+        for idx, op in enumerate(self.activity_ops):
+            if op["type"] == "merge":
+                desc = f"合并 {' + '.join(op['activities'])} → {op['target']}"
+            elif op["type"] == "aggregate":
+                desc = f"聚合 {op['activities'][0]}（保留 {op['strategy']}）"
+            elif op["type"] == "filter":
+                desc = f"过滤频次 < {op['threshold']}"
+            elif op["type"] == "reset":
+                desc = "重置为原始日志"
+            else:
+                desc = f"未知操作 {idx}"
+            self.activity_ops_list.addItem(QListWidgetItem(desc))
+
+    def reapply_activity_ops(self):
+        from cpa_utils import merge_activities_in_event_log
+        from pm4py.objects.conversion.log import converter as log_converter
+
+        df = log_converter.apply(self.original_log, variant=log_converter.Variants.TO_DATA_FRAME)
+
+        for op in self.activity_ops:
+            if op["type"] == "reset":
+                df = log_converter.apply(self.original_log, variant=log_converter.Variants.TO_DATA_FRAME)
+            elif op["type"] == "filter":
+                from cpa_pm_preprocessing import remove_events_low_frequency
+                df = remove_events_low_frequency(df, event_col="concept:name", min_freq=op["threshold"])
+            elif op["type"] == "merge":
+                df = df.copy()
+                from cpa_utils import merge_activities_in_dataframe
+                df = merge_activities_in_dataframe(df, op["activities"], op["target"])
+            elif op["type"] == "aggregate":
+                from cpa_utils import aggregate_activity_occurrences
+                df = aggregate_activity_occurrences(
+                    df,
+                    target_activity=op["activities"][0],
+                    keep=op["strategy"],
+                    timestamp_col="time:timestamp"
                 )
-                self.update_graph_with_filter()
-                self.update_dataset_preview()
-                QMessageBox.information(self, "成功", f"已将活动合并为 {new_name}")
-            except Exception as e:
-                self.log_history.pop()
-                QMessageBox.critical(self, "出错", str(e))
+
+        df["lifecycle:transition"] = "complete"
+        self.current_log = log_converter.apply(df, variant=log_converter.Variants.TO_EVENT_LOG)
+        self.update_graph_with_filter()
+        self.update_dataset_preview()
+
+    def redo_last_change(self):
+        if hasattr(self, "redo_stack") and self.redo_stack:
+            self.activity_ops_history.append(self.activity_ops.copy())  # ✅ 备份当前状态
+            self.activity_ops = self.redo_stack.pop()
+            self.update_activity_ops_list()
+            self.reapply_activity_ops()
+        else:
+            QMessageBox.information(self, "提示", "没有可以重做的操作。")
 
 
 def launch_analysis_window(event_log):

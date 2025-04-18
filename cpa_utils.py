@@ -26,22 +26,27 @@ def keep_first_occurrence_only(event_log):
     return new_log
 
 import pandas as pd
-from pm4py.objects.conversion.log import converter as log_converter
 
-# def cpa_keep_last(event_log):
-#     """
-#     对于每个案例，每种活动保留最后一次出现的事件（按时间排序）
-#     """
-#     df = log_converter.apply(event_log, variant=log_converter.Variants.TO_DATA_FRAME)
-#     if not pd.api.types.is_datetime64_any_dtype(df["time:timestamp"]):
-#         df["time:timestamp"] = pd.to_datetime(df["time:timestamp"])
-#
-#     # 排序后保留最后一条
-#     df_sorted = df.sort_values(by=["case:concept:name", "concept:name", "time:timestamp"], ascending=[True, True, True])
-#     df_dedup = df_sorted.drop_duplicates(subset=["case:concept:name", "concept:name"], keep="last")
-#
-#     df_dedup = df_dedup.sort_values(by=["case:concept:name", "time:timestamp"])
-#     return log_converter.apply(df_dedup, variant=log_converter.Variants.TO_EVENT_LOG)
+def merge_activities_in_dataframe(df, activities, new_name):
+    """
+    将多个活动合并为一个（保留首次时间）
+    """
+    df = df.copy()
+    df["is_target"] = df["concept:name"].isin(activities)
+
+    merged_rows = []
+    for case_id, group in df[df["is_target"]].groupby("case:concept:name"):
+        row = group.iloc[0].copy()
+        row["concept:name"] = new_name
+        row["time:timestamp"] = group["time:timestamp"].min()
+        merged_rows.append(row)
+
+    df = df[~df["is_target"]]
+    df = pd.concat([df, pd.DataFrame(merged_rows)], ignore_index=True)
+    df = df.drop(columns=["is_target"])
+    df = df.sort_values(by=["case:concept:name", "time:timestamp"])
+    return df
+
 
 
 def enrich_with_event_order(df: pd.DataFrame, case_col: str, timestamp_col: str) -> pd.DataFrame:
