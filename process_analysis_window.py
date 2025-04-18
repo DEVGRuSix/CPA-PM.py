@@ -104,6 +104,10 @@ class ProcessAnalysisWindow(QMainWindow):
         self.activity_ops_list = QListWidget()
         self.activity_ops_list.setDragDropMode(QListWidget.InternalMove)
 
+        btn_aggregate_activity = QPushButton("活动聚合")
+        btn_aggregate_activity.clicked.connect(self.open_aggregate_activity_dialog)
+        control_layout.addWidget(btn_aggregate_activity)
+
         control_layout.addWidget(QLabel("已定义的活动处理操作（可排序）:"))
         control_layout.addWidget(self.activity_ops_list)
 
@@ -524,7 +528,9 @@ class ProcessAnalysisWindow(QMainWindow):
                     df,
                     target_activity=op["activities"][0],
                     keep=op["strategy"],
-                    timestamp_col="time:timestamp"
+                    timestamp_col="time:timestamp",
+                    agg_fields=op.get("fields"),
+                    new_col=op.get("new_col", None)  # ✅ 支持写入新列
                 )
 
         df["lifecycle:transition"] = "complete"
@@ -540,6 +546,37 @@ class ProcessAnalysisWindow(QMainWindow):
             self.reapply_activity_ops()
         else:
             QMessageBox.information(self, "提示", "没有可以重做的操作。")
+
+    def open_aggregate_activity_dialog(self):
+        from aggregate_activity_dialog import AggregateActivityDialog
+
+        df = log_converter.apply(self.current_log, variant=log_converter.Variants.TO_DATA_FRAME)
+        if df.empty:
+            QMessageBox.warning(self, "数据缺失", "当前数据为空，无法设置活动聚合。")
+            return
+
+        all_activities = sorted(df["concept:name"].dropna().unique())
+        all_fields = [col for col in df.columns if
+                      col not in ["case:concept:name", "concept:name", "time:timestamp", "lifecycle:transition"]]
+
+        dialog = AggregateActivityDialog(all_activities, all_fields, self)
+        if dialog.exec_():
+            selected_activity, strategy, fields, new_col = dialog.get_values()
+
+            # 构造聚合操作记录
+            # 添加到操作记录中
+            operation = {
+                "type": "aggregate",
+                "activities": [selected_activity],
+                "strategy": strategy,
+                "fields": fields,
+                "new_col": new_col  # ✅ 新增
+            }
+
+            self.activity_ops_history.append(self.activity_ops.copy())
+            self.activity_ops.append(operation)
+            self.update_activity_ops_list()
+            self.reapply_activity_ops()
 
 
 def launch_analysis_window(event_log):
