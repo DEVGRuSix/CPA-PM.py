@@ -253,3 +253,51 @@ def merge_activities_in_event_log(event_log, activities_to_merge, new_activity="
     df = df.sort_values(by=["case:concept:name", "time:timestamp"])
 
     return log_converter.apply(df, variant=log_converter.Variants.TO_EVENT_LOG)
+
+def aggregate_activity_occurrences(df, target_activity, keep="first", timestamp_col="time:timestamp", agg_fields=None):
+    """
+    对每个 trace 内，聚合某个重复出现的活动，仅保留一次（保留首次或最后），并对其他字段聚合。
+
+    Parameters:
+        df: pd.DataFrame
+        target_activity: 需要聚合的活动名称
+        keep: "first" 或 "last"
+        timestamp_col: 时间字段名
+        agg_fields: 需要聚合的字段名列表（如 ["org:resource"]）
+
+    Returns:
+        df: 处理后的 DataFrame
+    """
+    import numpy as np
+
+    df = df.copy()
+    df[timestamp_col] = pd.to_datetime(df[timestamp_col])
+    df = df.sort_values(by=["case:concept:name", timestamp_col])
+
+    result = []
+
+    for case_id, group in df.groupby("case:concept:name"):
+        group = group.copy()
+        to_agg = group[group["concept:name"] == target_activity]
+        others = group[group["concept:name"] != target_activity]
+
+        if to_agg.empty:
+            result.append(group)
+            continue
+
+        if keep == "first":
+            row = to_agg.iloc[0].copy()
+        else:
+            row = to_agg.iloc[-1].copy()
+
+        if agg_fields:
+            for field in agg_fields:
+                values = to_agg[field].dropna().astype(str).unique()
+                row[field] = "|".join(values)
+
+        merged = pd.concat([others, pd.DataFrame([row])], ignore_index=True)
+        merged = merged.sort_values(by=timestamp_col)
+        result.append(merged)
+
+    new_df = pd.concat(result, ignore_index=True)
+    return new_df
