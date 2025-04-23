@@ -500,38 +500,6 @@ class CSV2XESConverter(QMainWindow):
         except Exception as e:
             QMessageBox.critical(self, "分析失败", str(e))
 
-    # def start_analysis(self):
-    #     if self.df is None or self.df.empty:
-    #         QMessageBox.information(self, "提示", "还没有有效数据，无法分析。")
-    #         return
-    #
-    #     try:
-    #         # 字段重命名和转换
-    #         df = self.df.copy()
-    #         col_caseid = self.combo_caseid.currentText()
-    #         col_activity = self.combo_activity.currentText()
-    #         col_timestamp = self.combo_timestamp.currentText()
-    #
-    #         df = df.rename(columns={
-    #             col_caseid: "case:concept:name",
-    #             col_activity: "concept:name",
-    #             col_timestamp: "time:timestamp"
-    #         })
-    #         df["lifecycle:transition"] = "complete"
-    #
-    #         import numpy as np
-    #         df = df.fillna("unknown")
-    #
-    #         from pm4py.objects.conversion.log import converter as log_converter
-    #         event_log = log_converter.apply(df, variant=log_converter.Variants.TO_EVENT_LOG)
-    #
-    #         from process_analysis_window import launch_analysis_window
-    #         launch_analysis_window(event_log)
-    #
-    #     except Exception as e:
-    #         QMessageBox.critical(self, "转换失败", f"无法进入分析阶段:\n{e}")
-
-
 def main():
     import warnings
     # 如果想要隐藏可能来自PyQt5或pm4py的FutureWarning/DeprecationWarning，可在此抑制
