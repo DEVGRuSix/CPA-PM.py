@@ -1,0 +1,5 @@
+event,Theme,Account_Users,Metric_Count,Graph_Origin,Number_of_Graphs_on_Dashboard,number_of_graphs,time,Company_ID,Graphs_owned,weekday,X_city,Connector_Backend,Template,Data_Sources_Owned,Data_Format,Account_Type,dashboard_Template_Name,KPI_Count,Client,source,Graph_Origin,Guide_Name,Guide_Type
+Insert_Formula,,1,NA,,NA,9,8/3/2018_9:06,6f7ea6f4a5fd58ab56f0d1e310d55cea,NA,Friday,São_Paulo,,,3,,Direct,,NA,,3,,,
+View_Dashboard,Light,1,NA,,NA,68,8/3/2018_7:25,171e5459902eb48e91a83dc5efff31b6,NA,Friday,'s-Hertogenbosch,,,76,,Direct,,NA,,76,,,
+Connector_Search,,1,NA,,NA,8,8/3/2018_6:46,e31367d51bcacc6b7214bd60ecf76612,NA,Friday,Wrocław,,,2,,Direct,,NA,,2,,,
+View_Dashboard,Light,1,NA,,NA,9,8/2/2018_10:27,66d87744eddc8473967c2f36f07cf86a,NA,Thursday,Florianópolis,,,2,,Direct,,NA,,2,,,

@@ -1,0 +1,4616 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<log xes.version="1849-2016" xes.features="nested-attributes" xmlns="http://www.xes-standard.org/">
+	<extension name="Lifecycle" prefix="lifecycle" uri="http://www.xes-standard.org/lifecycle.xesext" />
+	<extension name="Concept" prefix="concept" uri="http://www.xes-standard.org/concept.xesext" />
+	<extension name="Time" prefix="time" uri="http://www.xes-standard.org/time.xesext" />
+	<string key="origin" value="csv" />
+	<trace>
+		<string key="concept:name" value="013e23de101611ec4ba9f65a089981aa" />
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:07:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:07:00" />
+			<string key="concept:name" value="Tab Switched" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:08:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:09:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:10:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:10:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:10:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:12:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:29:00" />
+			<string key="concept:name" value="Orientation Switch" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:29:00" />
+			<string key="concept:name" value="Orientation Switch" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:31:00" />
+			<string key="concept:name" value="Orientation Switch" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:31:00" />
+			<string key="concept:name" value="Orientation Switch" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:31:00" />
+			<string key="concept:name" value="Orientation Switch" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:31:00" />
+			<string key="concept:name" value="Orientation Switch" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:31:00" />
+			<string key="concept:name" value="Orientation Switch" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:31:00" />
+			<string key="concept:name" value="Orientation Switch" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:32:00" />
+			<string key="concept:name" value="Orientation Switch" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:32:00" />
+			<string key="concept:name" value="Orientation Switch" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:32:00" />
+			<string key="concept:name" value="Orientation Switch" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:32:00" />
+			<string key="concept:name" value="Orientation Switch" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="02beb6333cf4c95ba91e1c9b0c0b4c18" />
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:08:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="0350cd2785e3e1565e068c557ebb8f1a" />
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:00:00" />
+			<string key="concept:name" value="Orientation Switch" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:01:00" />
+			<string key="concept:name" value="Orientation Switch" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:06:00" />
+			<string key="concept:name" value="Orientation Switch" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:09:00" />
+			<string key="concept:name" value="Orientation Switch" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="054258eac6822185e00d0e85ebdb2600" />
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:45:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="08d3aae4e208ea82cab3a4122cd45411" />
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:10:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="0cb9a8a08a803866118c0d5aaea84ba7" />
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:12:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="11912946febc33d58237d0a3e2134c25" />
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:14:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:15:00" />
+			<string key="concept:name" value="Show More Graphs" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="1732beab1667c7fb06fac4006908848d" />
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:19:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:19:00" />
+			<string key="concept:name" value="Manual Refresh" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:20:00" />
+			<string key="concept:name" value="Show More Graphs" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="184aa1848d90368f39d1dd4b50632939" />
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:03:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:03:00" />
+			<string key="concept:name" value="Manual Refresh" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:04:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:04:00" />
+			<string key="concept:name" value="Manual Refresh" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:04:00" />
+			<string key="concept:name" value="Show More Graphs" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:04:00" />
+			<string key="concept:name" value="Orientation Switch" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:05:00" />
+			<string key="concept:name" value="Orientation Switch" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:05:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="197c731783a51319754597fea6c43112" />
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:01:00" />
+			<string key="concept:name" value="Orientation Switch" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:50:00" />
+			<string key="concept:name" value="Orientation Switch" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:52:00" />
+			<string key="concept:name" value="Orientation Switch" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="1a7b31e238551797a91eef869fe0b7a9" />
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:10:00" />
+			<string key="concept:name" value="Orientation Switch" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:11:00" />
+			<string key="concept:name" value="Orientation Switch" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="1b8538e2a12dbd7257fd059867bac72d" />
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:18:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:18:00" />
+			<string key="concept:name" value="Orientation Switch" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:30:00" />
+			<string key="concept:name" value="Orientation Switch" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="1bc6375691d4a6f82025cf6c57709da5" />
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:10:00" />
+			<string key="concept:name" value="Create Data Source" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="1caf640d9d16265cb7281cc7ccf8ab55" />
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:09:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:10:00" />
+			<string key="concept:name" value="Trial Sign Up Completed" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:10:00" />
+			<string key="concept:name" value="Guide Start" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:10:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:10:00" />
+			<string key="concept:name" value="Guide Start" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:10:00" />
+			<string key="concept:name" value="Guide Exit" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:10:00" />
+			<string key="concept:name" value="Guide Start" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:10:00" />
+			<string key="concept:name" value="Guide Exit" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:10:00" />
+			<string key="concept:name" value="Guide Start" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:10:00" />
+			<string key="concept:name" value="Add Blank Tab" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:10:00" />
+			<string key="concept:name" value="Add Button" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:10:00" />
+			<string key="concept:name" value="Guide Exit" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:10:00" />
+			<string key="concept:name" value="Guide Start" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:11:00" />
+			<string key="concept:name" value="Guide Exit" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:11:00" />
+			<string key="concept:name" value="Graph Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:15:00" />
+			<string key="concept:name" value="Create Data Source" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:16:00" />
+			<string key="concept:name" value="Data Source Connector" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="1fb0c38e91eb39efd7740c35b063fcaa" />
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:06:00" />
+			<string key="concept:name" value="Graph Saved in Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:06:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:08:00" />
+			<string key="concept:name" value="Add Button" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:08:00" />
+			<string key="concept:name" value="Graph Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:16:00" />
+			<string key="concept:name" value="Graph Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:16:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:16:00" />
+			<string key="concept:name" value="Add Button" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:16:00" />
+			<string key="concept:name" value="Graph Gallery" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:16:00" />
+			<string key="concept:name" value="Graph Gallery" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:16:00" />
+			<string key="concept:name" value="Graph Gallery" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:16:00" />
+			<string key="concept:name" value="Template Connect Button" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:16:00" />
+			<string key="concept:name" value="Template Connected" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:16:00" />
+			<string key="concept:name" value="Edit Graph from Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:16:00" />
+			<string key="concept:name" value="Graph Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:17:00" />
+			<string key="concept:name" value="Graph Saved in Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:17:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="296411f5ce302103d499ca4656fb8c71" />
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:01:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:25:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="2a3c721d40a0b403125991ca1cf77a28" />
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:01:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:02:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:24:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="2c7312b8fc1aa94a24847baa699ccde3" />
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:14:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:15:00" />
+			<string key="concept:name" value="Show More Graphs" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="2dc4ab05664bc381440736d9e28c4bd1" />
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:04:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:05:00" />
+			<string key="concept:name" value="Show More Graphs" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:05:00" />
+			<string key="concept:name" value="Show More Graphs" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="31706a205dcad526617c7247ea535d98" />
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:04:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="3cad74c41b8f449a72eeb3ec457f01b2" />
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:21:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:45:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:45:00" />
+			<string key="concept:name" value="Edit Graph from Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="3cdc5e38a59a03a8e1b03abfb748b59a" />
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:01:00" />
+			<string key="concept:name" value="Trial Sign Up Completed" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:01:00" />
+			<string key="concept:name" value="Guide Start" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:01:00" />
+			<string key="concept:name" value="Guide Exit" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:01:00" />
+			<string key="concept:name" value="Guide Start" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:01:00" />
+			<string key="concept:name" value="Guide Start" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:03:00" />
+			<string key="concept:name" value="Create Data Source" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:03:00" />
+			<string key="concept:name" value="Data Source Connector" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:04:00" />
+			<string key="concept:name" value="DS Template Selected" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:05:00" />
+			<string key="concept:name" value="Data Source Created" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:06:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:06:00" />
+			<string key="concept:name" value="Add Blank Tab" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:07:00" />
+			<string key="concept:name" value="Build Graph from Library" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:07:00" />
+			<string key="concept:name" value="Graph Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:08:00" />
+			<string key="concept:name" value="Guide Start" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:09:00" />
+			<string key="concept:name" value="Graph Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:06:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:06:00" />
+			<string key="concept:name" value="Create Data Source" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:06:00" />
+			<string key="concept:name" value="Create Data Source" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="3f74b4421b42fa8f182ece7dffd81d75" />
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:44:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:44:00" />
+			<string key="concept:name" value="Orientation Switch" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="405d25d7e476a63d4cfc49f1c7cb38f0" />
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:04:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:04:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:04:00" />
+			<string key="concept:name" value="Edit Graph from Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:04:00" />
+			<string key="concept:name" value="Graph Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:06:00" />
+			<string key="concept:name" value="Graph Saved in Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:06:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="42a6e310d0fb4cbd4c35755fd0c71564" />
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:16:00" />
+			<string key="concept:name" value="Graph Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:16:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:16:00" />
+			<string key="concept:name" value="Add Button" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:16:00" />
+			<string key="concept:name" value="Build a New Graph Button" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:16:00" />
+			<string key="concept:name" value="Graph Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:17:00" />
+			<string key="concept:name" value="Graph Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:17:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:17:00" />
+			<string key="concept:name" value="Add Button" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:17:00" />
+			<string key="concept:name" value="Build a New Graph Button" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:17:00" />
+			<string key="concept:name" value="Graph Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:17:00" />
+			<string key="concept:name" value="Graph Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:17:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:17:00" />
+			<string key="concept:name" value="Add Button" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:18:00" />
+			<string key="concept:name" value="Graph Added to Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:18:00" />
+			<string key="concept:name" value="Graph Added to Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:18:00" />
+			<string key="concept:name" value="Edit Graph from Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:18:00" />
+			<string key="concept:name" value="Graph Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:19:00" />
+			<string key="concept:name" value="Graph Saved in Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:19:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:19:00" />
+			<string key="concept:name" value="Edit Graph from Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:19:00" />
+			<string key="concept:name" value="Graph Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:20:00" />
+			<string key="concept:name" value="Graph Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:20:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:20:00" />
+			<string key="concept:name" value="Add Button" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:20:00" />
+			<string key="concept:name" value="Graph Added to Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:20:00" />
+			<string key="concept:name" value="Add Button" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:21:00" />
+			<string key="concept:name" value="Graph Added to Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:21:00" />
+			<string key="concept:name" value="Edit Graph from Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:21:00" />
+			<string key="concept:name" value="Graph Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:28:00" />
+			<string key="concept:name" value="Graph Saved in Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:28:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:28:00" />
+			<string key="concept:name" value="Add Button" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:28:00" />
+			<string key="concept:name" value="Build a New Graph Button" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:28:00" />
+			<string key="concept:name" value="Graph Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:29:00" />
+			<string key="concept:name" value="Graph Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:29:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:29:00" />
+			<string key="concept:name" value="Edit Graph from Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:29:00" />
+			<string key="concept:name" value="Graph Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:29:00" />
+			<string key="concept:name" value="Sidebar Help" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:30:00" />
+			<string key="concept:name" value="Graph Saved in Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:30:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:30:00" />
+			<string key="concept:name" value="Add Button" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:30:00" />
+			<string key="concept:name" value="Build a New Graph Button" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:30:00" />
+			<string key="concept:name" value="Graph Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:33:00" />
+			<string key="concept:name" value="Graph Saved in Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:34:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:34:00" />
+			<string key="concept:name" value="Edit Graph from Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:34:00" />
+			<string key="concept:name" value="Graph Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:38:00" />
+			<string key="concept:name" value="Graph Saved in Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:38:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:40:00" />
+			<string key="concept:name" value="Add Button" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:41:00" />
+			<string key="concept:name" value="Build a New Graph Button" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:41:00" />
+			<string key="concept:name" value="Graph Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:42:00" />
+			<string key="concept:name" value="Graph Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:42:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:45:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:45:00" />
+			<string key="concept:name" value="Edit Graph from Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:46:00" />
+			<string key="concept:name" value="Graph Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:46:00" />
+			<string key="concept:name" value="Graph Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:46:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:46:00" />
+			<string key="concept:name" value="Add Button" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:46:00" />
+			<string key="concept:name" value="Build a New Graph Button" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:46:00" />
+			<string key="concept:name" value="Graph Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:53:00" />
+			<string key="concept:name" value="Graph Saved in Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:53:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:57:00" />
+			<string key="concept:name" value="Edit Graph from Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:57:00" />
+			<string key="concept:name" value="Graph Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:14:00" />
+			<string key="concept:name" value="Graph Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:14:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="4398c530a4d5f3760fd740107dbc670b" />
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:20:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="43aa58feadb3981f8ad67d47f5416790" />
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:36:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="4da83fc3e758478f4e0d92de1cd8da7e" />
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:05:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:06:00" />
+			<string key="concept:name" value="Tab Switched" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:06:00" />
+			<string key="concept:name" value="Tab Switched" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:06:00" />
+			<string key="concept:name" value="Tab Switched" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:06:00" />
+			<string key="concept:name" value="Show More Graphs" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="4eb76c8ca4473d1e2aec236c1c78fe6c" />
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:27:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="51b809b091fc0f51dc7aca9ddc486bfe" />
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:00:00" />
+			<string key="concept:name" value="Graph Saved in Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:00:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:01:00" />
+			<string key="concept:name" value="Edit Graph from Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:01:00" />
+			<string key="concept:name" value="Graph Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:01:00" />
+			<string key="concept:name" value="Graph Saved in Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:02:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:03:00" />
+			<string key="concept:name" value="Add Button" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:04:00" />
+			<string key="concept:name" value="Build a New Graph Button" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:04:00" />
+			<string key="concept:name" value="Graph Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:08:00" />
+			<string key="concept:name" value="Create Data Source" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:08:00" />
+			<string key="concept:name" value="Data Source Connector" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:10:00" />
+			<string key="concept:name" value="Create Data Source" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:10:00" />
+			<string key="concept:name" value="Data Source Connector" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:10:00" />
+			<string key="concept:name" value="Data Source Created" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:11:00" />
+			<string key="concept:name" value="Graph Saved in Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:11:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:14:00" />
+			<string key="concept:name" value="Edit Graph from Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:14:00" />
+			<string key="concept:name" value="Graph Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:15:00" />
+			<string key="concept:name" value="Graph Saved in Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:15:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:15:00" />
+			<string key="concept:name" value="Edit Graph from Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:15:00" />
+			<string key="concept:name" value="Graph Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:16:00" />
+			<string key="concept:name" value="Graph Saved in Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:16:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:16:00" />
+			<string key="concept:name" value="Edit Graph from Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:16:00" />
+			<string key="concept:name" value="Graph Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:17:00" />
+			<string key="concept:name" value="Graph Saved in Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:17:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:19:00" />
+			<string key="concept:name" value="Edit Graph from Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:19:00" />
+			<string key="concept:name" value="Graph Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:20:00" />
+			<string key="concept:name" value="Graph Saved in Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:20:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:20:00" />
+			<string key="concept:name" value="Edit Graph from Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:20:00" />
+			<string key="concept:name" value="Graph Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:20:00" />
+			<string key="concept:name" value="Graph Saved in Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:21:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:21:00" />
+			<string key="concept:name" value="Edit Graph from Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:21:00" />
+			<string key="concept:name" value="Graph Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:21:00" />
+			<string key="concept:name" value="Graph Saved in Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:21:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:22:00" />
+			<string key="concept:name" value="Edit Graph from Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:22:00" />
+			<string key="concept:name" value="Graph Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:22:00" />
+			<string key="concept:name" value="Graph Saved in Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:22:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:22:00" />
+			<string key="concept:name" value="Edit Graph from Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:22:00" />
+			<string key="concept:name" value="Graph Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:23:00" />
+			<string key="concept:name" value="Graph Saved in Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:23:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:23:00" />
+			<string key="concept:name" value="Edit Graph from Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:23:00" />
+			<string key="concept:name" value="Graph Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:23:00" />
+			<string key="concept:name" value="Graph Saved in Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:23:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:24:00" />
+			<string key="concept:name" value="Edit Graph from Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:24:00" />
+			<string key="concept:name" value="Graph Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:24:00" />
+			<string key="concept:name" value="Graph Saved in Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:24:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:24:00" />
+			<string key="concept:name" value="Edit Graph from Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:24:00" />
+			<string key="concept:name" value="Graph Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:24:00" />
+			<string key="concept:name" value="Graph Saved in Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:24:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:24:00" />
+			<string key="concept:name" value="Edit Graph from Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:24:00" />
+			<string key="concept:name" value="Graph Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:25:00" />
+			<string key="concept:name" value="Graph Saved in Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:25:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:25:00" />
+			<string key="concept:name" value="Edit Graph from Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:25:00" />
+			<string key="concept:name" value="Graph Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:25:00" />
+			<string key="concept:name" value="Graph Saved in Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:25:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:25:00" />
+			<string key="concept:name" value="Edit Graph from Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:25:00" />
+			<string key="concept:name" value="Graph Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:28:00" />
+			<string key="concept:name" value="Graph Saved in Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:28:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:29:00" />
+			<string key="concept:name" value="Edit Graph from Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:29:00" />
+			<string key="concept:name" value="Graph Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:29:00" />
+			<string key="concept:name" value="Sidebar Help" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:33:00" />
+			<string key="concept:name" value="Graph Saved in Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:33:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:33:00" />
+			<string key="concept:name" value="Build Graph from Library" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:33:00" />
+			<string key="concept:name" value="Graph Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:36:00" />
+			<string key="concept:name" value="Graph Saved in Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:36:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:37:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:37:00" />
+			<string key="concept:name" value="Edit Graph from Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:37:00" />
+			<string key="concept:name" value="Graph Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:37:00" />
+			<string key="concept:name" value="Graph Saved in Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:37:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:38:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:38:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:38:00" />
+			<string key="concept:name" value="Add Button" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:39:00" />
+			<string key="concept:name" value="Graph Added to Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:40:00" />
+			<string key="concept:name" value="Edit Graph from Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:40:00" />
+			<string key="concept:name" value="Graph Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:40:00" />
+			<string key="concept:name" value="Graph Saved in Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:40:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:42:00" />
+			<string key="concept:name" value="Edit Graph from Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:42:00" />
+			<string key="concept:name" value="Graph Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:42:00" />
+			<string key="concept:name" value="Graph Saved in Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:42:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:43:00" />
+			<string key="concept:name" value="Edit Graph from Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:43:00" />
+			<string key="concept:name" value="Graph Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:44:00" />
+			<string key="concept:name" value="Graph Saved in Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:44:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:44:00" />
+			<string key="concept:name" value="Edit Graph from Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:44:00" />
+			<string key="concept:name" value="Graph Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:44:00" />
+			<string key="concept:name" value="Graph Saved in Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:44:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:44:00" />
+			<string key="concept:name" value="Edit Graph from Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:44:00" />
+			<string key="concept:name" value="Graph Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:45:00" />
+			<string key="concept:name" value="Graph Saved in Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:45:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:45:00" />
+			<string key="concept:name" value="Edit Graph from Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:45:00" />
+			<string key="concept:name" value="Graph Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:46:00" />
+			<string key="concept:name" value="Graph Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:46:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:46:00" />
+			<string key="concept:name" value="Edit Graph from Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:46:00" />
+			<string key="concept:name" value="Graph Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:46:00" />
+			<string key="concept:name" value="Graph Saved in Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:46:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:47:00" />
+			<string key="concept:name" value="Edit Graph from Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:47:00" />
+			<string key="concept:name" value="Graph Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:48:00" />
+			<string key="concept:name" value="Graph Saved in Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:48:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:48:00" />
+			<string key="concept:name" value="Edit Graph from Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:48:00" />
+			<string key="concept:name" value="Graph Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:49:00" />
+			<string key="concept:name" value="Graph Saved in Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:49:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:50:00" />
+			<string key="concept:name" value="Edit Graph from Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:50:00" />
+			<string key="concept:name" value="Graph Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:50:00" />
+			<string key="concept:name" value="Graph Saved in Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:50:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:50:00" />
+			<string key="concept:name" value="Edit Graph from Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:50:00" />
+			<string key="concept:name" value="Graph Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:50:00" />
+			<string key="concept:name" value="Graph Saved in Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:50:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:51:00" />
+			<string key="concept:name" value="Edit Graph from Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:51:00" />
+			<string key="concept:name" value="Graph Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:52:00" />
+			<string key="concept:name" value="Graph Saved in Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:52:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:52:00" />
+			<string key="concept:name" value="Edit Graph from Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:52:00" />
+			<string key="concept:name" value="Graph Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:52:00" />
+			<string key="concept:name" value="Graph Saved in Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:52:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:53:00" />
+			<string key="concept:name" value="Edit Graph from Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:53:00" />
+			<string key="concept:name" value="Graph Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:53:00" />
+			<string key="concept:name" value="Graph Saved in Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:53:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:55:00" />
+			<string key="concept:name" value="Edit Graph from Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:55:00" />
+			<string key="concept:name" value="Graph Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:55:00" />
+			<string key="concept:name" value="Graph Saved in Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:55:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:57:00" />
+			<string key="concept:name" value="Sidebar Help" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:57:00" />
+			<string key="concept:name" value="New Account" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:44:00" />
+			<string key="concept:name" value="Add Button" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:44:00" />
+			<string key="concept:name" value="Build a New Graph Button" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:44:00" />
+			<string key="concept:name" value="Graph Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="55971db4aee962c0a71595ab98e47855" />
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:41:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="5943f3577db9006e38f2b15c35a05c34" />
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:23:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="5d07cb7798127b003f253edcf24550ae" />
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:54:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:55:00" />
+			<string key="concept:name" value="Trial Sign Up Completed" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:55:00" />
+			<string key="concept:name" value="Guide Start" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:55:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:55:00" />
+			<string key="concept:name" value="Guide Start" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:55:00" />
+			<string key="concept:name" value="Guide Exit" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:55:00" />
+			<string key="concept:name" value="Guide Start" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:55:00" />
+			<string key="concept:name" value="Guide Exit" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:55:00" />
+			<string key="concept:name" value="Guide Start" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:55:00" />
+			<string key="concept:name" value="Add Blank Tab" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:55:00" />
+			<string key="concept:name" value="Add Button" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:55:00" />
+			<string key="concept:name" value="Guide Exit" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:55:00" />
+			<string key="concept:name" value="Guide Start" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:55:00" />
+			<string key="concept:name" value="Build a New Graph Button" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:55:00" />
+			<string key="concept:name" value="Guide Exit" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:55:00" />
+			<string key="concept:name" value="Graph Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:55:00" />
+			<string key="concept:name" value="Guide Start" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:56:00" />
+			<string key="concept:name" value="Graph Saved in Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:56:00" />
+			<string key="concept:name" value="Editor Survey" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:56:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:56:00" />
+			<string key="concept:name" value="Create Data Source" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="6219c5a8680744c6e4644198f9a713fe" />
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:31:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:31:00" />
+			<string key="concept:name" value="Dashboard Template Added" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:31:00" />
+			<string key="concept:name" value="Add Existing Tab" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="6b5ab83f529f0cc2c78f1e34b14cc099" />
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:17:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="6c5941a5643cbcc803d42298adec6661" />
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:00:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:06:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:09:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:50:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="716710665c939a34c93ad4237340581a" />
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:11:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="717205a57e88e2a243a553582ed1e060" />
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:48:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="75163e6646c5efebcbdc787b8d98e09b" />
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:21:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:22:00" />
+			<string key="concept:name" value="Trial Sign Up Completed" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:23:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:24:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:24:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="75931f723e66ffce04ea4d6ecda74174" />
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:11:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="763a5c56284f07705a8562c2d4f76976" />
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:05:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="763bf501a2bf11277ac40a2b230f0c34" />
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:04:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:04:00" />
+			<string key="concept:name" value="Show More Graphs" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:04:00" />
+			<string key="concept:name" value="Show More Graphs" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:27:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="77757e99eb32bc0977fe1e5865a19791" />
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:03:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:08:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:08:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:08:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:08:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:09:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:09:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:09:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:09:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:09:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:09:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:09:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:09:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:09:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:10:00" />
+			<string key="concept:name" value="Orientation Switch" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:10:00" />
+			<string key="concept:name" value="Orientation Switch" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="78d3bd83d75dd1981132eaaf587ccb83" />
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:04:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:05:00" />
+			<string key="concept:name" value="Trial Sign Up Completed" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:05:00" />
+			<string key="concept:name" value="Guide Start" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:06:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:06:00" />
+			<string key="concept:name" value="Guide Start" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:07:00" />
+			<string key="concept:name" value="Guide Exit" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="7989d44de16087d458d839e2dfbd60b0" />
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:21:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:21:00" />
+			<string key="concept:name" value="Build Graph from Library" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:21:00" />
+			<string key="concept:name" value="Graph Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:22:00" />
+			<string key="concept:name" value="Create Data Source" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:22:00" />
+			<string key="concept:name" value="Formula Editor Insert" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:32:00" />
+			<string key="concept:name" value="Create Data Source" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:32:00" />
+			<string key="concept:name" value="Data Source Connector" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:34:00" />
+			<string key="concept:name" value="Graph Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:35:00" />
+			<string key="concept:name" value="Create Data Source" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:35:00" />
+			<string key="concept:name" value="Data Source Connector" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:35:00" />
+			<string key="concept:name" value="Data Source Created" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:35:00" />
+			<string key="concept:name" value="Build Graph from Library" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:35:00" />
+			<string key="concept:name" value="Graph Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:37:00" />
+			<string key="concept:name" value="Formula Editor Insert" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:43:00" />
+			<string key="concept:name" value="Graph Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:43:00" />
+			<string key="concept:name" value="Build Graph from Library" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:44:00" />
+			<string key="concept:name" value="Graph Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:57:00" />
+			<string key="concept:name" value="Graph Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:57:00" />
+			<string key="concept:name" value="Build Graph from Library" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:57:00" />
+			<string key="concept:name" value="Graph Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:02:00" />
+			<string key="concept:name" value="Graph Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:02:00" />
+			<string key="concept:name" value="Graph Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:20:00" />
+			<string key="concept:name" value="Graph Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:20:00" />
+			<string key="concept:name" value="Graph Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:21:00" />
+			<string key="concept:name" value="Graph Saved in Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:21:00" />
+			<string key="concept:name" value="Graph Saved in Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:21:00" />
+			<string key="concept:name" value="Graph Saved in Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:21:00" />
+			<string key="concept:name" value="Graph Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:22:00" />
+			<string key="concept:name" value="Graph Saved in Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:23:00" />
+			<string key="concept:name" value="Graph Saved in Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:23:00" />
+			<string key="concept:name" value="Graph Saved in Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:23:00" />
+			<string key="concept:name" value="Build Graph from Library" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:23:00" />
+			<string key="concept:name" value="Graph Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:26:00" />
+			<string key="concept:name" value="Graph Saved in Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:27:00" />
+			<string key="concept:name" value="Graph Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:27:00" />
+			<string key="concept:name" value="Graph Saved in Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:33:00" />
+			<string key="concept:name" value="Graph Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:33:00" />
+			<string key="concept:name" value="Build Graph from Library" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:33:00" />
+			<string key="concept:name" value="Graph Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="7c790b8a1f04c66bc092b3957816d4dd" />
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:17:00" />
+			<string key="concept:name" value="Orientation Switch" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:17:00" />
+			<string key="concept:name" value="Orientation Switch" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="7d414a1fd535217b4c83ea005a5c686e" />
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:05:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="7e0d2c958b4b76211b1e5e3c8294ed22" />
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:04:00" />
+			<string key="concept:name" value="View Plans" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:04:00" />
+			<string key="concept:name" value="Guide Start" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="813eb4f19558e06d8c6dd73caa1ea52b" />
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:46:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:04:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:06:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:16:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="831c2431e86b81fa0afb0596cafc2191" />
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:28:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="87c2a4a0a608c4d7e46a233e117d8e95" />
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:03:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:04:00" />
+			<string key="concept:name" value="Trial Sign Up Completed" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:05:00" />
+			<string key="concept:name" value="Guide Start" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:05:00" />
+			<string key="concept:name" value="Guide Start" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:05:00" />
+			<string key="concept:name" value="Guide Exit" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:05:00" />
+			<string key="concept:name" value="Guide Exit" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:05:00" />
+			<string key="concept:name" value="Guide Start" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:05:00" />
+			<string key="concept:name" value="Add Blank Tab" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:06:00" />
+			<string key="concept:name" value="Create Data Source" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:06:00" />
+			<string key="concept:name" value="Data Source Connector" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:06:00" />
+			<string key="concept:name" value="DS Template Selected" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:07:00" />
+			<string key="concept:name" value="Data Source Error" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="883875a18510e68dcc642a6875717d15" />
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:20:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:21:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:21:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:45:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="88f36b78aebb2e8fe8630271d463ee55" />
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:05:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:05:00" />
+			<string key="concept:name" value="Template Connect Button" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:05:00" />
+			<string key="concept:name" value="Add Template Auth" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:05:00" />
+			<string key="concept:name" value="Add Template DS Settings" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:05:00" />
+			<string key="concept:name" value="Template Connected" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:07:00" />
+			<string key="concept:name" value="Template Connect Button" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:07:00" />
+			<string key="concept:name" value="Add Template Auth" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:07:00" />
+			<string key="concept:name" value="Add Template DS Settings" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:07:00" />
+			<string key="concept:name" value="Template Connected" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:08:00" />
+			<string key="concept:name" value="Template Connect Button" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:08:00" />
+			<string key="concept:name" value="Add Template Auth" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:08:00" />
+			<string key="concept:name" value="Error" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:08:00" />
+			<string key="concept:name" value="Error" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:08:00" />
+			<string key="concept:name" value="Error" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:08:00" />
+			<string key="concept:name" value="Error" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:09:00" />
+			<string key="concept:name" value="Error" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:09:00" />
+			<string key="concept:name" value="Template Connect Button" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:09:00" />
+			<string key="concept:name" value="Add Template Auth" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:10:00" />
+			<string key="concept:name" value="Template Connect Button" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:10:00" />
+			<string key="concept:name" value="Add Template Auth" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:10:00" />
+			<string key="concept:name" value="Add Template DS Settings" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:10:00" />
+			<string key="concept:name" value="Template Connected" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:10:00" />
+			<string key="concept:name" value="Template Connect Button" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:10:00" />
+			<string key="concept:name" value="Add Template Auth" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:10:00" />
+			<string key="concept:name" value="Add Template DS Settings" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:11:00" />
+			<string key="concept:name" value="Template Connected" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:11:00" />
+			<string key="concept:name" value="Template Connect Button" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:11:00" />
+			<string key="concept:name" value="Add Template Auth" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:11:00" />
+			<string key="concept:name" value="Template Connect Button" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:11:00" />
+			<string key="concept:name" value="Add Template Auth" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:11:00" />
+			<string key="concept:name" value="Add Template DS Settings" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:11:00" />
+			<string key="concept:name" value="Template Connected" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:12:00" />
+			<string key="concept:name" value="Template Connect Button" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:12:00" />
+			<string key="concept:name" value="Add Template Auth" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:12:00" />
+			<string key="concept:name" value="Add Template DS Settings" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:12:00" />
+			<string key="concept:name" value="Graph Gallery Error" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:12:00" />
+			<string key="concept:name" value="Add Template Auth" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:12:00" />
+			<string key="concept:name" value="Add Template DS Settings" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:12:00" />
+			<string key="concept:name" value="Graph Gallery Error" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:12:00" />
+			<string key="concept:name" value="Add Template Auth" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:12:00" />
+			<string key="concept:name" value="Add Template DS Settings" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:12:00" />
+			<string key="concept:name" value="Graph Gallery Error" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:12:00" />
+			<string key="concept:name" value="Template Connect Button" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:12:00" />
+			<string key="concept:name" value="Add Template Auth" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:13:00" />
+			<string key="concept:name" value="Add Template DS Settings" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:13:00" />
+			<string key="concept:name" value="Template Connected" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:13:00" />
+			<string key="concept:name" value="Template Connect Button" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:13:00" />
+			<string key="concept:name" value="Add Template Auth" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:13:00" />
+			<string key="concept:name" value="Add Template DS Settings" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:13:00" />
+			<string key="concept:name" value="Template Connected" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:14:00" />
+			<string key="concept:name" value="Template Connect Button" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:14:00" />
+			<string key="concept:name" value="Add Template Auth" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:14:00" />
+			<string key="concept:name" value="Add Template DS Settings" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:15:00" />
+			<string key="concept:name" value="Template Connected" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:15:00" />
+			<string key="concept:name" value="Template Connect Button" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:15:00" />
+			<string key="concept:name" value="Add Template Auth" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:15:00" />
+			<string key="concept:name" value="Add Template DS Settings" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:15:00" />
+			<string key="concept:name" value="Graph Gallery Error" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:16:00" />
+			<string key="concept:name" value="Add Template Auth" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:16:00" />
+			<string key="concept:name" value="Add Template DS Settings" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:16:00" />
+			<string key="concept:name" value="Graph Gallery Error" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:16:00" />
+			<string key="concept:name" value="Template Connect Button" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:16:00" />
+			<string key="concept:name" value="Add Template Auth" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:16:00" />
+			<string key="concept:name" value="Error" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:16:00" />
+			<string key="concept:name" value="Add Template DS Settings" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:16:00" />
+			<string key="concept:name" value="Graph Gallery Error" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:17:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:18:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:19:00" />
+			<string key="concept:name" value="Add Button" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:19:00" />
+			<string key="concept:name" value="Graph Gallery" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:19:00" />
+			<string key="concept:name" value="Graph Gallery" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:19:00" />
+			<string key="concept:name" value="Add Button" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:19:00" />
+			<string key="concept:name" value="Graph Gallery" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="8bd1b26dffb5986dc6c7cecd2c71a6a8" />
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:48:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="933e7adea48e17154e5bab383c4de740" />
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:06:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="934b0e42cc4b3ef85f24a49881bd4218" />
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:58:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="938922ddb1a818ff3b39b8178ba9a3a1" />
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:06:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:08:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:08:00" />
+			<string key="concept:name" value="Show More Graphs" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:10:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:12:00" />
+			<string key="concept:name" value="Orientation Switch" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:35:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:36:00" />
+			<string key="concept:name" value="Manual Refresh" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:36:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:55:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:58:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:58:00" />
+			<string key="concept:name" value="Guide Start" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:59:00" />
+			<string key="concept:name" value="Guide Exit" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:59:00" />
+			<string key="concept:name" value="Guide Start" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:59:00" />
+			<string key="concept:name" value="Add Existing Tab" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:05:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:06:00" />
+			<string key="concept:name" value="Add Existing Tab" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:10:00" />
+			<string key="concept:name" value="Orientation Switch" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:10:00" />
+			<string key="concept:name" value="Orientation Switch" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:10:00" />
+			<string key="concept:name" value="Orientation Switch" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:22:00" />
+			<string key="concept:name" value="Orientation Switch" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:22:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:22:00" />
+			<string key="concept:name" value="Orientation Switch" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:33:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:33:00" />
+			<string key="concept:name" value="Orientation Switch" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="9c2f8fff559aa33d9440c22fab314a79" />
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:08:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="a22411aeb27e088c40a4b6ad21b80b9e" />
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:20:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:38:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="a50d89d33e81f12695ff764f11bc4ab8" />
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:58:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="ab78ca911d5ebe89ce3895278faad661" />
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:30:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="b4cf9fb986f90f3257786d5f3611b68d" />
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:18:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="b59765e61d5b18c3e123aa822e9e400e" />
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:20:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="b8610d38ddca3692d34a55594e0b4df5" />
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:00:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:00:00" />
+			<string key="concept:name" value="Graph Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:00:00" />
+			<string key="concept:name" value="Create Data Source" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:00:00" />
+			<string key="concept:name" value="Connector Search" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:00:00" />
+			<string key="concept:name" value="Data Source Connector" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:00:00" />
+			<string key="concept:name" value="DS Template Selected" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:00:00" />
+			<string key="concept:name" value="Data Source Created" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:01:00" />
+			<string key="concept:name" value="Graph Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:02:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:11:00" />
+			<string key="concept:name" value="Build Graph from Library" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:11:00" />
+			<string key="concept:name" value="Graph Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:13:00" />
+			<string key="concept:name" value="Graph Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:14:00" />
+			<string key="concept:name" value="Graph Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:14:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:46:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:46:00" />
+			<string key="concept:name" value="Add Existing Tab" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:46:00" />
+			<string key="concept:name" value="Tab Switched" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:47:00" />
+			<string key="concept:name" value="Tab Switched" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:47:00" />
+			<string key="concept:name" value="Tab Switched" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:47:00" />
+			<string key="concept:name" value="Orientation Switch" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:49:00" />
+			<string key="concept:name" value="Tab Switched" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:49:00" />
+			<string key="concept:name" value="Tab Switched" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:51:00" />
+			<string key="concept:name" value="Orientation Switch" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:51:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:51:00" />
+			<string key="concept:name" value="Orientation Switch" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:52:00" />
+			<string key="concept:name" value="Tab Switched" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:57:00" />
+			<string key="concept:name" value="Orientation Switch" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:57:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:57:00" />
+			<string key="concept:name" value="Tab Switched" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="b97660aeb4f82feb6e0b19d8d9eb607f" />
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:26:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="b9ad6d74631f80d4fc1384c0fcf5f115" />
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:03:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="bb44ea9a534e3f0e0b6a723cf87eba42" />
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:10:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:10:00" />
+			<string key="concept:name" value="Orientation Switch" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:23:00" />
+			<string key="concept:name" value="Orientation Switch" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:33:00" />
+			<string key="concept:name" value="Orientation Switch" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:33:00" />
+			<string key="concept:name" value="Orientation Switch" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:33:00" />
+			<string key="concept:name" value="Orientation Switch" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:37:00" />
+			<string key="concept:name" value="Orientation Switch" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:31:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="bcb39f627f0d49dbb83c80d6d826ddc3" />
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:05:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:05:00" />
+			<string key="concept:name" value="Show More Graphs" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="bf6e66e4ef777a29b906e77a5cfff13a" />
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:24:00" />
+			<string key="concept:name" value="Manual Refresh" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:24:00" />
+			<string key="concept:name" value="Show More Graphs" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:24:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:24:00" />
+			<string key="concept:name" value="Tab Switched" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:24:00" />
+			<string key="concept:name" value="Manual Refresh" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:24:00" />
+			<string key="concept:name" value="Manual Refresh" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="c29da51fb35aced0dde456d0dc8f3f17" />
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:16:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:16:00" />
+			<string key="concept:name" value="Trial Sign Up Completed" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:16:00" />
+			<string key="concept:name" value="Guide Start" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:16:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:16:00" />
+			<string key="concept:name" value="Guide Start" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:16:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:16:00" />
+			<string key="concept:name" value="Guide Exit" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:16:00" />
+			<string key="concept:name" value="Guide Start" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:16:00" />
+			<string key="concept:name" value="Guide Start" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:18:00" />
+			<string key="concept:name" value="Build Graph from Library" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:18:00" />
+			<string key="concept:name" value="Graph Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:18:00" />
+			<string key="concept:name" value="Guide Start" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:20:00" />
+			<string key="concept:name" value="Graph Saved in Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:20:00" />
+			<string key="concept:name" value="Editor Survey" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:21:00" />
+			<string key="concept:name" value="Create Data Source" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:21:00" />
+			<string key="concept:name" value="Sidebar Help" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:21:00" />
+			<string key="concept:name" value="Sidebar Help" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="c4c21250e42fdcee13947a7c50b15b98" />
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:31:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:31:00" />
+			<string key="concept:name" value="Manual Refresh" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:31:00" />
+			<string key="concept:name" value="Show More Graphs" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="c552287ac2b39da2c4a12504417da891" />
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:32:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="c7cb32f712bd28d7bf874f56f3ecf938" />
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:40:00" />
+			<string key="concept:name" value="Data Source Error" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:44:00" />
+			<string key="concept:name" value="Data Source Error" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:44:00" />
+			<string key="concept:name" value="Data Source Error" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:44:00" />
+			<string key="concept:name" value="Data Source Error" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:44:00" />
+			<string key="concept:name" value="Data Source Error" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:45:00" />
+			<string key="concept:name" value="Data Source Error" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="c8499f7e9da7d144850770d6d6d681ad" />
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:32:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="cdf4bb66fd746c576b981d82b0348433" />
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:35:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:35:00" />
+			<string key="concept:name" value="Orientation Switch" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:36:00" />
+			<string key="concept:name" value="Orientation Switch" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:58:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:58:00" />
+			<string key="concept:name" value="Orientation Switch" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:59:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:59:00" />
+			<string key="concept:name" value="Orientation Switch" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:59:00" />
+			<string key="concept:name" value="Orientation Switch" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:59:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:00:00" />
+			<string key="concept:name" value="Orientation Switch" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:00:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:00:00" />
+			<string key="concept:name" value="Orientation Switch" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:01:00" />
+			<string key="concept:name" value="Orientation Switch" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:01:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:02:00" />
+			<string key="concept:name" value="Orientation Switch" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:02:00" />
+			<string key="concept:name" value="Orientation Switch" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="d3a3f99b312aecb7ea7fdb88817ddbc4" />
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:07:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:08:00" />
+			<string key="concept:name" value="Add Existing Tab" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:08:00" />
+			<string key="concept:name" value="Show More Graphs" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:09:00" />
+			<string key="concept:name" value="Orientation Switch" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:11:00" />
+			<string key="concept:name" value="Orientation Switch" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:38:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:39:00" />
+			<string key="concept:name" value="Show More Graphs" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:13:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:13:00" />
+			<string key="concept:name" value="Orientation Switch" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:13:00" />
+			<string key="concept:name" value="Orientation Switch" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:25:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:28:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:28:00" />
+			<string key="concept:name" value="Orientation Switch" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:28:00" />
+			<string key="concept:name" value="Orientation Switch" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:37:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:37:00" />
+			<string key="concept:name" value="Orientation Switch" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:37:00" />
+			<string key="concept:name" value="Orientation Switch" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="d8baa6bcc102652f12221fe18eec4705" />
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:14:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="d96cf694dc904841288eb48c58d05d72" />
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:07:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:54:00" />
+			<string key="concept:name" value="Orientation Switch" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:54:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:06:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="d9e907d966a6cdbba901bb5e753459ba" />
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:13:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="de1712b15e53d2017cf1be927de6b010" />
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:18:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:19:00" />
+			<string key="concept:name" value="Trial Sign Up Completed" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="e3b55cc4dbf2c5bd84af7f04eee4064e" />
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:27:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:27:00" />
+			<string key="concept:name" value="Tab Switched" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:27:00" />
+			<string key="concept:name" value="Tab Switched" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:32:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:32:00" />
+			<string key="concept:name" value="Tab Switched" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:34:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:19:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:20:00" />
+			<string key="concept:name" value="Orientation Switch" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:20:00" />
+			<string key="concept:name" value="Orientation Switch" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:20:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="e421d69ced85ac1f4f1f89d41aa09c36" />
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:24:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:32:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="e45fcc59771da384ec4f6252ef130fa9" />
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:10:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:10:00" />
+			<string key="concept:name" value="Show More Graphs" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:10:00" />
+			<string key="concept:name" value="Show More Graphs" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="e7f92edd633a8500a3c6408ff98b1b1a" />
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:21:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:22:00" />
+			<string key="concept:name" value="Trial Sign Up Completed" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:22:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:25:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="e8b0f503c5720f3c305f37871c4fef40" />
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:38:00" />
+			<string key="concept:name" value="Graph Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:39:00" />
+			<string key="concept:name" value="Graph Saved in Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:39:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:39:00" />
+			<string key="concept:name" value="Edit Graph from Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:39:00" />
+			<string key="concept:name" value="Graph Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:40:00" />
+			<string key="concept:name" value="Graph Saved in Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:40:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:41:00" />
+			<string key="concept:name" value="Graph Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:41:00" />
+			<string key="concept:name" value="Graph Saved in Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:41:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:42:00" />
+			<string key="concept:name" value="Edit Graph from Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:42:00" />
+			<string key="concept:name" value="Graph Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:44:00" />
+			<string key="concept:name" value="Graph Saved in Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:45:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:47:00" />
+			<string key="concept:name" value="Edit Graph from Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:47:00" />
+			<string key="concept:name" value="Graph Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:50:00" />
+			<string key="concept:name" value="Graph Saved in Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:50:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:50:00" />
+			<string key="concept:name" value="Edit Graph from Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:50:00" />
+			<string key="concept:name" value="Graph Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:51:00" />
+			<string key="concept:name" value="Graph Saved in Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:51:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:51:00" />
+			<string key="concept:name" value="Edit Graph from Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:51:00" />
+			<string key="concept:name" value="Graph Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:52:00" />
+			<string key="concept:name" value="Graph Saved in Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:52:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:57:00" />
+			<string key="concept:name" value="Graph Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:57:00" />
+			<string key="concept:name" value="Graph Saved in Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:57:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:57:00" />
+			<string key="concept:name" value="Edit Graph from Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:57:00" />
+			<string key="concept:name" value="Graph Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:57:00" />
+			<string key="concept:name" value="Graph Saved in Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:57:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:58:00" />
+			<string key="concept:name" value="Edit Graph from Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:58:00" />
+			<string key="concept:name" value="Graph Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:58:00" />
+			<string key="concept:name" value="Graph Saved in Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:58:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:58:00" />
+			<string key="concept:name" value="Edit Graph from Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:58:00" />
+			<string key="concept:name" value="Graph Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:58:00" />
+			<string key="concept:name" value="Graph Saved in Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:58:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:00:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:01:00" />
+			<string key="concept:name" value="Edit Graph from Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:01:00" />
+			<string key="concept:name" value="Graph Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:01:00" />
+			<string key="concept:name" value="Graph Saved in Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:01:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:03:00" />
+			<string key="concept:name" value="Build Graph from Library" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:03:00" />
+			<string key="concept:name" value="Graph Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:08:00" />
+			<string key="concept:name" value="Graph Saved in Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:09:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:10:00" />
+			<string key="concept:name" value="Edit Graph from Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:10:00" />
+			<string key="concept:name" value="Graph Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:10:00" />
+			<string key="concept:name" value="Graph Saved in Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:10:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:11:00" />
+			<string key="concept:name" value="Edit Graph from Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:11:00" />
+			<string key="concept:name" value="Graph Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:11:00" />
+			<string key="concept:name" value="Graph Saved in Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:11:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:13:00" />
+			<string key="concept:name" value="Sidebar Help" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:13:00" />
+			<string key="concept:name" value="Help Resource" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:13:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:14:00" />
+			<string key="concept:name" value="Add Blank Tab" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:14:00" />
+			<string key="concept:name" value="Add Button" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:14:00" />
+			<string key="concept:name" value="Build a New Graph Button" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:15:00" />
+			<string key="concept:name" value="Graph Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:15:00" />
+			<string key="concept:name" value="Graph Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:15:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:16:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:16:00" />
+			<string key="concept:name" value="Edit Graph from Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:16:00" />
+			<string key="concept:name" value="Graph Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:16:00" />
+			<string key="concept:name" value="Graph Saved in Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:16:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:17:00" />
+			<string key="concept:name" value="Logo Change Started" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:18:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:18:00" />
+			<string key="concept:name" value="Logo Change Started" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:18:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:20:00" />
+			<string key="concept:name" value="Sidebar Help" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:21:00" />
+			<string key="concept:name" value="Sidebar Help" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:21:00" />
+			<string key="concept:name" value="View Plans" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:21:00" />
+			<string key="concept:name" value="Guide Start" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:23:00" />
+			<string key="concept:name" value="Purchase Company Details" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:23:00" />
+			<string key="concept:name" value="Purchase Billing Details" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:24:00" />
+			<string key="concept:name" value="Purchase Confirm Details" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="ea0a1aa5119972fc3c8b79db33fcc37b" />
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:02:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:23:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:38:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:56:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:58:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:29:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:31:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:32:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="ec6d36c64937ed51f7af24b197b54a44" />
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:05:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:05:00" />
+			<string key="concept:name" value="Trial Sign Up Completed" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:05:00" />
+			<string key="concept:name" value="Guide Start" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:05:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:05:00" />
+			<string key="concept:name" value="Guide Start" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:05:00" />
+			<string key="concept:name" value="Guide Exit" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:05:00" />
+			<string key="concept:name" value="Guide Start" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:06:00" />
+			<string key="concept:name" value="Create Data Source" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:06:00" />
+			<string key="concept:name" value="Data Source Connector" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:08:00" />
+			<string key="concept:name" value="Data Source Created" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:08:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:08:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:08:00" />
+			<string key="concept:name" value="Guide Start" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:08:00" />
+			<string key="concept:name" value="Guide Exit" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:08:00" />
+			<string key="concept:name" value="Add Blank Tab" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:08:00" />
+			<string key="concept:name" value="Guide Start" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:09:00" />
+			<string key="concept:name" value="Add Button" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:09:00" />
+			<string key="concept:name" value="Guide Exit" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:09:00" />
+			<string key="concept:name" value="Guide Start" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:09:00" />
+			<string key="concept:name" value="Graph Gallery" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:09:00" />
+			<string key="concept:name" value="Add Button" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:09:00" />
+			<string key="concept:name" value="Guide Exit" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:09:00" />
+			<string key="concept:name" value="Graph Gallery" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:09:00" />
+			<string key="concept:name" value="Build a New Graph Button" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:09:00" />
+			<string key="concept:name" value="Guide Exit" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:09:00" />
+			<string key="concept:name" value="Graph Editor" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="ecc5f4de6cf76814312b3f8b842256de" />
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:14:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="ee647f4e3514e2f71f4ede8d054fcc60" />
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:35:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="f217c8a4e6e2c34f758f0dfe4ebb996d" />
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:29:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:54:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="f58458f96ff402c5c463c306532ecd1b" />
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:36:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:37:00" />
+			<string key="concept:name" value="Tab Switched" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:45:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="f9375b795735486891aae3367d0adc7b" />
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:00:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:00:00" />
+			<string key="concept:name" value="Tab Switched" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:25:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:44:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:44:00" />
+			<string key="concept:name" value="Tab Switched" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:46:00" />
+			<string key="concept:name" value="Tab Switched" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:46:00" />
+			<string key="concept:name" value="Orientation Switch" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:47:00" />
+			<string key="concept:name" value="Orientation Switch" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:47:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:47:00" />
+			<string key="concept:name" value="Orientation Switch" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:58:00" />
+			<string key="concept:name" value="Orientation Switch" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:58:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<date key="time:timestamp" value="2018-08-01T00:58:00" />
+			<string key="concept:name" value="Orientation Switch" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="f9b184929e3c74c212e173fe58b65b34" />
+		<event>
+			<date key="time:timestamp" value="2018-08-01T01:43:00" />
+			<string key="concept:name" value="View Dashboard" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+</log>
