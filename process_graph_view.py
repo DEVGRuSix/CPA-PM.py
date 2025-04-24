@@ -238,7 +238,6 @@ class ProcessGraphView(QGraphicsView):
 
     def reset_view(self):
         self.auto_fit_view()
-
     def wheelEvent(self, event):
         if event.modifiers() == Qt.ControlModifier:
             delta = event.angleDelta().y()
