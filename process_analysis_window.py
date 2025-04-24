@@ -350,6 +350,21 @@ class ProcessAnalysisWindow(QMainWindow):
         else:
             QMessageBox.information(self, "提示", "没有可以撤销的操作。")
 
+    def redo_last_change(self):
+        if hasattr(self, "redo_stack") and self.redo_stack:
+            # ✅ 同时备份当前状态（用于再撤销）
+            self.activity_ops_history.append(self.activity_ops.copy())
+            self.log_history.append(self.current_log)
+
+            # ✅ 恢复 redo 的状态
+            self.activity_ops, self.current_log = self.redo_stack.pop()
+
+            self.update_activity_ops_list()
+            self.update_graph_with_filter()
+            self.update_dataset_preview()
+        else:
+            QMessageBox.information(self, "提示", "没有可以重做的操作。")
+
     def cpa_keep_first(self):
         """
         保留每条 trace 中每种活动的首次出现
@@ -676,20 +691,7 @@ class ProcessAnalysisWindow(QMainWindow):
         self.update_graph_with_filter()
         self.update_dataset_preview()
 
-    def redo_last_change(self):
-        if hasattr(self, "redo_stack") and self.redo_stack:
-            # ✅ 同时备份当前状态（用于再撤销）
-            self.activity_ops_history.append(self.activity_ops.copy())
-            self.log_history.append(self.current_log)
 
-            # ✅ 恢复 redo 的状态
-            self.activity_ops, self.current_log = self.redo_stack.pop()
-
-            self.update_activity_ops_list()
-            self.update_graph_with_filter()
-            self.update_dataset_preview()
-        else:
-            QMessageBox.information(self, "提示", "没有可以重做的操作。")
 
     def open_aggregate_activity_dialog(self):
         from aggregate_activity_dialog import AggregateActivityDialog
