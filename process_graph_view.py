@@ -1,13 +1,12 @@
-# process_graph_view.py
 import networkx as nx
 from PyQt5.QtWidgets import (
     QGraphicsView, QGraphicsScene, QGraphicsPathItem, QGraphicsItem,
-    QGraphicsTextItem, QDialog, QLabel, QVBoxLayout
+    QGraphicsTextItem, QDialog, QLabel, QVBoxLayout, QPushButton
 )
 from PyQt5.QtGui import (
     QPen, QBrush, QColor, QFont, QPainter, QFontMetrics, QPainterPath, QPolygonF
 )
-from PyQt5.QtCore import Qt, QPointF
+from PyQt5.QtCore import Qt, QPointF, QTimer
 
 from pm4py.algo.discovery.dfg import algorithm as dfg_discovery
 from networkx.drawing.nx_pydot import graphviz_layout
@@ -16,8 +15,10 @@ import re
 from collections import Counter
 import math
 
+
 def sanitize_label(label):
     return re.sub(r'[^a-zA-Z0-9_]', '_', str(label))
+
 
 class ProcessGraphView(QGraphicsView):
     def __init__(self, parent=None):
@@ -27,15 +28,77 @@ class ProcessGraphView(QGraphicsView):
         self.setRenderHint(QPainter.Antialiasing)
         self.setDragMode(QGraphicsView.ScrollHandDrag)
         self.setTransformationAnchor(QGraphicsView.AnchorUnderMouse)
-        self.scale(1.0, 1.0)
+        self._current_scale = 2.0
+        self.scale(self._current_scale, self._current_scale)
+
+        # ===== 缩放控制按钮（右下角） =====
+        self.zoom_label = QLabel("100%", self)
+        self.zoom_label.setStyleSheet("""
+            QLabel {
+                background-color: rgba(255,255,255,230);
+                border: 1px solid gray;
+                border-radius: 4px;
+                padding: 2px 6px;
+            }
+        """)
+        self.zoom_label.setAlignment(Qt.AlignCenter)
+        self.zoom_label.mousePressEvent = self._on_zoom_reset
+
+        self.btn_zoom_in = QPushButton("＋", self)
+        self.btn_zoom_in.setFixedSize(20, 20)
+        self.btn_zoom_in.clicked.connect(self._zoom_in)
+
+        self.btn_zoom_out = QPushButton("－", self)
+        self.btn_zoom_out.setFixedSize(20, 20)
+        self.btn_zoom_out.clicked.connect(self._zoom_out)
+
+        self._update_zoom_controls()
+
+    def resizeEvent(self, event):
+        super().resizeEvent(event)
+        self._update_zoom_controls()
+
+    def _update_zoom_controls(self):
+        spacing = 6
+        w, h = self.viewport().width(), self.viewport().height()
+
+        self.zoom_label.move(w - self.zoom_label.width() - spacing, h - 30)
+        self.btn_zoom_in.move(w - 50, h - 60)
+        self.btn_zoom_out.move(w - 25, h - 60)
+
+        self.zoom_label.show()
+        self.btn_zoom_in.show()
+        self.btn_zoom_out.show()
+
+    def _update_zoom_label(self):
+        percent = int(self._current_scale * 100)
+        self.zoom_label.setText(f"{percent}%")
+        self.zoom_label.adjustSize()
+        self._update_zoom_controls()
+
+    def _on_zoom_reset(self, event):
+        self.reset_view()
+
+    def _zoom_in(self):
+        self._scale_view(1.15)
+
+    def _zoom_out(self):
+        self._scale_view(1 / 1.15)
+
+    def _scale_view(self, factor):
+        self._current_scale *= factor
+        self.scale(factor, factor)
+        self._update_zoom_label()
 
     def draw_from_event_log(self, event_log, act_percent=100, edge_percent=100):
         self.scene.clear()
+        self._current_scale = 1.0
+        self.resetTransform()
+
         if not event_log:
             return
 
         dfg = dfg_discovery.apply(event_log)
-
         activity_counts = {}
         for trace in event_log:
             for event in trace:
@@ -106,7 +169,6 @@ class ProcessGraphView(QGraphicsView):
             line.setToolTip(f"{src} → {tgt}\n频次: {weight}")
             self.scene.addItem(line)
 
-            # 文字频次中间标注
             mid_x = (x1 + x2) / 2
             mid_y = (y1 + y2) / 2
             freq_text = QGraphicsTextItem(str(weight))
@@ -116,7 +178,6 @@ class ProcessGraphView(QGraphicsView):
             freq_text.setZValue(2)
             self.scene.addItem(freq_text)
 
-            # 箭头
             self._add_arrow_head(x1, y1, x2, y2, pen)
 
         for act_clean in keep_acts:
@@ -164,11 +225,25 @@ class ProcessGraphView(QGraphicsView):
             node_item.setData(0, act_name)
             node_item.mousePressEvent = self._make_node_click_handler(act_name, freq_count)
 
+        self.auto_fit_view()
+
+    def auto_fit_view(self):
+        if self.scene.items():
+            rect = self.scene.itemsBoundingRect()
+            self.fitInView(rect, Qt.KeepAspectRatio)
+            self.centerOn(rect.center())
+            self._current_scale = 2.0  # ✅ 这里改为 2.0
+            self.scale(2.0, 2.0)
+            self._update_zoom_label()
+
+    def reset_view(self):
+        self.auto_fit_view()
+
     def wheelEvent(self, event):
         if event.modifiers() == Qt.ControlModifier:
             delta = event.angleDelta().y()
             zoom_factor = 1.15 if delta > 0 else 1 / 1.15
-            self.scale(zoom_factor, zoom_factor)
+            self._scale_view(zoom_factor)
         else:
             super().wheelEvent(event)
 
@@ -185,18 +260,14 @@ class ProcessGraphView(QGraphicsView):
 
     def _add_arrow_head(self, x1, y1, x2, y2, pen):
         arrow_size = 5.0
-
-        # 计算方向
         dx = x2 - x1
         dy = y2 - y1
         angle = math.atan2(dy, dx)
 
-        # 箭头位置设为线段上 3/4 的位置
         ratio = 0.55
         arrow_x = x1 + ratio * dx
         arrow_y = y1 + ratio * dy
 
-        # 计算箭头三角形的三个点
         p1 = QPointF(arrow_x, arrow_y)
         p2 = QPointF(arrow_x - arrow_size * math.cos(angle - math.radians(20)),
                      arrow_y - arrow_size * math.sin(angle - math.radians(20)))
@@ -212,4 +283,3 @@ class ProcessGraphView(QGraphicsView):
         arrow_item.setPen(pen)
         arrow_item.setZValue(10)
         self.scene.addItem(arrow_item)
-
