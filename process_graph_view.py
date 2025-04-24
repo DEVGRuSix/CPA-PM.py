@@ -163,6 +163,7 @@ class ProcessGraphView(QGraphicsView):
             node_item.setFlag(QGraphicsItem.ItemIsSelectable)
             node_item.setData(0, act_name)
             node_item.mousePressEvent = self._make_node_click_handler(act_name, freq_count)
+        self.auto_fit_view()
 
     def wheelEvent(self, event):
         if event.modifiers() == Qt.ControlModifier:
@@ -212,4 +213,10 @@ class ProcessGraphView(QGraphicsView):
         arrow_item.setPen(pen)
         arrow_item.setZValue(10)
         self.scene.addItem(arrow_item)
+
+    def auto_fit_view(self):
+        if self.scene.items():
+            rect = self.scene.itemsBoundingRect()
+            self.fitInView(rect, Qt.KeepAspectRatio)
+            self.centerOn(rect.center())  # ✅ 关键：让图形在视图中居中显示
 

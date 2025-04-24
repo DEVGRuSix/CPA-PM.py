@@ -4,9 +4,9 @@ from typing import Dict, Callable
 from PyQt5.QtWidgets import (
     QApplication, QMainWindow, QFileDialog, QWidget, QLabel, QPushButton, QComboBox,
     QVBoxLayout, QHBoxLayout, QTableWidget, QTableWidgetItem, QMessageBox,
-    QGroupBox, QGridLayout, QListWidget, QListWidgetItem
+    QGroupBox, QGridLayout, QListWidget, QListWidgetItem, QSizePolicy, QProgressDialog, QDialog
 )
-from PyQt5.QtCore import Qt
+from PyQt5.QtCore import Qt, QTimer
 from pm4py.objects.log.exporter.xes import exporter as xes_exporter
 from pm4py.objects.log.util import dataframe_utils
 from pm4py.objects.conversion.log import converter as log_converter
@@ -16,12 +16,14 @@ PREVIEW_ROWS = 200
 
 # ---------- 辅助 ----------
 def clean_headers_unique(df: pd.DataFrame) -> pd.DataFrame:
+    """去除列名空格/特殊字符并转小写，确保唯一"""
     new_cols, seen = [], {}
     for col in df.columns:
         c = re.sub(r'[^0-9a-zA-Z_]+', '', col.strip().lower()) or "col"
         seen[c] = seen.get(c, 0) + 1
         new_cols.append(c if seen[c] == 1 else f"{c}_{seen[c]-1}")
-    df.columns = new_cols; return df
+    df.columns = new_cols
+    return df
 
 TYPE_RULES: Dict[str, Callable[[pd.Series], pd.Series]] = {
     r'^-?\d+$'           : pd.to_numeric,
@@ -32,27 +34,53 @@ TYPE_RULES: Dict[str, Callable[[pd.Series], pd.Series]] = {
     r'^\d{4}-\d{2}-\d{2}': pd.to_datetime
 }
 def smart_cast_columns(df: pd.DataFrame) -> pd.DataFrame:
+    """智能类型转换"""
     for col in df.columns:
-        if df[col].dtype.kind in "biufcM": continue
+        if df[col].dtype.kind in "biufcM":
+            continue
         sample = df[col].dropna().astype(str).head(50)
         for pat, func in TYPE_RULES.items():
             if sample.str.match(pat).all():
-                try: df[col] = func(df[col]); break
-                except Exception: pass
+                try:
+                    df[col] = func(df[col])
+                except Exception:
+                    pass
+                break
         if df[col].nunique(dropna=True) <= 20:
             df[col] = df[col].astype("category")
     return df
 
 def show_preview(tbl: QTableWidget, df: pd.DataFrame):
+    """在预览表格中显示前 PREVIEW_ROWS 行"""
     tbl.clear()
     if df is None or df.empty:
-        tbl.setRowCount(0); tbl.setColumnCount(0); return
+        tbl.setRowCount(0)
+        tbl.setColumnCount(0)
+        return
     m, n = min(PREVIEW_ROWS, len(df)), len(df.columns)
-    tbl.setRowCount(m); tbl.setColumnCount(n)
+    tbl.setRowCount(m)
+    tbl.setColumnCount(n)
     tbl.setHorizontalHeaderLabels(df.columns.astype(str).tolist())
     for r in range(m):
         for c in range(n):
             tbl.setItem(r, c, QTableWidgetItem(str(df.iat[r, c])))
+    tbl.resizeColumnsToContents()  # 自动调整列宽
+
+class ProcessingDialog(QDialog):
+    def __init__(self, parent=None, message="正在处理..."):
+        super().__init__(parent)
+        self.setWindowTitle("请稍候")
+        self.setModal(True)
+        self.setWindowFlags(self.windowFlags() & ~Qt.WindowContextHelpButtonHint)
+        self.setFixedSize(200, 80)
+
+        label = QLabel(message, self)
+        label.setAlignment(Qt.AlignCenter)
+
+        layout = QVBoxLayout()
+        layout.addWidget(label)
+        self.setLayout(layout)
+
 
 # ---------- 主窗口 ----------
 class CSV2XESConverter(QMainWindow):
@@ -61,211 +89,347 @@ class CSV2XESConverter(QMainWindow):
         self.setWindowTitle("CSV → XES 预处理工具")
         self.resize(1050, 680)
 
-        self.df_orig = None      # 原始数据（保持列全集）
+        self.df_orig = None      # 原始数据
         self.df_work = None      # 工作副本
-        self.all_cols = []       # 原始列全集（始终不变，仅列名可能因清理而变）
+        self.all_cols = []       # 原始列全集
         self.undo_stack = []
+        # 保存当前在复选栏中选中的额外列
+        self.selected_extra_cols = []
 
         self.build_ui()
 
-    # ---- UI ----
+    # ---- UI 构建 ----
     def build_ui(self):
-        cw = QWidget(self); self.setCentralWidget(cw)
+        cw = QWidget(self)
+        self.setCentralWidget(cw)
         out = QVBoxLayout(cw)
 
         # 文件栏
         bar = QHBoxLayout()
         self.lab_file = QLabel("未加载文件")
-        btn_open = QPushButton("浏览…"); btn_open.clicked.connect(self.open_file)
-        bar.addWidget(self.lab_file); bar.addStretch(); bar.addWidget(btn_open)
+        btn_open = QPushButton("浏览…")
+        btn_open.clicked.connect(self.open_file)
+        bar.addWidget(self.lab_file)
+        bar.addStretch()
+        bar.addWidget(btn_open)
         out.addLayout(bar)
 
-        # 预览
+        # 预览表格
         self.tbl = QTableWidget(editTriggers=QTableWidget.NoEditTriggers)
         self.tbl.horizontalHeader().setStretchLastSection(True)
         out.addWidget(self.tbl)
 
-        # 映射 / 时间
-        grp = QGroupBox("列映射与时间格式"); grid = QGridLayout(grp)
-        self.cbo_case = QComboBox(); self.cbo_act = QComboBox(); self.cbo_time = QComboBox()
-        grid.addWidget(QLabel("CaseID"), 0, 0); grid.addWidget(self.cbo_case, 0, 1)
-        grid.addWidget(QLabel("Activity"),1, 0); grid.addWidget(self.cbo_act, 1, 1)
-        grid.addWidget(QLabel("Timestamp"),2,0); grid.addWidget(self.cbo_time,2, 1)
+        # 列映射与时间格式
+        # 列映射与时间格式 —— 左Label + 右控件整体右对齐
+        grp = QGroupBox("列映射与时间格式")
+        vbox_all = QVBoxLayout(grp)
+
+        def make_right_aligned_row(label_text, widget1, widget2=None):
+            row = QHBoxLayout()
+
+            # Label：左对齐、固定宽度
+            lbl = QLabel(label_text)
+            lbl.setFixedWidth(90)
+            lbl.setAlignment(Qt.AlignLeft | Qt.AlignVCenter)
+            row.addWidget(lbl)
+
+            row.addStretch()  # 控件整体右对齐的关键
+
+            if widget2 is None:
+                widget1.setFixedWidth(300)
+                widget1.setSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
+                row.addWidget(widget1, alignment=Qt.AlignRight)
+            else:
+                widget1.setFixedWidth(190)
+                widget2.setFixedWidth(100)
+
+                # 控件组合区（不使用额外 QWidget，直接用 Layout 放进去）
+                hbox_controls = QHBoxLayout()
+                hbox_controls.setContentsMargins(0, 0, 0, 0)  # 防止边缘间距撑开
+                hbox_controls.setSpacing(10)
+                hbox_controls.addStretch()  # 控件组合整体右对齐
+                hbox_controls.addWidget(widget1)
+                hbox_controls.addWidget(widget2)
+
+                row.addLayout(hbox_controls)  # 不用 QWidget，直接加进去
+
+            return row
+
+        # ---- 控件初始化 ----
+        self.cbo_case = QComboBox()
+        self.cbo_act = QComboBox()
+        self.cbo_time = QComboBox()
+
         self.cbo_fmt = QComboBox(editable=True)
         self.cbo_fmt.addItems([
             "%m/%d/%Y %H:%M",
-            "%m/%d/%Y_%H:%M",          # 新增
+            "%m/%d/%Y_%H:%M",
             "%Y-%m-%d %H:%M:%S",
             "%d-%m-%Y %H:%M",
             "%Y/%m/%d %H:%M:%S",
             "%Y.%m.%d %H:%M:%S",
             "自动检测"
         ])
-        grid.addWidget(QLabel("原时间格式"),3,0); grid.addWidget(self.cbo_fmt,3,1)
+        self.btn_clean_time = QPushButton("清理时间格式")
+        self.btn_clean_time.clicked.connect(self.clean_time)
+
+        # ---- 构建每行 ----
+        vbox_all.addLayout(make_right_aligned_row("CaseID", self.cbo_case))
+        vbox_all.addLayout(make_right_aligned_row("Activity", self.cbo_act))
+        vbox_all.addLayout(make_right_aligned_row("Timestamp", self.cbo_time))
+        vbox_all.addLayout(make_right_aligned_row("原时间格式", self.cbo_fmt, self.btn_clean_time))
+
         out.addWidget(grp)
 
-        # 保留列
-        out.addWidget(QLabel("保留列（除三主列外，内容固定，勾选=保留）"))
+        # 保留列复选栏（除三主列外，内容固定，选中=保留）
+        out.addWidget(QLabel("保留列（选中后参与导出与分析）"))
         self.lst = QListWidget(selectionMode=QListWidget.MultiSelection, maximumHeight=160)
         out.addWidget(self.lst)
 
-        # 按钮
+        # 底部按钮行
         btn_row = QHBoxLayout()
         btns = {
-            "撤销":      self.undo,
-            "应用列选择": self.apply_cols,
-            "清理列标题": self.clean_headers,
-            "清理时间格式":self.clean_time,
+            "撤销":        self.undo,
+            "应用列选择":  self.apply_cols,
             "按 Case+Time 排序": self.sort_case_time,
-            "类型转换":  self.cast_types,
-            "导出 XES": self.export_xes,
-            "开始分析":  self.analyse
+            "类型转换":    self.cast_types,
+            "导出 XES":    self.export_xes,
+            "开始分析":    self.analyse
         }
-        for t,f in btns.items():
-            b = QPushButton(t); b.clicked.connect(f); btn_row.addWidget(b)
-        btn_row.addStretch(); out.addLayout(btn_row)
+        for text, func in btns.items():
+            b = QPushButton(text)
+            b.clicked.connect(func)
+            btn_row.addWidget(b)
+        btn_row.addStretch()
+        out.addLayout(btn_row)
 
-    # ---- 文件 ----
+    # ---- 文件处理 ----
     def open_file(self):
         path, _ = QFileDialog.getOpenFileName(self, "选择 CSV", os.getcwd(), "CSV (*.csv)")
-        if not path: return
+        if not path:
+            return
         try:
-            self.df_orig = pd.read_csv(path, engine="pyarrow", low_memory=True)
+            df = pd.read_csv(path, engine="pyarrow", low_memory=True)
         except UnicodeDecodeError:
-            with open(path,'rb') as fh:
+            with open(path, 'rb') as fh:
                 enc = chardet.detect(fh.read(200_000))['encoding'] or 'utf-8'
-            self.df_orig = pd.read_csv(path, encoding=enc, low_memory=False)
+            df = pd.read_csv(path, encoding=enc, low_memory=False)
         except Exception as e:
-            QMessageBox.critical(self,"加载失败",str(e)); return
+            QMessageBox.critical(self, "加载失败", str(e))
+            return
 
-        self.df_work = self.df_orig.copy()
-        self.all_cols = self.df_orig.columns.tolist()
+        # 自动清理列标题
+        df = clean_headers_unique(df)
+
+        self.df_orig = df
+        self.df_work = df.copy()
+        self.all_cols = df.columns.tolist()
         self.lab_file.setText(os.path.basename(path))
+        self.selected_extra_cols = []  # 重置复选状态
         self.refresh_ui()
 
     # ---- UI 刷新 ----
     def refresh_ui(self):
-        if self.df_work is None: return
+        if self.df_work is None:
+            return
         cols = self.all_cols
+        mains = {
+            self.cbo_case.currentText(),
+            self.cbo_act.currentText(),
+            self.cbo_time.currentText()
+        }
 
-        # 下拉映射
+        # 刷新下拉映射
         for cbo in (self.cbo_case, self.cbo_act, self.cbo_time):
-            cbo.blockSignals(True); cbo.clear(); cbo.addItems(cols); cbo.blockSignals(False)
+            cbo.blockSignals(True)
+            cbo.clear()
+            cbo.addItems(cols)
+            cbo.blockSignals(False)
         self.auto_map(cols)
 
-        # 保留列列表（内容固定）
-        self.lst.blockSignals(True); self.lst.clear()
+        # 刷新保留列列表，仅剩余列可选
+        self.lst.blockSignals(True)
+        self.lst.clear()
         mains = {self.cbo_case.currentText(), self.cbo_act.currentText(), self.cbo_time.currentText()}
         for c in cols:
-            if c in mains: continue
+            if c in mains:
+                continue
             item = QListWidgetItem(c)
-            item.setSelected(c in self.df_work.columns)   # 勾选状态=当前是否保留
+            item.setSelected(c in self.selected_extra_cols)
             self.lst.addItem(item)
         self.lst.blockSignals(False)
 
+        # 预览
         show_preview(self.tbl, self.df_work)
 
     def auto_map(self, cols):
         def pick(keys, target):
             for k in keys:
                 for c in cols:
-                    if k in c.lower(): target.setCurrentText(c); return
+                    if k in c.lower():
+                        target.setCurrentText(c)
+                        return
         pick(("case","case_id","company"), self.cbo_case)
         pick(("event","activity"), self.cbo_act)
         pick(("time","date","timestamp"), self.cbo_time)
 
-    # ---- Undo ----
+    # ---- 撤销 ----
     def push_undo(self):
         if self.df_work is not None:
             self.undo_stack.append(self.df_work.copy())
+
     def undo(self):
         if not self.undo_stack:
-            QMessageBox.information(self,"提示","无可撤销"); return
-        self.df_work = self.undo_stack.pop(); self.refresh_ui()
-
-    # ---- 功能 ----
-    def apply_cols(self):
-        if self.df_work is None: return
-        mains = [self.cbo_case.currentText(), self.cbo_act.currentText(), self.cbo_time.currentText()]
-        keep  = mains + [i.text() for i in self.lst.selectedItems()]
-        keep  = list(dict.fromkeys(keep))  # 去重保持顺序
-        self.push_undo(); self.df_work = self.df_orig[keep].copy()
-        self.refresh_ui()                  # 仅勾选状态变化，列表内容不变
-
-    def clean_headers(self):
-        if self.df_work is None: return
-        self.push_undo()
-        self.df_work = clean_headers_unique(self.df_work)
-        # 同步原始副本与列全集
-        self.df_orig = self.df_work.copy()
-        self.all_cols = self.df_work.columns.tolist()
+            QMessageBox.information(self, "提示", "无可撤销")
+            return
+        self.df_work = self.undo_stack.pop()
         self.refresh_ui()
 
+    # ---- 核心功能 ----
+    def apply_cols(self):
+        if self.df_work is None:
+            return
+        mains = [
+            self.cbo_case.currentText(),
+            self.cbo_act.currentText(),
+            self.cbo_time.currentText()
+        ]
+        # 记录当前复选栏选中的额外列
+        self.selected_extra_cols = [item.text() for item in self.lst.selectedItems()]
+        keep = mains + self.selected_extra_cols
+
+        self.push_undo()
+        # 保留清洗结果 + 加入新列
+        cleaned_cols = [col for col in keep if col in self.df_work.columns]
+        new_cols = [col for col in keep if col not in self.df_work.columns]
+        self.df_work = pd.concat([
+            self.df_work[cleaned_cols],
+            self.df_orig[new_cols]
+        ], axis=1)
+
+        # 只更新预览表格，保留复选框选中状态
+        show_preview(self.tbl, self.df_work)
+
+
     def clean_time(self):
-        if self.df_work is None: return
+        """清理/转换时间列格式"""
+        if self.df_work is None:
+            return
         ts = self.cbo_time.currentText()
-        if not ts: QMessageBox.warning(self,"缺少映射","请先指定 Timestamp 列"); return
+        if not ts:
+            QMessageBox.warning(self, "缺少映射", "请先指定 Timestamp 列")
+            return
         fmt = self.cbo_fmt.currentText().strip()
         self.push_undo()
         try:
-            if fmt in ("","自动检测"):
-                self.df_work = dataframe_utils.convert_timestamp_columns_in_df(self.df_work,[ts])
+            if fmt in ("", "自动检测"):
+                self.df_work = dataframe_utils.convert_timestamp_columns_in_df(self.df_work, [ts])
             else:
                 self.df_work[ts] = pd.to_datetime(self.df_work[ts], format=fmt)
         except Exception as e:
-            QMessageBox.critical(self,"时间解析失败",str(e)); return
+            QMessageBox.critical(self, "时间解析失败", str(e))
+            return
+        # 格式化为统一字符串
         self.df_work[ts] = self.df_work[ts].dt.strftime("%Y-%m-%d %H:%M:%S")
-        show_preview(self.tbl, self.df_work)   # 小刷新即可
+        self.cbo_fmt.setCurrentText("%Y-%m-%d %H:%M:%S")
+        show_preview(self.tbl, self.df_work)
 
     def sort_case_time(self):
-        if self.df_work is None: return
+        if self.df_work is None:
+            return
         case, ts = self.cbo_case.currentText(), self.cbo_time.currentText()
         if not case or not ts:
-            QMessageBox.warning(self,"映射缺失","请映射 Case 与 Timestamp"); return
-        self.push_undo(); self.df_work.sort_values([case, ts], inplace=True)
+            QMessageBox.warning(self, "映射缺失", "请映射 Case 与 Timestamp")
+            return
+        self.push_undo()
+        self.df_work.sort_values([case, ts], inplace=True)
         show_preview(self.tbl, self.df_work)
 
     def cast_types(self):
-        if self.df_work is None: return
-        self.push_undo(); self.df_work = smart_cast_columns(self.df_work)
+        if self.df_work is None:
+            return
+        self.push_undo()
+        self.df_work = smart_cast_columns(self.df_work)
         show_preview(self.tbl, self.df_work)
-        QMessageBox.information(self,"完成","已尝试类型转换")
+        QMessageBox.information(self, "完成", "已尝试类型转换")
 
-    # ---- Export / Analyse ----
+    # ---- 导出 / 分析 ----
     def export_xes(self):
         if self.df_work is None or self.df_work.empty:
-            QMessageBox.warning(self,"提示","无数据可导出"); return
-        case, act, ts = self.cbo_case.currentText(), self.cbo_act.currentText(), self.cbo_time.currentText()
+            QMessageBox.warning(self, "提示", "无数据可导出")
+            return
+        case, act, ts = (
+            self.cbo_case.currentText(),
+            self.cbo_act.currentText(),
+            self.cbo_time.currentText()
+        )
         if "" in (case, act, ts):
-            QMessageBox.warning(self,"提示","映射未完成"); return
-        save, _ = QFileDialog.getSaveFileName(self,"保存 XES", os.getcwd(),"XES (*.xes)")
-        if not save: return
-        if not save.lower().endswith(".xes"): save += ".xes"
-        df = self.df_work.rename(columns={case:"case:concept:name", act:"concept:name", ts:"time:timestamp"})
-        df["lifecycle:transition"]="complete"; df.fillna("unknown", inplace=True)
+            QMessageBox.warning(self, "提示", "映射未完成")
+            return
+        save, _ = QFileDialog.getSaveFileName(self, "保存 XES", os.getcwd(), "XES (*.xes)")
+        if not save:
+            return
+        if not save.lower().endswith(".xes"):
+            save += ".xes"
+        df = self.df_work.rename(columns={
+            case: "case:concept:name",
+            act:  "concept:name",
+            ts:   "time:timestamp"
+        })
+        df["lifecycle:transition"] = "complete"
+        df.fillna("unknown", inplace=True)
         try:
             log = log_converter.apply(df, variant=log_converter.Variants.TO_EVENT_LOG)
             xes_exporter.apply(log, save)
-            QMessageBox.information(self,"成功",f"已导出：\n{save}")
+            QMessageBox.information(self, "成功", f"已导出：\n{save}")
         except Exception as e:
-            QMessageBox.critical(self,"导出失败",str(e))
+            QMessageBox.critical(self, "导出失败", str(e))
 
     def analyse(self):
         if self.df_work is None or self.df_work.empty:
-            QMessageBox.warning(self,"提示","无数据"); return
-        case, act, ts = self.cbo_case.currentText(), self.cbo_act.currentText(), self.cbo_time.currentText()
-        df = self.df_work.rename(columns={case:"case:concept:name", act:"concept:name", ts:"time:timestamp"})
-        df["lifecycle:transition"]="complete"; df.fillna("unknown", inplace=True)
-        try:
-            log = log_converter.apply(df, variant=log_converter.Variants.TO_EVENT_LOG)
-            from process_analysis_window import launch_analysis_window
-            launch_analysis_window(log)
-        except Exception as e:
-            QMessageBox.critical(self,"分析入口错误",str(e))
+            QMessageBox.warning(self, "提示", "无数据")
+            return
+
+        case, act, ts = (
+            self.cbo_case.currentText(),
+            self.cbo_act.currentText(),
+            self.cbo_time.currentText()
+        )
+        df = self.df_work.rename(columns={
+            case: "case:concept:name",
+            act: "concept:name",
+            ts: "time:timestamp"
+        })
+        df["lifecycle:transition"] = "complete"
+        df.fillna("unknown", inplace=True)
+
+        # 显示“正在处理”弹窗
+        dlg = ProcessingDialog(self)
+        dlg.show()
+
+        def do_analysis():
+            try:
+                log = log_converter.apply(df, variant=log_converter.Variants.TO_EVENT_LOG)
+                from process_analysis_window import launch_analysis_window
+                analysis_win = launch_analysis_window(log)
+                analysis_win.raise_()
+            except Exception as e:
+                QMessageBox.critical(self, "分析入口错误", str(e))
+            finally:
+                dlg.close()
+                self.showMinimized()  # ✅ 处理完成后自动最小化主窗口
+
+        QTimer.singleShot(100, do_analysis)
+
 
 # ---- 入口 ----
 def main():
-    import warnings; warnings.filterwarnings("ignore")
-    app = QApplication(sys.argv); win = CSV2XESConverter(); win.show(); sys.exit(app.exec_())
+    import warnings
+    warnings.filterwarnings("ignore")
+    app = QApplication(sys.argv)
+    win = CSV2XESConverter()
+    win.show()
+    sys.exit(app.exec_())
+
 if __name__ == "__main__":
     main()

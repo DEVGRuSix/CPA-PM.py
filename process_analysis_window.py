@@ -1,10 +1,11 @@
 # process_analysis_window.py
+import os
 import sys
 import pandas as pd
 from PyQt5.QtWidgets import (
     QApplication, QMainWindow, QWidget, QHBoxLayout, QVBoxLayout,
     QPushButton, QSplitter, QLabel, QSpinBox, QMessageBox, QSlider,
-    QGroupBox, QTableWidget, QTableWidgetItem, QListWidget, QDialog, QListWidgetItem
+    QGroupBox, QTableWidget, QTableWidgetItem, QListWidget, QDialog, QListWidgetItem, QFileDialog
 )
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QDateTimeEdit, QLineEdit, QGroupBox
@@ -86,7 +87,7 @@ class ProcessAnalysisWindow(QMainWindow):
         splitter_h = QSplitter(Qt.Horizontal)
         self.splitter_main.addWidget(splitter_h)
 
-        self.splitter_main.setSizes([200, 500])  # 初始高度可自行调节
+        self.splitter_main.setSizes([40, 100, 480])  # 初始高度可自行调节
 
         # 左侧流程图
         self.graph_view = ProcessGraphView()
@@ -423,7 +424,7 @@ class ProcessAnalysisWindow(QMainWindow):
                 item = QTableWidgetItem(val)
                 item.setFlags(item.flags() ^ Qt.ItemIsEditable)
                 self.dataset_table.setItem(r, c, item)
-
+        self.dataset_table.resizeColumnsToContents()
     def load_more_rows(self):
         """滚动到底时动态加载更多行"""
         scroll_bar = self.dataset_table.verticalScrollBar()
@@ -798,11 +799,13 @@ class ProcessAnalysisWindow(QMainWindow):
 
 def launch_analysis_window(event_log):
     """
-    供外部程序调用入口
+    供外部程序调用入口，默认全屏显示并返回窗口对象
     """
     global _analysis_window
     app = QApplication.instance()
     if app is None:
         app = QApplication(sys.argv)
     _analysis_window = ProcessAnalysisWindow(event_log)
-    _analysis_window.show()
+    _analysis_window.showMaximized()  # ✅ 默认最大化显示
+    return _analysis_window           # ✅ 返回窗口对象
+
