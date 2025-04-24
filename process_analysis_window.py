@@ -7,6 +7,14 @@ from PyQt5.QtWidgets import (
     QGroupBox, QTableWidget, QTableWidgetItem, QListWidget, QDialog, QListWidgetItem
 )
 from PyQt5.QtCore import Qt
+from PyQt5.QtWidgets import QDateTimeEdit, QLineEdit, QGroupBox
+from PyQt5.QtCore import QDateTime
+# 引入预处理函数
+from cpa_pm_preprocessing import (
+    delete_truncated_traces_start,
+    delete_truncated_traces_end,
+    delete_traces_with_short_length
+)
 
 from process_graph_view import ProcessGraphView
 from pm4py.objects.conversion.log import converter as log_converter
@@ -35,6 +43,7 @@ class ProcessAnalysisWindow(QMainWindow):
         self.dataset_group.setCheckable(True)
         self.dataset_group.setChecked(True)
         self.dataset_group.clicked.connect(self.toggle_dataset_visibility)
+        self.dataset_group.setStyleSheet("QGroupBox::indicator { width: 0px; height: 0px; }")
 
         self.dataset_table = QTableWidget()
         self.dataset_table.setEditTriggers(QTableWidget.NoEditTriggers)
@@ -53,7 +62,23 @@ class ProcessAnalysisWindow(QMainWindow):
         # 用垂直splitter分割“数据集面板”与“流程图+右侧控制面板”
         self.splitter_main = QSplitter(Qt.Vertical)
         self.setCentralWidget(self.splitter_main)
-
+        # —— 新增：概况显示（事件数 / 流程数 / 活动数 / 变体数） ——
+        self.summary_group = QWidget()
+        summary_layout = QHBoxLayout(self.summary_group)
+        self.lbl_summary_events = QLabel("事件数: 0")
+        self.lbl_summary_traces = QLabel("流程数: 0")
+        self.lbl_summary_activities = QLabel("活动数: 0")
+        self.lbl_summary_variants = QLabel("变体数: 0")
+        for lbl in (
+                self.lbl_summary_events,
+                self.lbl_summary_traces,
+                self.lbl_summary_activities,
+                self.lbl_summary_variants
+        ):
+            summary_layout.addWidget(lbl)
+        # 将概况插入 splitter_main 第一行
+        self.splitter_main.insertWidget(0, self.summary_group)
+        self.summary_group.setFixedHeight(self.summary_group.sizeHint().height())
         # 将顶部的“数据集”面板放入 splitter_main
         self.splitter_main.addWidget(self.dataset_group)
 
@@ -149,6 +174,89 @@ class ProcessAnalysisWindow(QMainWindow):
         control_layout.addWidget(self.label_edge_slider)
         control_layout.addWidget(self.slider_edge)
 
+        # —— 新增：高级筛选与操作区 ——
+        adv_group = QGroupBox("高级筛选与操作")
+        adv_layout = QVBoxLayout()
+
+        # 1) 删除不符合起始/结束事件的案例
+        h1 = QHBoxLayout()
+        h1.addWidget(QLabel("起始事件:"))
+        self.edit_req_start = QLineEdit()
+        h1.addWidget(self.edit_req_start)
+        btn_req_start = QPushButton("删除起始不符案例")
+        btn_req_start.clicked.connect(self.delete_traces_by_start)
+        adv_layout.addLayout(h1)
+
+        h2 = QHBoxLayout()
+        h2.addWidget(QLabel("结束事件:"))
+        self.edit_req_end = QLineEdit()
+        h2.addWidget(self.edit_req_end)
+        btn_req_end = QPushButton("删除结束不符案例")
+        btn_req_end.clicked.connect(self.delete_traces_by_end)
+        adv_layout.addLayout(h2)
+
+        # 2) 删除过短案例（按事件数）
+        h3 = QHBoxLayout()
+        h3.addWidget(QLabel("最小事件数:"))
+        self.spin_min_events = QSpinBox()
+        self.spin_min_events.setMinimum(1)
+        h3.addWidget(self.spin_min_events)
+        btn_short = QPushButton("删除过短案例")
+        btn_short.clicked.connect(self.delete_short_traces)
+        adv_layout.addLayout(h3)
+
+        # 3) 删除短持续案例（按总时长秒）
+        h4 = QHBoxLayout()
+        h4.addWidget(QLabel("最小持续(秒):"))
+        self.spin_min_dur = QSpinBox()
+        self.spin_min_dur.setMinimum(0)
+        h4.addWidget(self.spin_min_dur)
+        btn_dur = QPushButton("删除短持续案例")
+        btn_dur.clicked.connect(self.delete_short_duration)
+        adv_layout.addLayout(h4)
+
+        # 4) 时间区间筛选
+        h5 = QHBoxLayout()
+        h5.addWidget(QLabel("开始时间:"))
+        self.dt_start = QDateTimeEdit(QDateTime.currentDateTime())
+        self.dt_start.setCalendarPopup(True)
+        h5.addWidget(self.dt_start)
+        h5.addWidget(QLabel("结束时间:"))
+        self.dt_end = QDateTimeEdit(QDateTime.currentDateTime())
+        self.dt_end.setCalendarPopup(True)
+        h5.addWidget(self.dt_end)
+        btn_time = QPushButton("时间区间筛选")
+        btn_time.clicked.connect(self.filter_by_time_interval)
+        adv_layout.addLayout(h5)
+
+        # 5) 自定义条件
+        h6 = QHBoxLayout()
+        self.edit_custom = QLineEdit()
+        self.edit_custom.setPlaceholderText("如 city=='Ottawa' & `concept:name`=='Start'")
+        h6.addWidget(self.edit_custom)
+        btn_custom = QPushButton("应用自定义筛选")
+        btn_custom.clicked.connect(self.filter_by_custom_condition)
+        adv_layout.addLayout(h6)
+
+        # 6) Top-K 活动
+        h7 = QHBoxLayout()
+        h7.addWidget(QLabel("Top K 活动:"))
+        self.spin_topk = QSpinBox()
+        self.spin_topk.setMinimum(1)
+        self.spin_topk.setValue(5)
+        h7.addWidget(self.spin_topk)
+        btn_topk = QPushButton("显示TopK")
+        btn_topk.clicked.connect(self.show_topk_events)
+        adv_layout.addLayout(h7)
+
+        # 7) 导出CSV 按钮
+        btn_export_csv = QPushButton("导出CSV")
+        btn_export_csv.clicked.connect(self.export_csv)
+        adv_layout.addWidget(btn_export_csv)
+
+        adv_group.setLayout(adv_layout)
+        control_layout.addWidget(adv_group)
+
         control_layout.addStretch()
         splitter_h.addWidget(control_panel)
         splitter_h.setSizes([800, 300])
@@ -232,6 +340,8 @@ class ProcessAnalysisWindow(QMainWindow):
         edge_percent = self.slider_edge.value()
         self.graph_view.draw_from_event_log(self.current_log, act_percent=act_percent, edge_percent=edge_percent)
 
+        self.update_summary()
+
     def undo_last_change(self):
         if self.activity_ops_history:
             self.redo_stack.append(self.activity_ops.copy())  # ✅ 添加当前状态进 redo
@@ -293,6 +403,8 @@ class ProcessAnalysisWindow(QMainWindow):
 
         except Exception as e:
             print("无法更新数据集展示：", e)
+
+        self.update_summary()
 
     def _refresh_dataset_table(self):
         df = getattr(self, "_dataset_df", None)
@@ -585,6 +697,104 @@ class ProcessAnalysisWindow(QMainWindow):
             self.update_activity_ops_list()
             self.reapply_activity_ops()
 
+    def update_summary(self):
+        """更新概况显示"""
+        df = log_converter.apply(self.current_log, variant=log_converter.Variants.TO_DATA_FRAME)
+        num_events    = len(df)
+        num_traces    = df['case:concept:name'].nunique()
+        num_activities= df['concept:name'].nunique()
+        num_variants  = df.sort_values(
+            ['case:concept:name','time:timestamp']
+        ).groupby('case:concept:name')['concept:name'] \
+         .apply(tuple).nunique()
+
+        self.lbl_summary_events.setText(f"事件数: {num_events}")
+        self.lbl_summary_traces.setText(f"流程数: {num_traces}")
+        self.lbl_summary_activities.setText(f"活动数: {num_activities}")
+        self.lbl_summary_variants.setText(f"变体数: {num_variants}")
+
+    def apply_dataframe_op(self, df, desc):
+        """统一将 DataFrame 应用到 current_log，并更新历史/操作列表/UI"""
+        df['lifecycle:transition'] = 'complete'
+        new_log = log_converter.apply(df, variant=log_converter.Variants.TO_EVENT_LOG)
+        self.log_history.append(self.current_log)
+        self.current_log = new_log
+        self.activity_ops_history.append(self.activity_ops.copy())
+        self.activity_ops.append({'type':'custom','desc':desc})
+        self.update_activity_ops_list()
+        self.update_graph_with_filter()
+        self.update_dataset_preview()
+
+    def delete_traces_by_start(self):
+        ev = self.edit_req_start.text().strip()
+        if not ev:
+            QMessageBox.warning(self, "提示", "请输入起始事件名称。"); return
+        df = log_converter.apply(self.current_log, variant=log_converter.Variants.TO_DATA_FRAME)
+        df2 = delete_truncated_traces_start(df, 'case:concept:name', 'concept:name', ev)
+        self.apply_dataframe_op(df2, f"删除未以[{ev}]开头案例")
+
+    def delete_traces_by_end(self):
+        ev = self.edit_req_end.text().strip()
+        if not ev:
+            QMessageBox.warning(self, "提示", "请输入结束事件名称。"); return
+        df = log_converter.apply(self.current_log, variant=log_converter.Variants.TO_DATA_FRAME)
+        df2 = delete_truncated_traces_end(df, 'case:concept:name', 'concept:name', ev)
+        self.apply_dataframe_op(df2, f"删除未以[{ev}]结尾案例")
+
+    def delete_short_traces(self):
+        n = self.spin_min_events.value()
+        df = log_converter.apply(self.current_log, variant=log_converter.Variants.TO_DATA_FRAME)
+        df2= delete_traces_with_short_length(df, 'case:concept:name', n)
+        self.apply_dataframe_op(df2, f"删除事件数< {n}案例")
+
+    def delete_short_duration(self):
+        secs = self.spin_min_dur.value()
+        df = log_converter.apply(self.current_log, variant=log_converter.Variants.TO_DATA_FRAME)
+        # 计算每条 trace 持续：max(ts)-min(ts)
+        dur = df.groupby('case:concept:name')['time:timestamp'] \
+                .agg(lambda x: (x.max()-x.min()).total_seconds())
+        keep = dur[dur>=secs].index
+        df2 = df[df['case:concept:name'].isin(keep)].copy()
+        self.apply_dataframe_op(df2, f"删除持续<{secs}秒案例")
+
+    def filter_by_time_interval(self):
+        start = self.dt_start.dateTime().toPyDateTime()
+        end   = self.dt_end.dateTime().toPyDateTime()
+        df = log_converter.apply(self.current_log, variant=log_converter.Variants.TO_DATA_FRAME)
+        df2 = df[(df['time:timestamp']>=start)&(df['time:timestamp']<=end)].copy()
+        self.apply_dataframe_op(df2, f"时间区间筛选[{start}~{end}]")
+
+    def filter_by_custom_condition(self):
+        expr = self.edit_custom.text().strip()
+        if not expr:
+            QMessageBox.warning(self, "提示", "请输入筛选表达式。"); return
+        df = log_converter.apply(self.current_log, variant=log_converter.Variants.TO_DATA_FRAME)
+        try:
+            df2 = df.query(expr).copy()
+        except Exception as e:
+            QMessageBox.critical(self, "表达式错误", str(e)); return
+        self.apply_dataframe_op(df2, f"自定义筛选[{expr}]")
+
+    def show_topk_events(self):
+        k = self.spin_topk.value()
+        df = log_converter.apply(self.current_log, variant=log_converter.Variants.TO_DATA_FRAME)
+        topk = df['concept:name'].value_counts().head(k)
+        QMessageBox.information(
+            self, "TopK 活动",
+            "\n".join(f"{evt}: {cnt}" for evt,cnt in topk.items())
+        )
+
+    def export_csv(self):
+        """将 current_log 导出为 CSV"""
+        df = log_converter.apply(self.current_log, variant=log_converter.Variants.TO_DATA_FRAME)
+        path, _ = QFileDialog.getSaveFileName(self, "保存 CSV", os.getcwd(), "CSV 文件 (*.csv)")
+        if not path: return
+        if not path.lower().endswith('.csv'): path += '.csv'
+        try:
+            df.to_csv(path, index=False)
+            QMessageBox.information(self, "导出成功", f"已保存：\n{path}")
+        except Exception as e:
+            QMessageBox.critical(self, "导出失败", str(e))
 
 def launch_analysis_window(event_log):
     """
