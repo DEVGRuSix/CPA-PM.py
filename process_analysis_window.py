@@ -201,7 +201,7 @@ class ProcessAnalysisWindow(QMainWindow):
 
         # 2) 删除过短案例（按事件数）
         h_short = QHBoxLayout()
-        h_short.addWidget(QLabel("事件数 ≥"))
+        h_short.addWidget(QLabel("筛选流程事件数 ≥"))
         self.spin_trace_len = QSpinBox()
         self.spin_trace_len.setMinimum(1)
         self.spin_trace_len.setValue(2)
@@ -215,7 +215,7 @@ class ProcessAnalysisWindow(QMainWindow):
 
         # ✅ 新：删除持续过短/过长 trace
         h_dur = QHBoxLayout()
-        h_dur.addWidget(QLabel("持续时间范围 (秒):"))
+        h_dur.addWidget(QLabel("流程持续时间范围 (秒):"))
 
         self.spin_min_dur = QSpinBox()
         self.spin_min_dur.setMinimum(0)
@@ -237,19 +237,30 @@ class ProcessAnalysisWindow(QMainWindow):
 
         adv_layout.addLayout(h_dur)
 
-        # 4) 时间区间筛选
-        h5 = QHBoxLayout()
-        h5.addWidget(QLabel("开始时间:"))
-        self.dt_start = QDateTimeEdit(QDateTime.currentDateTime())
-        self.dt_start.setCalendarPopup(True)
-        h5.addWidget(self.dt_start)
-        h5.addWidget(QLabel("结束时间:"))
-        self.dt_end = QDateTimeEdit(QDateTime.currentDateTime())
-        self.dt_end.setCalendarPopup(True)
-        h5.addWidget(self.dt_end)
-        btn_time = QPushButton("时间区间筛选")
-        btn_time.clicked.connect(self.filter_by_time_interval)
-        adv_layout.addLayout(h5)
+        # 4) 流程起止时间筛选（trace级别）
+        layout_trace_time = QHBoxLayout()
+
+        layout_trace_time.addWidget(QLabel("开始时间:"))
+        self.dt_trace_start = QDateTimeEdit(QDateTime.currentDateTime())
+        self.dt_trace_start.setCalendarPopup(True)
+        layout_trace_time.addWidget(self.dt_trace_start)
+
+        layout_trace_time.addWidget(QLabel("结束时间:"))
+        self.dt_trace_end = QDateTimeEdit(QDateTime.currentDateTime())
+        self.dt_trace_end.setCalendarPopup(True)
+        layout_trace_time.addWidget(self.dt_trace_end)
+
+        # ✅ 设置默认时间为 2018-01-08 00:00:00
+        default_time = QDateTime.fromString("2018-01-08 00:00:00", "yyyy-MM-dd HH:mm:ss")
+        self.dt_trace_start.setDateTime(default_time)
+        self.dt_trace_end.setDateTime(default_time)
+
+        btn_trace_time_filter = QPushButton("筛选")
+        btn_trace_time_filter.clicked.connect(self.filter_by_trace_start_end_time_range)
+        layout_trace_time.addWidget(btn_trace_time_filter)
+
+        adv_layout.addLayout(layout_trace_time)
+
 
         # 5) 自定义条件
         h6 = QHBoxLayout()
@@ -1088,6 +1099,64 @@ class ProcessAnalysisWindow(QMainWindow):
         self.redo_stack.clear()
         self.update_activity_ops_list()
         self.reapply_activity_ops()
+
+    def filter_by_trace_start_end_time_range(self):
+        """
+        筛选 trace 的起止时间范围。
+        保留 start_time >= X 且 end_time <= Y 的流程。
+        """
+        from pm4py.objects.conversion.log import converter as log_converter
+
+        df = log_converter.apply(self.current_log, variant=log_converter.Variants.TO_DATA_FRAME)
+
+        # 确保时间列为 datetime 类型
+        if not pd.api.types.is_datetime64_any_dtype(df["time:timestamp"]):
+            try:
+                df["time:timestamp"] = pd.to_datetime(df["time:timestamp"])
+            except Exception as e:
+                QMessageBox.critical(self, "错误", f"时间格式错误：{str(e)}")
+                return
+
+        # 获取用户设置的起止时间（允许为空）
+        start_dt = self.dt_trace_start.dateTime().toPyDateTime()
+        end_dt = self.dt_trace_end.dateTime().toPyDateTime()
+
+        # 获取每个 trace 的开始/结束时间
+        trace_times = df.groupby("case:concept:name")["time:timestamp"].agg(["min", "max"]).reset_index()
+        trace_times.columns = ["case_id", "start", "end"]
+        from datetime import datetime
+
+        # 默认时间为 2018-01-08 表示未修改
+        default_dt = datetime(2018, 1, 8, 0, 0)
+        use_start = start_dt != default_dt
+        use_end = end_dt != default_dt
+
+        if not use_start and not use_end:
+            QMessageBox.information(self, "提示", "请至少设置开始时间或结束时间。")
+            return
+
+        keep_mask = pd.Series(True, index=trace_times.index)
+        if use_start:
+            keep_mask &= trace_times["start"] >= start_dt
+        if use_end:
+            keep_mask &= trace_times["end"] <= end_dt
+
+        keep_cases = trace_times.loc[keep_mask, "case_id"]
+        if keep_cases.empty:
+            QMessageBox.warning(self, "无匹配", "未找到满足条件的流程。")
+            return
+
+        df2 = df[df["case:concept:name"].isin(keep_cases)].copy()
+
+        # 构造记录描述
+        if use_start and use_end:
+            desc = f"筛选流程起止时间在 [{start_dt.strftime('%Y-%m-%d %H:%M:%S')} ~ {end_dt.strftime('%Y-%m-%d %H:%M:%S')}]"
+        elif use_start:
+            desc = f"筛选流程开始时间 ≥ {start_dt.strftime('%Y-%m-%d %H:%M:%S')}"
+        else:
+            desc = f"筛选流程结束时间 ≤ {end_dt.strftime('%Y-%m-%d %H:%M:%S')}"
+
+        self.apply_dataframe_op(df2, desc)
 
 
 def launch_analysis_window(event_log):

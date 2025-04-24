@@ -310,29 +310,43 @@ class CSV2XESConverter(QMainWindow):
         # 只更新预览表格，保留复选框选中状态
         show_preview(self.tbl, self.df_work)
 
-
     def clean_time(self):
-        """清理/转换时间列格式"""
+        """清理/转换时间列格式，并删除非法时间记录"""
         if self.df_work is None:
             return
+
         ts = self.cbo_time.currentText()
         if not ts:
             QMessageBox.warning(self, "缺少映射", "请先指定 Timestamp 列")
             return
+
         fmt = self.cbo_fmt.currentText().strip()
         self.push_undo()
+
         try:
             if fmt in ("", "自动检测"):
                 self.df_work = dataframe_utils.convert_timestamp_columns_in_df(self.df_work, [ts])
+                self.df_work[ts] = pd.to_datetime(self.df_work[ts], errors="coerce")
             else:
-                self.df_work[ts] = pd.to_datetime(self.df_work[ts], format=fmt)
+                self.df_work[ts] = pd.to_datetime(self.df_work[ts], format=fmt, errors="coerce")
+
+            # 记录非法时间行数
+            n_invalid = self.df_work[ts].isna().sum()
+            self.df_work = self.df_work[self.df_work[ts].notna()].copy()
+
+            # 格式化为统一字符串
+            self.df_work[ts] = self.df_work[ts].dt.strftime("%Y-%m-%d %H:%M:%S")
+            self.cbo_fmt.setCurrentText("%Y-%m-%d %H:%M:%S")
+
+            show_preview(self.tbl, self.df_work)
+            msg = f"已清理时间格式为统一格式：{self.cbo_fmt.currentText()}"
+            if n_invalid > 0:
+                msg += f"\n并删除了 {n_invalid} 条无法解析的记录"
+            QMessageBox.information(self, "时间清洗完成", msg)
+
         except Exception as e:
+            self.undo()
             QMessageBox.critical(self, "时间解析失败", str(e))
-            return
-        # 格式化为统一字符串
-        self.df_work[ts] = self.df_work[ts].dt.strftime("%Y-%m-%d %H:%M:%S")
-        self.cbo_fmt.setCurrentText("%Y-%m-%d %H:%M:%S")
-        show_preview(self.tbl, self.df_work)
 
     def sort_case_time(self):
         if self.df_work is None:
