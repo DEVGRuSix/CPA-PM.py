@@ -213,15 +213,29 @@ class ProcessAnalysisWindow(QMainWindow):
 
         adv_layout.addLayout(h_short)
 
-        # 3) 删除短持续案例（按总时长秒）
-        h4 = QHBoxLayout()
-        h4.addWidget(QLabel("最小持续(秒):"))
+        # ✅ 新：删除持续过短/过长 trace
+        h_dur = QHBoxLayout()
+        h_dur.addWidget(QLabel("持续时间范围 (秒):"))
+
         self.spin_min_dur = QSpinBox()
         self.spin_min_dur.setMinimum(0)
-        h4.addWidget(self.spin_min_dur)
-        btn_dur = QPushButton("删除短持续案例")
-        btn_dur.clicked.connect(self.delete_short_duration)
-        adv_layout.addLayout(h4)
+        self.spin_min_dur.setMaximum(999999)
+        self.spin_min_dur.setValue(0)
+        h_dur.addWidget(QLabel("≥"))
+        h_dur.addWidget(self.spin_min_dur)
+
+        self.spin_max_dur = QSpinBox()
+        self.spin_max_dur.setMinimum(0)
+        self.spin_max_dur.setMaximum(999999)
+        self.spin_max_dur.setValue(0)
+        h_dur.addWidget(QLabel("≤"))
+        h_dur.addWidget(self.spin_max_dur)
+
+        btn_filter_dur = QPushButton("筛选")
+        btn_filter_dur.clicked.connect(self.filter_by_trace_duration)
+        h_dur.addWidget(btn_filter_dur)
+
+        adv_layout.addLayout(h_dur)
 
         # 4) 时间区间筛选
         h5 = QHBoxLayout()
@@ -283,7 +297,10 @@ class ProcessAnalysisWindow(QMainWindow):
         self.activity_ops_history = []
         self.redo_stack = []  # ✅ 初始化重做栈
 
-        self.activity_ops_list.model().rowsMoved.connect(self.on_activity_ops_reordered)
+        # self.activity_ops_list.model().rowsMoved.connect(self.on_activity_ops_reordered)
+
+        self.activity_ops_list.setDragDropMode(QListWidget.InternalMove)
+        self.activity_ops_list.model().rowsMoved.connect(self.sync_ops_after_sort)
 
     def filter_events_by_global_frequency(self):
         """
@@ -692,6 +709,17 @@ class ProcessAnalysisWindow(QMainWindow):
                 desc = op.get("desc", "自定义操作")
             elif op["type"] == "filter_short_trace":
                 desc = f"删除事件数 < {op['min_len']} 的 trace"
+            elif op["type"] == "filter_duration":
+                min_sec = op.get("min_sec", 0)
+                max_sec = op.get("max_sec", 0)
+                if min_sec > 0 and (max_sec == 0 or max_sec == float('inf')):
+                    desc = f"删除持续时间短于 {min_sec} 秒的流程"
+                elif max_sec > 0 and min_sec == 0:
+                    desc = f"删除持续时间长于 {max_sec} 秒的流程"
+                elif min_sec > 0 and max_sec > 0:
+                    desc = f"筛选持续时间在 [{min_sec} ~ {max_sec}] 秒的流程"
+                else:
+                    desc = "筛选持续时间"
 
             else:
                 desc = f"未知操作"
@@ -736,6 +764,12 @@ class ProcessAnalysisWindow(QMainWindow):
             elif op["type"] == "filter_short_trace":
                 trace_counts = df['case:concept:name'].value_counts()
                 keep_cases = trace_counts[trace_counts >= op["min_len"]].index
+                df = df[df['case:concept:name'].isin(keep_cases)].copy()
+            elif op["type"] == "filter_duration":
+                dur = df.groupby('case:concept:name')['time:timestamp'].agg(
+                    lambda x: (x.max() - x.min()).total_seconds()
+                )
+                keep_cases = dur[(dur >= op["min_sec"]) & (dur <= op["max_sec"])].index
                 df = df[df['case:concept:name'].isin(keep_cases)].copy()
 
         df["lifecycle:transition"] = "complete"
@@ -815,19 +849,23 @@ class ProcessAnalysisWindow(QMainWindow):
         self.lbl_summary_activities.setText(f"活动数: {num_activities}")
         self.lbl_summary_variants.setText(f"变体数: {num_variants}")
 
-    def apply_dataframe_op(self, df, desc):
-        """统一将 DataFrame 应用到 current_log，并更新历史/操作列表/UI"""
+    def apply_dataframe_op(self, df, desc, extra_op=None):
         from pm4py.objects.conversion.log import converter as log_converter
 
         df['lifecycle:transition'] = 'complete'
         new_log = log_converter.apply(df, variant=log_converter.Variants.TO_EVENT_LOG)
 
-        # ✅ 同时保存当前日志 & 操作列表到两个历史栈中
         self.log_history.append(self.current_log)
         self.activity_ops_history.append(self.activity_ops.copy())
+        self.redo_stack.clear()
 
         self.current_log = new_log
-        self.activity_ops.append({'type': 'custom', 'desc': desc})
+
+        if extra_op:
+            self.activity_ops.append(extra_op)
+        else:
+            self.activity_ops.append({'type': 'custom', 'desc': desc})
+
         self.update_activity_ops_list()
         self.update_graph_with_filter()
         self.update_dataset_preview()
@@ -859,17 +897,6 @@ class ProcessAnalysisWindow(QMainWindow):
         desc = f"删除不完整 trace（模式：{mode}，起始={start_ev}，结束={end_ev}）"
         self.apply_dataframe_op(df2, desc)
 
-
-
-    def delete_short_duration(self):
-        secs = self.spin_min_dur.value()
-        df = log_converter.apply(self.current_log, variant=log_converter.Variants.TO_DATA_FRAME)
-        # 计算每条 trace 持续：max(ts)-min(ts)
-        dur = df.groupby('case:concept:name')['time:timestamp'] \
-                .agg(lambda x: (x.max()-x.min()).total_seconds())
-        keep = dur[dur>=secs].index
-        df2 = df[df['case:concept:name'].isin(keep)].copy()
-        self.apply_dataframe_op(df2, f"删除持续<{secs}秒案例")
 
     def filter_by_time_interval(self):
         start = self.dt_start.dateTime().toPyDateTime()
@@ -959,9 +986,6 @@ class ProcessAnalysisWindow(QMainWindow):
         self.reapply_activity_ops()
 
     def apply_dataframe_direct(self, df):
-        """
-        不记录操作，仅应用 DataFrame 到 current_log，用于已显式记录的操作。
-        """
         from pm4py.objects.conversion.log import converter as log_converter
         df['lifecycle:transition'] = 'complete'
         self.current_log = log_converter.apply(df, variant=log_converter.Variants.TO_EVENT_LOG)
@@ -991,6 +1015,79 @@ class ProcessAnalysisWindow(QMainWindow):
         })
         self.update_activity_ops_list()
         self.apply_dataframe_direct(df2)
+
+    def filter_by_trace_duration(self):
+        from pm4py.objects.conversion.log import converter as log_converter
+
+        min_sec = self.spin_min_dur.value()
+        max_sec = self.spin_max_dur.value()
+
+        if min_sec > 0 and max_sec > 0 and min_sec > max_sec:
+            QMessageBox.warning(self, "输入有误", "最小值不能大于最大值")
+            return
+
+        df = log_converter.apply(self.current_log, variant=log_converter.Variants.TO_DATA_FRAME)
+        df["time:timestamp"] = pd.to_datetime(df["time:timestamp"], errors="coerce")
+
+        # ✅ 将 max=0 解释为“不设上限”
+        max_sec_effective = float('inf') if max_sec == 0 else max_sec
+
+        durations = df.groupby("case:concept:name")["time:timestamp"].agg(
+            lambda x: (x.max() - x.min()).total_seconds() if not x.isnull().any() else 0
+        )
+
+        keep_cases = durations[(durations >= min_sec) & (durations <= max_sec_effective)].index
+        df2 = df[df["case:concept:name"].isin(keep_cases)].copy()
+
+        if df2.empty:
+            QMessageBox.warning(self, "无数据", "筛选后为空，请检查设置。")
+            return
+
+        # ✅ 构造描述 + 执行操作
+        desc = self.build_duration_filter_description(min_sec, max_sec)
+        self.apply_dataframe_op(df2, desc, extra_op={
+            "type": "filter_duration",
+            "min_sec": min_sec,
+            "max_sec": max_sec
+        })
+
+    def build_duration_filter_description(self, min_sec, max_sec):
+        if min_sec > 0 and max_sec == 0:
+            return f"删除持续时间短于 {min_sec} 秒的流程"
+        elif max_sec > 0 and min_sec == 0:
+            return f"删除持续时间长于 {max_sec} 秒的流程"
+        elif min_sec > 0 and max_sec > 0:
+            return f"筛选持续时间在 [{min_sec} ~ {max_sec}] 秒的流程"
+        else:
+            return "筛选持续时间"
+
+    def build_duration_filter_description(self, min_sec, max_sec):
+        if min_sec > 0 and (max_sec == 0 or max_sec == float('inf')):
+            return f"删除持续时间短于 {min_sec} 秒的流程"
+        elif max_sec > 0 and min_sec == 0:
+            return f"删除持续时间长于 {max_sec} 秒的流程"
+        elif min_sec > 0 and max_sec > 0:
+            return f"筛选持续时间在 [{min_sec} ~ {max_sec}] 秒的流程"
+        else:
+            return "筛选持续时间"
+
+    def sync_ops_after_sort(self, parent, start, end, dest, row):
+        """
+        拖动 QListWidget 操作顺序后，更新 self.activity_ops 的顺序并重新应用
+        """
+        if start == row or start + 1 == row:
+            return  # 无实际移动，不处理
+
+        # ✅ 拿到当前 op 并移动顺序
+        op = self.activity_ops.pop(start)
+        insert_idx = row if row < start else row - 1
+        self.activity_ops.insert(insert_idx, op)
+
+        # ✅ 同步历史记录和图/表
+        self.activity_ops_history.append(self.activity_ops.copy())
+        self.redo_stack.clear()
+        self.update_activity_ops_list()
+        self.reapply_activity_ops()
 
 
 def launch_analysis_window(event_log):
