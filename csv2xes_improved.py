@@ -311,7 +311,7 @@ class CSV2XESConverter(QMainWindow):
         show_preview(self.tbl, self.df_work)
 
     def clean_time(self):
-        """清理/转换时间列格式，并删除非法时间记录"""
+        """清理/转换时间列格式，并删除非法时间记录，保持为 datetime 类型"""
         if self.df_work is None:
             return
 
@@ -334,12 +334,10 @@ class CSV2XESConverter(QMainWindow):
             n_invalid = self.df_work[ts].isna().sum()
             self.df_work = self.df_work[self.df_work[ts].notna()].copy()
 
-            # 格式化为统一字符串
-            self.df_work[ts] = self.df_work[ts].dt.strftime("%Y-%m-%d %H:%M:%S")
-            self.cbo_fmt.setCurrentText("%Y-%m-%d %H:%M:%S")
+            self.cbo_fmt.setCurrentText("%Y-%m-%d %H:%M:%S")  # ✅ 标明最终格式
 
             show_preview(self.tbl, self.df_work)
-            msg = f"已清理时间格式为统一格式：{self.cbo_fmt.currentText()}"
+            msg = f"已清理时间格式，统一为 datetime 类型"
             if n_invalid > 0:
                 msg += f"\n并删除了 {n_invalid} 条无法解析的记录"
             QMessageBox.information(self, "时间清洗完成", msg)
@@ -414,6 +412,15 @@ class CSV2XESConverter(QMainWindow):
             act: "concept:name",
             ts: "time:timestamp"
         })
+
+        # ✅ 再次确保时间字段为 datetime（防止用户没点“清理时间格式”按钮）
+        try:
+            df["time:timestamp"] = pd.to_datetime(df["time:timestamp"], format="%Y-%m-%d %H:%M:%S", errors="coerce")
+            df = df[df["time:timestamp"].notna()]
+        except Exception as e:
+            QMessageBox.critical(self, "时间字段错误", str(e))
+            return
+
         df["lifecycle:transition"] = "complete"
         df.fillna("unknown", inplace=True)
 
@@ -431,7 +438,7 @@ class CSV2XESConverter(QMainWindow):
                 QMessageBox.critical(self, "分析入口错误", str(e))
             finally:
                 dlg.close()
-                self.showMinimized()  # ✅ 处理完成后自动最小化主窗口
+                self.showMinimized()
 
         QTimer.singleShot(100, do_analysis)
 

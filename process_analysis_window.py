@@ -250,8 +250,8 @@ class ProcessAnalysisWindow(QMainWindow):
         self.dt_trace_end.setCalendarPopup(True)
         layout_trace_time.addWidget(self.dt_trace_end)
 
-        # ✅ 设置默认时间为 2018-01-08 00:00:00
-        default_time = QDateTime.fromString("2018-01-08 00:00:00", "yyyy-MM-dd HH:mm:ss")
+        # ✅ 设置默认时间为 2018-08-01 00:00:00
+        default_time = QDateTime.fromString("2018-08-01 00:00:00", "yyyy-MM-dd HH:mm:ss")
         self.dt_trace_start.setDateTime(default_time)
         self.dt_trace_end.setDateTime(default_time)
 
