@@ -278,48 +278,60 @@ class ProcessAnalysisWindow(QMainWindow):
 
     def filter_by_frequency(self):
         """
-        根据活动出现的总频次进行过滤。
-        若有活动 < 阈值，则丢弃包含该活动的整条Trace。
+        删除出现次数 < 阈值 的事件本身（而不是整条 trace）
+        若某条 trace 被删空，则同时删除该 trace
         """
         min_freq = self.freq_spin.value()
-        self.redo_stack.clear()  # ✅ 清空 redo 栈，防止误重做
+        self.redo_stack.clear()
 
-        try:
-            if self.current_log is None:
-                QMessageBox.critical(self, "错误", "当前日志为空，无法进行过滤。")
-                return
+        if self.current_log is None:
+            QMessageBox.critical(self, "错误", "当前日志为空。")
+            return
 
-            from collections import Counter
-            act_counter = Counter()
-            for trace in self.current_log:
-                for event in trace:
-                    act_counter[event.get("concept:name", "undefined")] += 1
+        # --- 1) 统计全局事件频次 -----------------------------
+        from collections import Counter
+        act_counter = Counter()
+        for tr in self.current_log:
+            for ev in tr:
+                act_counter[ev.get("concept:name", "undefined")] += 1
 
-            low_freq_acts = {act for act, freq in act_counter.items() if freq < min_freq}
-            filtered_log = []
-            for trace in self.current_log:
-                if any(event.get("concept:name") in low_freq_acts for event in trace):
-                    continue
-                filtered_log.append(trace)
+        low_freq_acts = {a for a, f in act_counter.items() if f < min_freq}
+        if not low_freq_acts:
+            QMessageBox.information(self, "提示", "没有低于阈值的事件，无需过滤。")
+            return
 
-            if not filtered_log:
-                QMessageBox.warning(self, "无数据", "过滤后没有剩余日志。请降低阈值。")
-                return
+        # --- 2) 删除低频事件 -------------------------------
+        from pm4py.objects.log.obj import EventLog, Trace
 
-            self.log_history.append(self.current_log)
-            self.current_log = filtered_log
+        filtered_log = EventLog()
+        removed_events = 0
+        for tr in self.current_log:
+            new_tr = Trace([ev for ev in tr if ev.get("concept:name") not in low_freq_acts])
+            removed_events += len(tr) - len(new_tr)
+            if new_tr:  # trace 里还有事件才保留
+                filtered_log.append(new_tr)
 
-            self.update_graph_with_filter()
-            self.update_dataset_preview()
+        if not filtered_log:
+            QMessageBox.warning(self, "无数据", "过滤后日志为空，请降低阈值。")
+            return
 
-            # ✅ 更新操作记录（只执行一次）
-            self.activity_ops_history.append(self.activity_ops.copy())
-            self.redo_stack.clear()
-            self.activity_ops.append({"type": "filter", "threshold": min_freq})
-            self.update_activity_ops_list()
+        # --- 3) 历史 / redo 栈 -----------------------------
+        self.log_history.append(self.current_log)
+        self.current_log = filtered_log
+        self.activity_ops_history.append(self.activity_ops.copy())
+        self.activity_ops.append({"type": "filter_events", "threshold": min_freq})
+        self.update_activity_ops_list()
 
-        except Exception as e:
-            QMessageBox.critical(self, "过滤失败", str(e))
+        # --- 4) 刷新 UI ------------------------------------
+        self.update_graph_with_filter()
+        self.update_dataset_preview()
+
+        # --- 5) 提示 ---------------------------------------
+        QMessageBox.information(
+            self, "完成",
+            f"已删除 {removed_events} 个低频事件，"
+            f"剩余记录数：{len(self.current_log)}"
+        )
 
     def reset_log(self):
         self.activity_ops_history.append(self.activity_ops.copy())
@@ -386,26 +398,43 @@ class ProcessAnalysisWindow(QMainWindow):
 
     def update_dataset_preview(self):
         """
-        将 current_log 转为 DataFrame 并显示前 visible_rows 行
+        将 current_log 转回 DataFrame 并显示前 visible_rows 行，
+        同时把内部列名(case:concept:name / concept:name / time:timestamp)
+        还原成用户在预处理阶段看到的原列名。
         """
+        if self.current_log is None:
+            return
+
+        # 当前映射 —— 来自主窗口列映射设置，默认回退为内部名
         try:
-            if self.current_log is None:
-                QMessageBox.critical(self, "错误", "当前日志为空，无法展示数据。")
-                return
+            from csv2xes_improved import CSV2XESConverter   # 动态引用主窗口类
+            main_win = next(w for w in QApplication.topLevelWidgets()
+                             if isinstance(w, CSV2XESConverter))
+            case_col = main_win.cbo_case.currentText() or "case:concept:name"
+            act_col  = main_win.cbo_act.currentText()  or "concept:name"
+            ts_col   = main_win.cbo_time.currentText() or "time:timestamp"
+        except Exception:
+            case_col, act_col, ts_col = "case:concept:name", "concept:name", "time:timestamp"
 
-            df = log_converter.apply(self.current_log, variant=log_converter.Variants.TO_DATA_FRAME)
-            if not isinstance(df, pd.DataFrame) or df.empty:
-                self.dataset_table.clear()
-                return
+        # 拿到 PM4Py DataFrame
+        df = log_converter.apply(self.current_log,
+                                 variant=log_converter.Variants.TO_DATA_FRAME)
+        if df.empty:
+            self.dataset_table.clear()
+            return
 
-            self._dataset_df = df.reset_index(drop=True)
-            self.visible_rows = 20
-            self._refresh_dataset_table()
+        # 还原列名，仅改三主列，其余保持
+        df = df.rename(columns={
+            "case:concept:name": case_col,
+            "concept:name":      act_col,
+            "time:timestamp":    ts_col
+        })
 
-        except Exception as e:
-            print("无法更新数据集展示：", e)
-
+        self._dataset_df = df.reset_index(drop=True)
+        self.visible_rows = 20
+        self._refresh_dataset_table()
         self.update_summary()
+
 
     def _refresh_dataset_table(self):
         df = getattr(self, "_dataset_df", None)
@@ -698,21 +727,45 @@ class ProcessAnalysisWindow(QMainWindow):
             self.update_activity_ops_list()
             self.reapply_activity_ops()
 
+    # ────────────────────────────────────────────────────
+    # 顶部四个概况标签：记录数 / 流程数 / 活动数 / 变体数
+    # ────────────────────────────────────────────────────
     def update_summary(self):
-        """更新概况显示"""
-        df = log_converter.apply(self.current_log, variant=log_converter.Variants.TO_DATA_FRAME)
-        num_events    = len(df)
-        num_traces    = df['case:concept:name'].nunique()
-        num_activities= df['concept:name'].nunique()
-        num_variants  = df.sort_values(
-            ['case:concept:name','time:timestamp']
-        ).groupby('case:concept:name')['concept:name'] \
-         .apply(tuple).nunique()
+        """
+        刷新概况显示
+        records   : 当前 DataFrame 行数
+        traces    : case:concept:name（流程）唯一值个数
+        activities: concept:name 唯一值个数
+        variants  : 排序后事件序列去重个数
+        """
+        df = log_converter.apply(
+            self.current_log,
+            variant=log_converter.Variants.TO_DATA_FRAME
+        )
 
-        self.lbl_summary_events.setText(f"事件数: {num_events}")
+        # ① 记录数（rows）
+        num_records = len(df)
+
+        # ② 流程数（trace 数）
+        num_traces = df['case:concept:name'].nunique()
+
+        # ③ 活动数（事件类型）
+        num_activities = df['concept:name'].nunique()
+
+        # ④ 变体数（唯一的事件序列）
+        num_variants = (
+            df.sort_values(['case:concept:name', 'time:timestamp'])
+              .groupby('case:concept:name')['concept:name']
+              .apply(tuple)
+              .nunique()
+        )
+
+        # 更新 4 个 QLabel
+        self.lbl_summary_events.setText(f"记录数: {num_records}")
         self.lbl_summary_traces.setText(f"流程数: {num_traces}")
         self.lbl_summary_activities.setText(f"活动数: {num_activities}")
         self.lbl_summary_variants.setText(f"变体数: {num_variants}")
+
 
     def apply_dataframe_op(self, df, desc):
         """统一将 DataFrame 应用到 current_log，并更新历史/操作列表/UI"""
