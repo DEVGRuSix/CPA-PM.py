@@ -1,14 +1,6 @@
 # cpa_pm_preprocessing.py
 import pandas as pd
 
-def remove_events_low_frequency(df, event_col, min_freq):
-    """
-    删除事件频率低于 min_freq 的行。
-    """
-    value_counts = df[event_col].value_counts()
-    keep_events = value_counts[value_counts >= min_freq].index
-    return df[df[event_col].isin(keep_events)].copy()
-
 
 def delete_traces_with_short_length(df, case_col, min_len):
     """

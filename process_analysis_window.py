@@ -110,7 +110,7 @@ class ProcessAnalysisWindow(QMainWindow):
         self.freq_spin.setMaximum(999)
         self.freq_spin.setValue(2)
         btn_filter_freq = QPushButton("应用频次过滤")
-        btn_filter_freq.clicked.connect(self.filter_by_frequency)
+        btn_filter_freq.clicked.connect(self.filter_events_by_global_frequency)
 
         control_layout.addWidget(lbl_freq)
         control_layout.addWidget(self.freq_spin)
@@ -276,11 +276,13 @@ class ProcessAnalysisWindow(QMainWindow):
         self.activity_ops_history = []
         self.redo_stack = []  # ✅ 初始化重做栈
 
-    def filter_by_frequency(self):
+    def filter_events_by_global_frequency(self):
         """
-        删除出现次数 < 阈值 的事件本身（而不是整条 trace）
-        若某条 trace 被删空，则同时删除该 trace
+        删除频次 < 阈值 的事件（只删 event，不删整条 trace）
         """
+        from cpa_utils import filter_events_by_global_frequency
+        from pm4py.objects.conversion.log import converter as log_converter
+
         min_freq = self.freq_spin.value()
         self.redo_stack.clear()
 
@@ -288,50 +290,28 @@ class ProcessAnalysisWindow(QMainWindow):
             QMessageBox.critical(self, "错误", "当前日志为空。")
             return
 
-        # --- 1) 统计全局事件频次 -----------------------------
-        from collections import Counter
-        act_counter = Counter()
-        for tr in self.current_log:
-            for ev in tr:
-                act_counter[ev.get("concept:name", "undefined")] += 1
+        try:
+            df = log_converter.apply(self.current_log, variant=log_converter.Variants.TO_DATA_FRAME)
 
-        low_freq_acts = {a for a, f in act_counter.items() if f < min_freq}
-        if not low_freq_acts:
-            QMessageBox.information(self, "提示", "没有低于阈值的事件，无需过滤。")
-            return
+            # ✅ 判断是否有活动频次低于阈值
+            value_counts = df["concept:name"].value_counts()
+            low_freq_events = value_counts[value_counts < min_freq]
 
-        # --- 2) 删除低频事件 -------------------------------
-        from pm4py.objects.log.obj import EventLog, Trace
+            if low_freq_events.empty:
+                QMessageBox.information(self, "提示", f"所有活动频次 ≥ {min_freq}，无需过滤。")
+                return
 
-        filtered_log = EventLog()
-        removed_events = 0
-        for tr in self.current_log:
-            new_tr = Trace([ev for ev in tr if ev.get("concept:name") not in low_freq_acts])
-            removed_events += len(tr) - len(new_tr)
-            if new_tr:  # trace 里还有事件才保留
-                filtered_log.append(new_tr)
+            # ✅ 执行真正的过滤
+            df2 = filter_events_by_global_frequency(df, event_col="concept:name", min_freq=min_freq)
 
-        if not filtered_log:
-            QMessageBox.warning(self, "无数据", "过滤后日志为空，请降低阈值。")
-            return
+            if df2.empty:
+                QMessageBox.warning(self, "无数据", "过滤后日志为空，请降低阈值。")
+                return
 
-        # --- 3) 历史 / redo 栈 -----------------------------
-        self.log_history.append(self.current_log)
-        self.current_log = filtered_log
-        self.activity_ops_history.append(self.activity_ops.copy())
-        self.activity_ops.append({"type": "filter_events", "threshold": min_freq})
-        self.update_activity_ops_list()
+            self.apply_dataframe_op(df2, f"过滤低频活动：{min_freq}")
 
-        # --- 4) 刷新 UI ------------------------------------
-        self.update_graph_with_filter()
-        self.update_dataset_preview()
-
-        # --- 5) 提示 ---------------------------------------
-        QMessageBox.information(
-            self, "完成",
-            f"已删除 {removed_events} 个低频事件，"
-            f"剩余记录数：{len(self.current_log)}"
-        )
+        except Exception as e:
+            QMessageBox.critical(self, "过滤失败", str(e))
 
     def reset_log(self):
         self.activity_ops_history.append(self.activity_ops.copy())
@@ -356,11 +336,17 @@ class ProcessAnalysisWindow(QMainWindow):
         self.update_summary()
 
     def undo_last_change(self):
-        if self.activity_ops_history:
-            self.redo_stack.append(self.activity_ops.copy())  # ✅ 添加当前状态进 redo
+        if self.activity_ops_history and self.log_history:
+            # ✅ 同时备份当前状态（用于重做）
+            self.redo_stack.append((self.activity_ops.copy(), self.current_log))
+
+            # ✅ 同步恢复
             self.activity_ops = self.activity_ops_history.pop()
+            self.current_log = self.log_history.pop()
+
             self.update_activity_ops_list()
-            self.reapply_activity_ops()
+            self.update_graph_with_filter()
+            self.update_dataset_preview()
         else:
             QMessageBox.information(self, "提示", "没有可以撤销的操作。")
 
@@ -652,8 +638,11 @@ class ProcessAnalysisWindow(QMainWindow):
                 desc = f"过滤频次 < {op['threshold']}"
             elif op["type"] == "reset":
                 desc = "重置为原始日志"
+            elif op["type"] == "custom":
+                desc = op.get("desc", f"自定义操作 {idx}")
             else:
                 desc = f"未知操作 {idx}"
+
             self.activity_ops_list.addItem(QListWidgetItem(desc))
 
     def reapply_activity_ops(self):
@@ -665,8 +654,8 @@ class ProcessAnalysisWindow(QMainWindow):
             if op["type"] == "reset":
                 df = log_converter.apply(self.original_log, variant=log_converter.Variants.TO_DATA_FRAME)
             elif op["type"] == "filter":
-                from cpa_pm_preprocessing import remove_events_low_frequency
-                df = remove_events_low_frequency(df, event_col="concept:name", min_freq=op["threshold"])
+                from cpa_utils import filter_events_by_global_frequency
+                df = filter_events_by_global_frequency(df, event_col="concept:name", min_freq=op["threshold"])
             elif op["type"] == "merge":
                 df = df.copy()
                 from cpa_utils import merge_activities_in_dataframe
@@ -689,10 +678,16 @@ class ProcessAnalysisWindow(QMainWindow):
 
     def redo_last_change(self):
         if hasattr(self, "redo_stack") and self.redo_stack:
-            self.activity_ops_history.append(self.activity_ops.copy())  # ✅ 备份当前状态
-            self.activity_ops = self.redo_stack.pop()
+            # ✅ 同时备份当前状态（用于再撤销）
+            self.activity_ops_history.append(self.activity_ops.copy())
+            self.log_history.append(self.current_log)
+
+            # ✅ 恢复 redo 的状态
+            self.activity_ops, self.current_log = self.redo_stack.pop()
+
             self.update_activity_ops_list()
-            self.reapply_activity_ops()
+            self.update_graph_with_filter()
+            self.update_dataset_preview()
         else:
             QMessageBox.information(self, "提示", "没有可以重做的操作。")
 
@@ -766,15 +761,19 @@ class ProcessAnalysisWindow(QMainWindow):
         self.lbl_summary_activities.setText(f"活动数: {num_activities}")
         self.lbl_summary_variants.setText(f"变体数: {num_variants}")
 
-
     def apply_dataframe_op(self, df, desc):
         """统一将 DataFrame 应用到 current_log，并更新历史/操作列表/UI"""
+        from pm4py.objects.conversion.log import converter as log_converter
+
         df['lifecycle:transition'] = 'complete'
         new_log = log_converter.apply(df, variant=log_converter.Variants.TO_EVENT_LOG)
+
+        # ✅ 同时保存当前日志 & 操作列表到两个历史栈中
         self.log_history.append(self.current_log)
-        self.current_log = new_log
         self.activity_ops_history.append(self.activity_ops.copy())
-        self.activity_ops.append({'type':'custom','desc':desc})
+
+        self.current_log = new_log
+        self.activity_ops.append({'type': 'custom', 'desc': desc})
         self.update_activity_ops_list()
         self.update_graph_with_filter()
         self.update_dataset_preview()

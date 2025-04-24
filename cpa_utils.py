@@ -2,6 +2,14 @@
 
 import pandas as pd
 
+def filter_events_by_global_frequency(df, event_col="concept:name", min_freq=1):
+    """
+    删除出现频率小于 min_freq 的事件行（保留 trace 结构）。
+    """
+    value_counts = df[event_col].value_counts()
+    keep_events = value_counts[value_counts >= min_freq].index
+    return df[df[event_col].isin(keep_events)].copy()
+
 def keep_first_occurrence_only(event_log):
     """
     对每个 trace，仅保留每个活动的第一次出现
