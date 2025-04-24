@@ -200,7 +200,18 @@ class ProcessAnalysisWindow(QMainWindow):
         adv_layout.addLayout(h8)
 
         # 2) 删除过短案例（按事件数）
+        h_short = QHBoxLayout()
+        h_short.addWidget(QLabel("事件数 ≥"))
+        self.spin_trace_len = QSpinBox()
+        self.spin_trace_len.setMinimum(1)
+        self.spin_trace_len.setValue(2)
+        h_short.addWidget(self.spin_trace_len)
 
+        btn_trace_len_filter = QPushButton("筛选")
+        btn_trace_len_filter.clicked.connect(self.filter_short_traces)
+        h_short.addWidget(btn_trace_len_filter)
+
+        adv_layout.addLayout(h_short)
 
         # 3) 删除短持续案例（按总时长秒）
         h4 = QHBoxLayout()
@@ -679,6 +690,9 @@ class ProcessAnalysisWindow(QMainWindow):
                 desc = "重置为原始日志"
             elif op["type"] == "custom":
                 desc = op.get("desc", "自定义操作")
+            elif op["type"] == "filter_short_trace":
+                desc = f"删除事件数 < {op['min_len']} 的 trace"
+
             else:
                 desc = f"未知操作"
 
@@ -719,6 +733,10 @@ class ProcessAnalysisWindow(QMainWindow):
                     end_event=op.get("end"),
                     mode=op.get("mode", "不同时满足起止")
                 )
+            elif op["type"] == "filter_short_trace":
+                trace_counts = df['case:concept:name'].value_counts()
+                keep_cases = trace_counts[trace_counts >= op["min_len"]].index
+                df = df[df['case:concept:name'].isin(keep_cases)].copy()
 
         df["lifecycle:transition"] = "complete"
         self.current_log = log_converter.apply(df, variant=log_converter.Variants.TO_EVENT_LOG)
@@ -949,6 +967,30 @@ class ProcessAnalysisWindow(QMainWindow):
         self.current_log = log_converter.apply(df, variant=log_converter.Variants.TO_EVENT_LOG)
         self.update_graph_with_filter()
         self.update_dataset_preview()
+
+    def filter_short_traces(self):
+        from pm4py.objects.conversion.log import converter as log_converter
+
+        min_len = self.spin_trace_len.value()
+        df = log_converter.apply(self.current_log, variant=log_converter.Variants.TO_DATA_FRAME)
+
+        trace_lengths = df['case:concept:name'].value_counts()
+        keep_cases = trace_lengths[trace_lengths >= min_len].index
+        df2 = df[df['case:concept:name'].isin(keep_cases)].copy()
+
+        if df2.empty:
+            QMessageBox.warning(self, "无结果", "筛选后数据为空，请降低阈值。")
+            return
+
+        # ✅ 添加操作记录，支持撤销重做
+        self.activity_ops_history.append(self.activity_ops.copy())
+        self.redo_stack.clear()
+        self.activity_ops.append({
+            "type": "filter_short_trace",
+            "min_len": min_len
+        })
+        self.update_activity_ops_list()
+        self.apply_dataframe_direct(df2)
 
 
 def launch_analysis_window(event_log):
