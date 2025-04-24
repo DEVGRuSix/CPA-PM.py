@@ -314,3 +314,26 @@ def aggregate_activity_occurrences(df, target_activity, keep="first", timestamp_
 
     new_df = pd.concat(result, ignore_index=True)
     return new_df
+
+def filter_incomplete_traces(df, start_event=None, end_event=None, mode="不同时满足起止"):
+    df = df.sort_values("time:timestamp")
+    keep_cases = set(df['case:concept:name'].unique())
+
+    if "起始" in mode or "起止" in mode:
+        first_events = df.groupby("case:concept:name")["concept:name"].first()
+        keep_start = set(first_events[first_events == start_event].index)
+        if "起止" in mode:
+            keep_cases &= keep_start
+        else:
+            keep_cases = keep_start
+
+    if "结束" in mode or "起止" in mode:
+        last_events = df.groupby("case:concept:name")["concept:name"].last()
+        keep_end = set(last_events[last_events == end_event].index)
+        if "起止" in mode:
+            keep_cases &= keep_end
+        else:
+            keep_cases = keep_end
+
+    return df[df["case:concept:name"].isin(keep_cases)].copy()
+

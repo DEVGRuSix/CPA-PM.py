@@ -5,7 +5,7 @@ import pandas as pd
 from PyQt5.QtWidgets import (
     QApplication, QMainWindow, QWidget, QHBoxLayout, QVBoxLayout,
     QPushButton, QSplitter, QLabel, QSpinBox, QMessageBox, QSlider,
-    QGroupBox, QTableWidget, QTableWidgetItem, QListWidget, QDialog, QListWidgetItem, QFileDialog
+    QGroupBox, QTableWidget, QTableWidgetItem, QListWidget, QDialog, QListWidgetItem, QFileDialog, QComboBox, QCompleter
 )
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QDateTimeEdit, QLineEdit, QGroupBox
@@ -179,32 +179,28 @@ class ProcessAnalysisWindow(QMainWindow):
         adv_group = QGroupBox("高级筛选与操作")
         adv_layout = QVBoxLayout()
 
-        # 1) 删除不符合起始/结束事件的案例
-        h1 = QHBoxLayout()
-        h1.addWidget(QLabel("起始事件:"))
-        self.edit_req_start = QLineEdit()
-        h1.addWidget(self.edit_req_start)
-        btn_req_start = QPushButton("删除起始不符案例")
-        btn_req_start.clicked.connect(self.delete_traces_by_start)
-        adv_layout.addLayout(h1)
+        # ── 起止事件筛选 ───────────────────────────────
+        h8 = QHBoxLayout()
+        h8.addWidget(QLabel("起始事件:"))
+        self.cbo_filter_start = QComboBox()
+        self.cbo_filter_start.setEditable(True)
+        self.cbo_filter_start.setInsertPolicy(QComboBox.NoInsert)
+        h8.addWidget(self.cbo_filter_start)
 
-        h2 = QHBoxLayout()
-        h2.addWidget(QLabel("结束事件:"))
-        self.edit_req_end = QLineEdit()
-        h2.addWidget(self.edit_req_end)
-        btn_req_end = QPushButton("删除结束不符案例")
-        btn_req_end.clicked.connect(self.delete_traces_by_end)
-        adv_layout.addLayout(h2)
+        h8.addWidget(QLabel("结束事件:"))
+        self.cbo_filter_end = QComboBox()
+        self.cbo_filter_end.setEditable(True)
+        self.cbo_filter_end.setInsertPolicy(QComboBox.NoInsert)
+        h8.addWidget(self.cbo_filter_end)
+
+        btn_filter_start_end = QPushButton("筛选")
+        btn_filter_start_end.clicked.connect(self.filter_by_start_end_events)
+        h8.addWidget(btn_filter_start_end)
+
+        adv_layout.addLayout(h8)
 
         # 2) 删除过短案例（按事件数）
-        h3 = QHBoxLayout()
-        h3.addWidget(QLabel("最小事件数:"))
-        self.spin_min_events = QSpinBox()
-        self.spin_min_events.setMinimum(1)
-        h3.addWidget(self.spin_min_events)
-        btn_short = QPushButton("删除过短案例")
-        btn_short.clicked.connect(self.delete_short_traces)
-        adv_layout.addLayout(h3)
+
 
         # 3) 删除短持续案例（按总时长秒）
         h4 = QHBoxLayout()
@@ -275,6 +271,8 @@ class ProcessAnalysisWindow(QMainWindow):
         # 操作记录堆栈，用于支持撤销功能
         self.activity_ops_history = []
         self.redo_stack = []  # ✅ 初始化重做栈
+
+        self.activity_ops_list.model().rowsMoved.connect(self.on_activity_ops_reordered)
 
     def filter_events_by_global_frequency(self):
         """
@@ -406,20 +404,18 @@ class ProcessAnalysisWindow(QMainWindow):
         if self.current_log is None:
             return
 
-        # 当前映射 —— 来自主窗口列映射设置，默认回退为内部名
         try:
-            from csv2xes_improved import CSV2XESConverter   # 动态引用主窗口类
+            from csv2xes_improved import CSV2XESConverter  # 动态引用主窗口类
             main_win = next(w for w in QApplication.topLevelWidgets()
-                             if isinstance(w, CSV2XESConverter))
+                            if isinstance(w, CSV2XESConverter))
             case_col = main_win.cbo_case.currentText() or "case:concept:name"
-            act_col  = main_win.cbo_act.currentText()  or "concept:name"
-            ts_col   = main_win.cbo_time.currentText() or "time:timestamp"
+            act_col = main_win.cbo_act.currentText() or "concept:name"
+            ts_col = main_win.cbo_time.currentText() or "time:timestamp"
         except Exception:
             case_col, act_col, ts_col = "case:concept:name", "concept:name", "time:timestamp"
 
         # 拿到 PM4Py DataFrame
-        df = log_converter.apply(self.current_log,
-                                 variant=log_converter.Variants.TO_DATA_FRAME)
+        df = log_converter.apply(self.current_log, variant=log_converter.Variants.TO_DATA_FRAME)
         if df.empty:
             self.dataset_table.clear()
             return
@@ -427,8 +423,8 @@ class ProcessAnalysisWindow(QMainWindow):
         # 还原列名，仅改三主列，其余保持
         df = df.rename(columns={
             "case:concept:name": case_col,
-            "concept:name":      act_col,
-            "time:timestamp":    ts_col
+            "concept:name": act_col,
+            "time:timestamp": ts_col
         })
 
         self._dataset_df = df.reset_index(drop=True)
@@ -436,6 +432,31 @@ class ProcessAnalysisWindow(QMainWindow):
         self._refresh_dataset_table()
         self.update_summary()
 
+        # ✅ 更新组合删除功能的活动下拉框（带模糊搜索）
+        if hasattr(self, "cbo_comb_start"):
+            acts = self._dataset_df[act_col].dropna().astype(str).unique().tolist()
+            acts.sort()
+            for cbo in [self.cbo_comb_start, self.cbo_comb_end]:
+                cbo.clear()
+                cbo.addItems(acts)
+                completer = QCompleter(acts, cbo)
+                completer.setFilterMode(Qt.MatchContains)
+                completer.setCaseSensitivity(Qt.CaseInsensitive)
+                cbo.setCompleter(completer)
+        # ✅ 更新起止筛选下拉框
+        if hasattr(self, "cbo_filter_start"):
+            acts = self._dataset_df["concept:name"].dropna().astype(str).unique().tolist()
+            acts.sort()
+            for cbo in [self.cbo_filter_start, self.cbo_filter_end]:
+                cbo.blockSignals(True)
+                cbo.clear()
+                cbo.addItem("")  # 空值选项（表示未选中）
+                cbo.addItems(acts)
+                completer = QCompleter(acts, cbo)
+                completer.setFilterMode(Qt.MatchContains)
+                completer.setCaseSensitivity(Qt.CaseInsensitive)
+                cbo.setCompleter(completer)
+                cbo.blockSignals(False)
 
     def _refresh_dataset_table(self):
         df = getattr(self, "_dataset_df", None)
@@ -540,13 +561,14 @@ class ProcessAnalysisWindow(QMainWindow):
             dialog.accept()
 
     def remove_selected_activity_op(self):
-        self.redo_stack.clear()
         row_idx = self.activity_ops_list.currentRow()
         if 0 <= row_idx < len(self.activity_ops):
-            self.activity_ops_history.append(self.activity_ops.copy())  # ✅ 添加这一行
+            self.redo_stack.clear()
+            self.activity_ops_history.append(self.activity_ops.copy())
             self.activity_ops.pop(row_idx)
+
             self.update_activity_ops_list()
-            self.reapply_activity_ops()
+            self.reapply_activity_ops()  # ✅ 重新应用剩下的操作链
 
     def open_merge_dialog(self):
         df = log_converter.apply(self.current_log, variant=log_converter.Variants.TO_DATA_FRAME)
@@ -636,7 +658,7 @@ class ProcessAnalysisWindow(QMainWindow):
 
     def update_activity_ops_list(self):
         self.activity_ops_list.clear()
-        for idx, op in enumerate(self.activity_ops):
+        for op in self.activity_ops:
             if op["type"] == "merge":
                 desc = f"合并 {' + '.join(op['activities'])} → {op['target']}"
             elif op["type"] == "aggregate":
@@ -651,14 +673,18 @@ class ProcessAnalysisWindow(QMainWindow):
                     desc = f"聚合 {target}（保留 {strategy}）字段：{field_str}"
             elif op["type"] == "filter":
                 desc = f"过滤频次 < {op['threshold']}"
+            elif op["type"] == "filter_start_end":
+                desc = f"起止事件筛选（起={op.get('start') or '-'}，终={op.get('end') or '-'})"
             elif op["type"] == "reset":
                 desc = "重置为原始日志"
             elif op["type"] == "custom":
-                desc = op.get("desc", f"自定义操作 {idx}")
+                desc = op.get("desc", "自定义操作")
             else:
-                desc = f"未知操作 {idx}"
+                desc = f"未知操作"
 
-            self.activity_ops_list.addItem(QListWidgetItem(desc))
+            item = QListWidgetItem(desc)
+            item.setData(Qt.UserRole, op)  # ✅ 绑定原始操作对象
+            self.activity_ops_list.addItem(item)
 
     def reapply_activity_ops(self):
         from pm4py.objects.conversion.log import converter as log_converter
@@ -684,6 +710,14 @@ class ProcessAnalysisWindow(QMainWindow):
                     timestamp_col="time:timestamp",
                     agg_fields=op.get("fields"),
                     new_col=op.get("new_col", None)  # ✅ 支持写入新列
+                )
+            elif op["type"] == "filter_start_end":
+                from cpa_utils import filter_incomplete_traces
+                df = filter_incomplete_traces(
+                    df,
+                    start_event=op.get("start"),
+                    end_event=op.get("end"),
+                    mode=op.get("mode", "不同时满足起止")
                 )
 
         df["lifecycle:transition"] = "complete"
@@ -780,27 +814,34 @@ class ProcessAnalysisWindow(QMainWindow):
         self.update_graph_with_filter()
         self.update_dataset_preview()
 
-    def delete_traces_by_start(self):
-        ev = self.edit_req_start.text().strip()
-        if not ev:
-            QMessageBox.warning(self, "提示", "请输入起始事件名称。"); return
-        df = log_converter.apply(self.current_log, variant=log_converter.Variants.TO_DATA_FRAME)
-        df2 = delete_truncated_traces_start(df, 'case:concept:name', 'concept:name', ev)
-        self.apply_dataframe_op(df2, f"删除未以[{ev}]开头案例")
+    def delete_incomplete_traces(self):
+        from cpa_utils import filter_incomplete_traces
+        from pm4py.objects.conversion.log import converter as log_converter
 
-    def delete_traces_by_end(self):
-        ev = self.edit_req_end.text().strip()
-        if not ev:
-            QMessageBox.warning(self, "提示", "请输入结束事件名称。"); return
-        df = log_converter.apply(self.current_log, variant=log_converter.Variants.TO_DATA_FRAME)
-        df2 = delete_truncated_traces_end(df, 'case:concept:name', 'concept:name', ev)
-        self.apply_dataframe_op(df2, f"删除未以[{ev}]结尾案例")
+        start_ev = self.cbo_comb_start.currentText().strip()
+        end_ev = self.cbo_comb_end.currentText().strip()
+        mode = self.cbo_comb_mode.currentText()
 
-    def delete_short_traces(self):
-        n = self.spin_min_events.value()
+        if not start_ev and not end_ev:
+            QMessageBox.warning(self, "提示", "请至少选择起始或结束事件。")
+            return
+
         df = log_converter.apply(self.current_log, variant=log_converter.Variants.TO_DATA_FRAME)
-        df2= delete_traces_with_short_length(df, 'case:concept:name', n)
-        self.apply_dataframe_op(df2, f"删除事件数< {n}案例")
+        df2 = filter_incomplete_traces(
+            df,
+            start_event=start_ev or None,
+            end_event=end_ev or None,
+            mode=mode
+        )
+
+        if df2.empty:
+            QMessageBox.warning(self, "无数据", "过滤后为空，请检查起止事件。")
+            return
+
+        desc = f"删除不完整 trace（模式：{mode}，起始={start_ev}，结束={end_ev}）"
+        self.apply_dataframe_op(df2, desc)
+
+
 
     def delete_short_duration(self):
         secs = self.spin_min_dur.value()
@@ -850,6 +891,65 @@ class ProcessAnalysisWindow(QMainWindow):
             QMessageBox.information(self, "导出成功", f"已保存：\n{path}")
         except Exception as e:
             QMessageBox.critical(self, "导出失败", str(e))
+
+    def filter_by_start_end_events(self):
+        from cpa_utils import filter_incomplete_traces
+        from pm4py.objects.conversion.log import converter as log_converter
+
+        start_ev = self.cbo_filter_start.currentText().strip()
+        end_ev = self.cbo_filter_end.currentText().strip()
+
+        if not start_ev and not end_ev:
+            QMessageBox.warning(self, "提示", "请至少选择起始或结束事件。")
+            return
+
+        df = log_converter.apply(self.current_log, variant=log_converter.Variants.TO_DATA_FRAME)
+        mode = "不同时满足起止" if (start_ev and end_ev) else ("不以起始事件开头" if start_ev else "不以结束事件结尾")
+
+        df2 = filter_incomplete_traces(
+            df,
+            start_event=start_ev or None,
+            end_event=end_ev or None,
+            mode=mode
+        )
+
+        if df2.empty:
+            QMessageBox.warning(self, "无数据", "筛选后为空，请检查设置。")
+            return
+
+        # ✅ 添加一次操作记录（带可恢复信息）
+        self.activity_ops_history.append(self.activity_ops.copy())
+        self.redo_stack.clear()
+        self.activity_ops.append({
+            "type": "filter_start_end",
+            "start": start_ev,
+            "end": end_ev,
+            "mode": mode
+        })
+        self.update_activity_ops_list()
+
+        # ✅ 应用 DataFrame（不添加新操作记录）
+        self.apply_dataframe_direct(df2)
+
+    def on_activity_ops_reordered(self):
+        new_ops = []
+        for i in range(self.activity_ops_list.count()):
+            item = self.activity_ops_list.item(i)
+            op = item.data(Qt.UserRole)
+            new_ops.append(op)
+        self.activity_ops = new_ops
+        self.reapply_activity_ops()
+
+    def apply_dataframe_direct(self, df):
+        """
+        不记录操作，仅应用 DataFrame 到 current_log，用于已显式记录的操作。
+        """
+        from pm4py.objects.conversion.log import converter as log_converter
+        df['lifecycle:transition'] = 'complete'
+        self.current_log = log_converter.apply(df, variant=log_converter.Variants.TO_EVENT_LOG)
+        self.update_graph_with_filter()
+        self.update_dataset_preview()
+
 
 def launch_analysis_window(event_log):
     """
