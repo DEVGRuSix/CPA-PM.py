@@ -295,6 +295,11 @@ class ProcessAnalysisWindow(QMainWindow):
         adv_layout.addWidget(self.label_edge_slider)
         adv_layout.addWidget(self.slider_edge)
 
+        # 查看 Cases 按钮
+        btn_cases = QPushButton("查看 Cases")
+        btn_cases.clicked.connect(self.open_cases_window)
+        adv_layout.addWidget(btn_cases)
+
         adv_group.setLayout(adv_layout)
         control_layout.addWidget(adv_group)
         control_layout.addStretch()
@@ -1267,6 +1272,12 @@ class ProcessAnalysisWindow(QMainWindow):
 
         except Exception as e:
             QMessageBox.critical(self, "删除失败", str(e))
+
+    def open_cases_window(self):
+        from cases_window import CasesWindow
+        df = log_converter.apply(self.current_log, variant=log_converter.Variants.TO_DATA_FRAME)
+        self.cases_win = CasesWindow(df, self.col_mapping)
+        self.cases_win.show()
 
 
 def launch_analysis_window(event_log, col_mapping=None):
