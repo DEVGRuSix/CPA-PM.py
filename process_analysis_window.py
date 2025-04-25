@@ -10,12 +10,7 @@ from PyQt5.QtWidgets import (
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QDateTimeEdit, QLineEdit, QGroupBox
 from PyQt5.QtCore import QDateTime
-# 引入预处理函数
-from cpa_pm_preprocessing import (
-    delete_truncated_traces_start,
-    delete_truncated_traces_end,
-    delete_traces_with_short_length
-)
+from typing import List
 from cpa_utils import remove_consecutive_self_loops
 
 from process_graph_view import ProcessGraphView
@@ -204,6 +199,36 @@ class ProcessAnalysisWindow(QMainWindow):
         layout_trace_time.addWidget(btn_trace_time_filter)
 
         adv_layout.addLayout(layout_trace_time)
+
+        # 删除记录功能
+        lbl_del = QLabel("删除记录条件：")
+        adv_layout.addWidget(lbl_del)
+
+        layout_del = QHBoxLayout()
+        self.cbo_del_level = QComboBox()
+        self.cbo_del_level.addItems(["事件级", "流程级"])
+        self.cbo_del_level.setFixedWidth(70)
+        layout_del.addWidget(self.cbo_del_level)
+
+        self.cbo_del_col = QComboBox()
+        self.cbo_del_col.setEditable(True)
+        self.cbo_del_col.setInsertPolicy(QComboBox.NoInsert)
+        layout_del.addWidget(self.cbo_del_col)
+
+        self.cbo_del_op = QComboBox()
+        self.cbo_del_op.addItems(["==", "!=", ">", "<", ">=", "<="])
+        self.cbo_del_op.setFixedWidth(60)
+        layout_del.addWidget(self.cbo_del_op)
+
+        self.edit_del_val = QLineEdit()
+        self.edit_del_val.setPlaceholderText("输入值")
+        layout_del.addWidget(self.edit_del_val)
+
+        btn_del_apply = QPushButton("删除")
+        btn_del_apply.clicked.connect(self.delete_records_by_condition)
+        layout_del.addWidget(btn_del_apply)
+
+        adv_layout.addLayout(layout_del)
 
         # ⑥ 活动合并按钮
         btn_merge_activity = QPushButton("活动合并")
@@ -427,6 +452,20 @@ class ProcessAnalysisWindow(QMainWindow):
                 completer.setCaseSensitivity(Qt.CaseInsensitive)
                 cbo.setCompleter(completer)
                 cbo.blockSignals(False)
+        # ✅ 更新删除记录功能的列名下拉框
+        if hasattr(self, "cbo_del_col"):
+            # 添加列名选项时，统一做字段名替换
+            df_columns = df.columns.tolist()
+            friendly_cols = [
+                "Company_ID" if c == "case:concept:name" else
+                "event" if c == "concept:name" else
+                "time" if c == "time:timestamp" else
+                c for c in df_columns
+            ]
+            self.cbo_del_col.clear()
+            self.cbo_del_col.addItems(friendly_cols)
+            self.cbo_del_col.addItems(df.columns.astype(str).tolist())
+            self.cbo_del_col.blockSignals(False)
 
     def _refresh_dataset_table(self):
         df = getattr(self, "_dataset_df", None)
@@ -645,7 +684,7 @@ class ProcessAnalysisWindow(QMainWindow):
             self.update_activity_ops_list()
             self.reapply_activity_ops()
 
-    def update_activity_ops_list(self):
+    def update_activity_ops_list(self):######添加历史记录函数
         self.activity_ops_list.clear()
         for op in self.activity_ops:
             if op["type"] == "merge":
@@ -684,6 +723,9 @@ class ProcessAnalysisWindow(QMainWindow):
             elif op["type"] == "remove_self_loops":
                 strat = op.get("strategy", "first")
                 desc = "清除自循环片段（保留首次）" if strat == "first" else "清除自循环片段（保留最后）"
+            elif op["type"] == "delete_condition":
+                level = op.get("level", "事件级")
+                desc = f"删除{'事件' if level == '事件级' else '流程'}中满足 {op['col']} {op['op']} {op['val']} 的记录"
 
             else:
                 desc = f"未知操作"
@@ -744,6 +786,24 @@ class ProcessAnalysisWindow(QMainWindow):
                     time_col="time:timestamp",
                     keep=op.get("strategy", "first")
                 )
+            elif op["type"] == "delete_condition":
+                col = op["col"]
+                operator = op["op"]
+                val = op["val"]
+                level = op.get("level", "事件级")
+
+                try:
+                    val_eval = eval(val, {}, {})
+                except:
+                    val_eval = val.strip("'\"")
+
+                expr = f"`{col}` {operator} @val_eval"
+
+                if level == "事件级":
+                    df = df.query(f"not ({expr})", local_dict={"val_eval": val_eval})
+                else:  # 流程级
+                    match_cases = df.query(expr, local_dict={"val_eval": val_eval})["case:concept:name"].unique()
+                    df = df[~df["case:concept:name"].isin(match_cases)]
 
         df["lifecycle:transition"] = "complete"
         self.current_log = log_converter.apply(df, variant=log_converter.Variants.TO_EVENT_LOG)
@@ -1119,6 +1179,94 @@ class ProcessAnalysisWindow(QMainWindow):
             "type": "remove_self_loops",
             "strategy": strategy
         })
+
+    # 移动进类内部（不需要加 @staticmethod）
+    def reverse_display_column(self, display_col: str) -> str:
+        DISPLAY_TO_INTERNAL_COLS = {
+            "event": "concept:name",
+            "Company_ID": "case:concept:name",
+            "time": "time:timestamp"
+        }
+        return DISPLAY_TO_INTERNAL_COLS.get(display_col, display_col)
+
+    def build_column_dropdown_options(self, df) -> list:
+        DISPLAY_TO_INTERNAL_COLS = {
+            "event": "concept:name",
+            "Company_ID": "case:concept:name",
+            "time": "time:timestamp"
+        }
+        INTERNAL_TO_DISPLAY_COLS = {v: k for k, v in DISPLAY_TO_INTERNAL_COLS.items()}
+
+        result = []
+        added = set()
+        for col in df.columns.tolist():
+            if col in INTERNAL_TO_DISPLAY_COLS:
+                display = INTERNAL_TO_DISPLAY_COLS[col]
+                if display not in added:
+                    result.append(display)
+                    added.add(display)
+            elif col not in DISPLAY_TO_INTERNAL_COLS.values():
+                if col not in added:
+                    result.append(col)
+                    added.add(col)
+        return result
+
+    def delete_records_by_condition(self):
+        from pm4py.objects.conversion.log import converter as log_converter
+        import pandas as pd
+
+        # 获取界面输入项
+        display_col = self.cbo_del_col.currentText().strip()
+        op = self.cbo_del_op.currentText().strip()
+        val = self.edit_del_val.text().strip()
+        level = self.cbo_del_level.currentText().strip()
+
+        if not display_col or not op or not val:
+            QMessageBox.warning(self, "输入不完整", "请填写完整的列名、操作符和值。")
+            return
+
+        # 将用户选择的列名（如 "event"）映射回标准字段名（如 "concept:name"）
+        col = self.reverse_display_column(display_col)
+
+
+        try:
+            df = log_converter.apply(self.current_log, variant=log_converter.Variants.TO_DATA_FRAME)
+
+            # 尝试将值转换为数字/布尔/时间；如果失败就当作字符串
+            try:
+                val_eval = eval(val, {}, {})
+            except:
+                val_eval = val.strip("'\"")
+
+            expr = f"`{col}` {op} @val_eval"
+
+            if level == "事件级":
+                df2 = df.query(f"not ({expr})", local_dict={"val_eval": val_eval})
+            elif level == "流程级":
+                match_cases = df.query(expr, local_dict={"val_eval": val_eval})["case:concept:name"].unique()
+                df2 = df[~df["case:concept:name"].isin(match_cases)]
+            else:
+                QMessageBox.warning(self, "未知操作", "未知的删除级别。")
+                return
+
+            if df2.empty:
+                QMessageBox.warning(self, "无结果", "删除后数据为空，请检查条件。")
+                return
+
+            # 显示用户友好的列名描述
+            desc = f"删除{'事件' if level == '事件级' else '流程'}中满足：{display_col} {op} {val} 的记录"
+
+            # 添加操作记录，执行变更
+            self.apply_dataframe_op(df2, desc, extra_op={
+                "type": "delete_condition",
+                "col": col,
+                "op": op,
+                "val": val,
+                "level": level
+            })
+
+        except Exception as e:
+            QMessageBox.critical(self, "删除失败", str(e))
 
 
 def launch_analysis_window(event_log, col_mapping=None):
