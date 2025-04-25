@@ -156,29 +156,50 @@ class ProcessGraphView(QGraphicsView):
             (x1, y1) = pos[src_clean]
             (x2, y2) = pos[tgt_clean]
 
-            line = QGraphicsPathItem()
-            path = QPainterPath(QPointF(x1, y1))
-            path.lineTo(QPointF(x2, y2))
-            line.setPath(path)
-
             pen_width = 1 + 3 * (weight / max_edge_weight)
             pen_color = QColor(80, 80, 80 + int(175 * (weight / max_edge_weight)))
             pen = QPen(pen_color, pen_width)
-            line.setPen(pen)
-            line.setZValue(0)
-            line.setToolTip(f"{src} → {tgt}\n频次: {weight}")
-            self.scene.addItem(line)
 
-            mid_x = (x1 + x2) / 2
-            mid_y = (y1 + y2) / 2
-            freq_text = QGraphicsTextItem(str(weight))
-            freq_text.setFont(QFont("Arial", 9))
-            freq_text.setDefaultTextColor(Qt.darkGray)
-            freq_text.setPos(mid_x, mid_y)
-            freq_text.setZValue(2)
-            self.scene.addItem(freq_text)
+            if src_clean == tgt_clean:
+                # ✅ 自循环边：画圆弧
+                loop_radius = 30
+                arc_path = QPainterPath()
+                arc_path.moveTo(x1, y1)
+                arc_path.arcTo(x1 - loop_radius, y1 - loop_radius * 2, loop_radius * 2, loop_radius * 2, 0, 270)
+                loop_item = QGraphicsPathItem(arc_path)
+                loop_item.setPen(pen)
+                loop_item.setZValue(0)
+                loop_item.setToolTip(f"{src} → {tgt}\n频次: {weight}")
+                self.scene.addItem(loop_item)
 
-            self._add_arrow_head(x1, y1, x2, y2, pen)
+                # 可选：在自环旁边加频次数字
+                freq_text = QGraphicsTextItem(str(weight))
+                freq_text.setFont(QFont("Arial", 9))
+                freq_text.setDefaultTextColor(Qt.darkGray)
+                freq_text.setPos(x1 + loop_radius, y1 - loop_radius * 2)
+                freq_text.setZValue(2)
+                self.scene.addItem(freq_text)
+            else:
+                # 正常边
+                line = QGraphicsPathItem()
+                path = QPainterPath(QPointF(x1, y1))
+                path.lineTo(QPointF(x2, y2))
+                line.setPath(path)
+                line.setPen(pen)
+                line.setZValue(0)
+                line.setToolTip(f"{src} → {tgt}\n频次: {weight}")
+                self.scene.addItem(line)
+
+                mid_x = (x1 + x2) / 2
+                mid_y = (y1 + y2) / 2
+                freq_text = QGraphicsTextItem(str(weight))
+                freq_text.setFont(QFont("Arial", 9))
+                freq_text.setDefaultTextColor(Qt.darkGray)
+                freq_text.setPos(mid_x, mid_y)
+                freq_text.setZValue(2)
+                self.scene.addItem(freq_text)
+
+                self._add_arrow_head(x1, y1, x2, y2, pen)
 
         for act_clean in keep_acts:
             if act_clean not in pos:
