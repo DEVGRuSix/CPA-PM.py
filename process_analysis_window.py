@@ -94,6 +94,194 @@ class ProcessAnalysisWindow(QMainWindow):
         self.graph_view.draw_from_event_log(self.current_log)
         splitter_h.addWidget(self.graph_view)
 
+        # # 右侧控制面板
+        # control_panel = QWidget()
+        # control_layout = QVBoxLayout(control_panel)
+        #
+        # # 按钮：保留首次活动
+        # btn_cpa_first_only = QPushButton("CPA：保留首次活动")
+        # btn_cpa_first_only.clicked.connect(self.cpa_keep_first)
+        # control_layout.addWidget(btn_cpa_first_only)
+        #
+        # # 标签+SpinBox：过滤低频活动
+        # lbl_freq = QLabel("过滤低频活动（最小出现次数）：")
+        # self.freq_spin = QSpinBox()
+        # self.freq_spin.setMinimum(1)
+        # self.freq_spin.setMaximum(999)
+        # self.freq_spin.setValue(2)
+        # btn_filter_freq = QPushButton("应用频次过滤")
+        # btn_filter_freq.clicked.connect(self.filter_events_by_global_frequency)
+        #
+        # control_layout.addWidget(lbl_freq)
+        # control_layout.addWidget(self.freq_spin)
+        # control_layout.addWidget(btn_filter_freq)
+        #
+        # # 重置日志
+        # btn_reset = QPushButton("重置为原始日志")
+        # btn_reset.clicked.connect(self.reset_log)
+        # control_layout.addWidget(btn_reset)
+        #
+        # btn_merge_activity = QPushButton("活动合并")
+        # btn_merge_activity.clicked.connect(self.open_merge_activity_dialog)
+        # control_layout.addWidget(btn_merge_activity)
+        #
+        # # 下方：可排序列表 + 删除按钮
+        # self.activity_ops = []
+        # self.activity_ops_list = QListWidget()
+        # self.activity_ops_list.setDragDropMode(QListWidget.InternalMove)
+        #
+        # btn_aggregate_activity = QPushButton("活动聚合")
+        # btn_aggregate_activity.clicked.connect(self.open_aggregate_activity_dialog)
+        # control_layout.addWidget(btn_aggregate_activity)
+        #
+        # control_layout.addWidget(QLabel("已定义的活动处理操作（可排序）:"))
+        # control_layout.addWidget(self.activity_ops_list)
+        #
+        # btns_layout = QHBoxLayout()
+        # btn_remove_selected_op = QPushButton("删除选中操作")
+        # btn_remove_selected_op.clicked.connect(self.remove_selected_activity_op)
+        # btns_layout.addWidget(btn_remove_selected_op)
+        #
+        # btn_undo_last = QPushButton("撤销上一步修改")
+        # btn_undo_last.clicked.connect(self.undo_last_change)
+        # btns_layout.addWidget(btn_undo_last)
+        #
+        # btn_container = QWidget()
+        # btn_container.setLayout(btns_layout)
+        # control_layout.addWidget(btn_container)
+        #
+        # btn_redo = QPushButton("重做上一步修改")
+        # btn_redo.clicked.connect(self.redo_last_change)
+        # btns_layout.addWidget(btn_redo)  # ✅ 放在撤销按钮后面
+        #
+        # # 活动节点显示比例
+        # self.label_act_slider = QLabel("活动节点显示比例：")
+        # self.slider_act = QSlider(Qt.Horizontal)
+        # self.slider_act.setMinimum(1)
+        # self.slider_act.setMaximum(100)
+        # self.slider_act.setValue(100)
+        # self.slider_act.valueChanged.connect(self.update_graph_with_filter)
+        #
+        # # 路径边显示比例
+        # self.label_edge_slider = QLabel("路径边显示比例：")
+        # self.slider_edge = QSlider(Qt.Horizontal)
+        # self.slider_edge.setMinimum(1)
+        # self.slider_edge.setMaximum(100)
+        # self.slider_edge.setValue(100)
+        # self.slider_edge.valueChanged.connect(self.update_graph_with_filter)
+        #
+        # control_layout.addWidget(self.label_act_slider)
+        # control_layout.addWidget(self.slider_act)
+        # control_layout.addWidget(self.label_edge_slider)
+        # control_layout.addWidget(self.slider_edge)
+        #
+        # # —— 新增：高级筛选与操作区 ——
+        # adv_group = QGroupBox("高级筛选与操作")
+        # adv_layout = QVBoxLayout()
+        #
+        # # ── 起止事件筛选 ───────────────────────────────
+        # h8 = QHBoxLayout()
+        # h8.addWidget(QLabel("起始事件:"))
+        # self.cbo_filter_start = QComboBox()
+        # self.cbo_filter_start.setEditable(True)
+        # self.cbo_filter_start.setInsertPolicy(QComboBox.NoInsert)
+        # h8.addWidget(self.cbo_filter_start)
+        #
+        # h8.addWidget(QLabel("结束事件:"))
+        # self.cbo_filter_end = QComboBox()
+        # self.cbo_filter_end.setEditable(True)
+        # self.cbo_filter_end.setInsertPolicy(QComboBox.NoInsert)
+        # h8.addWidget(self.cbo_filter_end)
+        #
+        # btn_filter_start_end = QPushButton("筛选")
+        # btn_filter_start_end.clicked.connect(self.filter_by_start_end_events)
+        # h8.addWidget(btn_filter_start_end)
+        #
+        # adv_layout.addLayout(h8)
+        #
+        # # 2) 删除过短案例（按事件数）
+        # h_short = QHBoxLayout()
+        # h_short.addWidget(QLabel("筛选流程事件数 ≥"))
+        # self.spin_trace_len = QSpinBox()
+        # self.spin_trace_len.setMinimum(1)
+        # self.spin_trace_len.setValue(2)
+        # h_short.addWidget(self.spin_trace_len)
+        #
+        # btn_trace_len_filter = QPushButton("筛选")
+        # btn_trace_len_filter.clicked.connect(self.filter_short_traces)
+        # h_short.addWidget(btn_trace_len_filter)
+        #
+        # adv_layout.addLayout(h_short)
+        #
+        # # ✅ 新：删除持续过短/过长 trace
+        # h_dur = QHBoxLayout()
+        # h_dur.addWidget(QLabel("流程持续时间范围 (秒):"))
+        #
+        # self.spin_min_dur = QSpinBox()
+        # self.spin_min_dur.setMinimum(0)
+        # self.spin_min_dur.setMaximum(999999)
+        # self.spin_min_dur.setValue(0)
+        # h_dur.addWidget(QLabel("≥"))
+        # h_dur.addWidget(self.spin_min_dur)
+        #
+        # self.spin_max_dur = QSpinBox()
+        # self.spin_max_dur.setMinimum(0)
+        # self.spin_max_dur.setMaximum(999999)
+        # self.spin_max_dur.setValue(0)
+        # h_dur.addWidget(QLabel("≤"))
+        # h_dur.addWidget(self.spin_max_dur)
+        #
+        # btn_filter_dur = QPushButton("筛选")
+        # btn_filter_dur.clicked.connect(self.filter_by_trace_duration)
+        # h_dur.addWidget(btn_filter_dur)
+        #
+        # adv_layout.addLayout(h_dur)
+        #
+        # # 4) 流程起止时间筛选（trace级别）
+        # layout_trace_time = QHBoxLayout()
+        #
+        # layout_trace_time.addWidget(QLabel("开始时间:"))
+        # self.dt_trace_start = QDateTimeEdit(QDateTime.currentDateTime())
+        # self.dt_trace_start.setCalendarPopup(True)
+        # layout_trace_time.addWidget(self.dt_trace_start)
+        #
+        # layout_trace_time.addWidget(QLabel("结束时间:"))
+        # self.dt_trace_end = QDateTimeEdit(QDateTime.currentDateTime())
+        # self.dt_trace_end.setCalendarPopup(True)
+        # layout_trace_time.addWidget(self.dt_trace_end)
+        #
+        # # ✅ 设置默认时间为 2018-08-01 00:00:00
+        # default_time = QDateTime.fromString("2018-08-01 00:00:00", "yyyy-MM-dd HH:mm:ss")
+        # self.dt_trace_start.setDateTime(default_time)
+        # self.dt_trace_end.setDateTime(default_time)
+        #
+        # btn_trace_time_filter = QPushButton("筛选")
+        # btn_trace_time_filter.clicked.connect(self.filter_by_trace_start_end_time_range)
+        # layout_trace_time.addWidget(btn_trace_time_filter)
+        #
+        # adv_layout.addLayout(layout_trace_time)
+        #
+        # adv_group.setLayout(adv_layout)
+        # control_layout.addWidget(adv_group)
+        #
+        # control_layout.addStretch()
+        # splitter_h.addWidget(control_panel)
+        # splitter_h.setSizes([800, 300])
+        #
+        # self.merge_rules = []  # 每条规则是一个 dict
+        # self.merge_list_panel = QWidget()
+        # self.merge_list_layout = QVBoxLayout()
+        # self.merge_list_panel.setLayout(self.merge_list_layout)
+        # control_layout.addWidget(self.merge_list_panel)
+        #
+        # # --- 窗口初始化与操作记录部分 ---
+        # self.update_dataset_preview()  # 让窗口初始化时直接展示数据
+        # self.activity_ops_history = []  # 操作记录堆栈，用于撤销功能
+        # self.redo_stack = []  # 初始化重做栈
+        #
+        # # 绑定操作排序
+        # self.activity_ops_list.setDragDropMode(QListWidget.InternalMove)
+        # self.activity_ops_list.model().rowsMoved.connect(self.sync_ops_after_sort)
         # 右侧控制面板
         control_panel = QWidget()
         control_layout = QVBoxLayout(control_panel)
@@ -125,55 +313,9 @@ class ProcessAnalysisWindow(QMainWindow):
         btn_merge_activity.clicked.connect(self.open_merge_activity_dialog)
         control_layout.addWidget(btn_merge_activity)
 
-        # 下方：可排序列表 + 删除按钮
-        self.activity_ops = []
-        self.activity_ops_list = QListWidget()
-        self.activity_ops_list.setDragDropMode(QListWidget.InternalMove)
-
         btn_aggregate_activity = QPushButton("活动聚合")
         btn_aggregate_activity.clicked.connect(self.open_aggregate_activity_dialog)
         control_layout.addWidget(btn_aggregate_activity)
-
-        control_layout.addWidget(QLabel("已定义的活动处理操作（可排序）:"))
-        control_layout.addWidget(self.activity_ops_list)
-
-        btns_layout = QHBoxLayout()
-        btn_remove_selected_op = QPushButton("删除选中操作")
-        btn_remove_selected_op.clicked.connect(self.remove_selected_activity_op)
-        btns_layout.addWidget(btn_remove_selected_op)
-
-        btn_undo_last = QPushButton("撤销上一步修改")
-        btn_undo_last.clicked.connect(self.undo_last_change)
-        btns_layout.addWidget(btn_undo_last)
-
-        btn_container = QWidget()
-        btn_container.setLayout(btns_layout)
-        control_layout.addWidget(btn_container)
-
-        btn_redo = QPushButton("重做上一步修改")
-        btn_redo.clicked.connect(self.redo_last_change)
-        btns_layout.addWidget(btn_redo)  # ✅ 放在撤销按钮后面
-
-        # 活动节点显示比例
-        self.label_act_slider = QLabel("活动节点显示比例：")
-        self.slider_act = QSlider(Qt.Horizontal)
-        self.slider_act.setMinimum(1)
-        self.slider_act.setMaximum(100)
-        self.slider_act.setValue(100)
-        self.slider_act.valueChanged.connect(self.update_graph_with_filter)
-
-        # 路径边显示比例
-        self.label_edge_slider = QLabel("路径边显示比例：")
-        self.slider_edge = QSlider(Qt.Horizontal)
-        self.slider_edge.setMinimum(1)
-        self.slider_edge.setMaximum(100)
-        self.slider_edge.setValue(100)
-        self.slider_edge.valueChanged.connect(self.update_graph_with_filter)
-
-        control_layout.addWidget(self.label_act_slider)
-        control_layout.addWidget(self.slider_act)
-        control_layout.addWidget(self.label_edge_slider)
-        control_layout.addWidget(self.slider_edge)
 
         # —— 新增：高级筛选与操作区 ——
         adv_group = QGroupBox("高级筛选与操作")
@@ -250,7 +392,6 @@ class ProcessAnalysisWindow(QMainWindow):
         self.dt_trace_end.setCalendarPopup(True)
         layout_trace_time.addWidget(self.dt_trace_end)
 
-        # ✅ 设置默认时间为 2018-08-01 00:00:00
         default_time = QDateTime.fromString("2018-08-01 00:00:00", "yyyy-MM-dd HH:mm:ss")
         self.dt_trace_start.setDateTime(default_time)
         self.dt_trace_end.setDateTime(default_time)
@@ -261,31 +402,48 @@ class ProcessAnalysisWindow(QMainWindow):
 
         adv_layout.addLayout(layout_trace_time)
 
+        # ✅ 追加：操作历史记录栏 + 删除/撤销/重做按钮 + 滑块控制
+        adv_layout.addWidget(QLabel("已定义的活动处理操作（可排序）:"))
+        self.activity_ops = []
+        self.activity_ops_list = QListWidget()
+        self.activity_ops_list.setDragDropMode(QListWidget.InternalMove)
+        adv_layout.addWidget(self.activity_ops_list)
 
-        # 5) 自定义条件
-        h6 = QHBoxLayout()
-        self.edit_custom = QLineEdit()
-        self.edit_custom.setPlaceholderText("如 city=='Ottawa' & `concept:name`=='Start'")
-        h6.addWidget(self.edit_custom)
-        btn_custom = QPushButton("应用自定义筛选")
-        btn_custom.clicked.connect(self.filter_by_custom_condition)
-        adv_layout.addLayout(h6)
+        btns_layout = QHBoxLayout()
+        btn_remove_selected_op = QPushButton("删除选中操作")
+        btn_remove_selected_op.clicked.connect(self.remove_selected_activity_op)
+        btns_layout.addWidget(btn_remove_selected_op)
 
-        # 6) Top-K 活动
-        h7 = QHBoxLayout()
-        h7.addWidget(QLabel("Top K 活动:"))
-        self.spin_topk = QSpinBox()
-        self.spin_topk.setMinimum(1)
-        self.spin_topk.setValue(5)
-        h7.addWidget(self.spin_topk)
-        btn_topk = QPushButton("显示TopK")
-        btn_topk.clicked.connect(self.show_topk_events)
-        adv_layout.addLayout(h7)
+        btn_undo_last = QPushButton("撤销上一步修改")
+        btn_undo_last.clicked.connect(self.undo_last_change)
+        btns_layout.addWidget(btn_undo_last)
 
-        # 7) 导出CSV 按钮
-        btn_export_csv = QPushButton("导出CSV")
-        btn_export_csv.clicked.connect(self.export_csv)
-        adv_layout.addWidget(btn_export_csv)
+        btn_redo = QPushButton("重做上一步修改")
+        btn_redo.clicked.connect(self.redo_last_change)
+        btns_layout.addWidget(btn_redo)
+
+        btn_container = QWidget()
+        btn_container.setLayout(btns_layout)
+        adv_layout.addWidget(btn_container)
+
+        self.label_act_slider = QLabel("活动节点显示比例：")
+        self.slider_act = QSlider(Qt.Horizontal)
+        self.slider_act.setMinimum(1)
+        self.slider_act.setMaximum(100)
+        self.slider_act.setValue(100)
+        self.slider_act.valueChanged.connect(self.update_graph_with_filter)
+
+        self.label_edge_slider = QLabel("路径边显示比例：")
+        self.slider_edge = QSlider(Qt.Horizontal)
+        self.slider_edge.setMinimum(1)
+        self.slider_edge.setMaximum(100)
+        self.slider_edge.setValue(100)
+        self.slider_edge.valueChanged.connect(self.update_graph_with_filter)
+
+        adv_layout.addWidget(self.label_act_slider)
+        adv_layout.addWidget(self.slider_act)
+        adv_layout.addWidget(self.label_edge_slider)
+        adv_layout.addWidget(self.slider_edge)
 
         adv_group.setLayout(adv_layout)
         control_layout.addWidget(adv_group)
@@ -300,16 +458,10 @@ class ProcessAnalysisWindow(QMainWindow):
         self.merge_list_panel.setLayout(self.merge_list_layout)
         control_layout.addWidget(self.merge_list_panel)
 
-
-
-        # 让窗口初始化时直接展示数据
-        self.update_dataset_preview()
-        # 操作记录堆栈，用于支持撤销功能
-        self.activity_ops_history = []
-        self.redo_stack = []  # ✅ 初始化重做栈
-
-        # self.activity_ops_list.model().rowsMoved.connect(self.on_activity_ops_reordered)
-
+        # --- 窗口初始化与操作记录部分 ---
+        self.update_dataset_preview()  # 让窗口初始化时直接展示数据
+        self.activity_ops_history = []  # 操作记录堆栈，用于撤销功能
+        self.redo_stack = []  # 初始化重做栈
         self.activity_ops_list.setDragDropMode(QListWidget.InternalMove)
         self.activity_ops_list.model().rowsMoved.connect(self.sync_ops_after_sort)
 
@@ -916,37 +1068,7 @@ class ProcessAnalysisWindow(QMainWindow):
         df2 = df[(df['time:timestamp']>=start)&(df['time:timestamp']<=end)].copy()
         self.apply_dataframe_op(df2, f"时间区间筛选[{start}~{end}]")
 
-    def filter_by_custom_condition(self):
-        expr = self.edit_custom.text().strip()
-        if not expr:
-            QMessageBox.warning(self, "提示", "请输入筛选表达式。"); return
-        df = log_converter.apply(self.current_log, variant=log_converter.Variants.TO_DATA_FRAME)
-        try:
-            df2 = df.query(expr).copy()
-        except Exception as e:
-            QMessageBox.critical(self, "表达式错误", str(e)); return
-        self.apply_dataframe_op(df2, f"自定义筛选[{expr}]")
 
-    def show_topk_events(self):
-        k = self.spin_topk.value()
-        df = log_converter.apply(self.current_log, variant=log_converter.Variants.TO_DATA_FRAME)
-        topk = df['concept:name'].value_counts().head(k)
-        QMessageBox.information(
-            self, "TopK 活动",
-            "\n".join(f"{evt}: {cnt}" for evt,cnt in topk.items())
-        )
-
-    def export_csv(self):
-        """将 current_log 导出为 CSV"""
-        df = log_converter.apply(self.current_log, variant=log_converter.Variants.TO_DATA_FRAME)
-        path, _ = QFileDialog.getSaveFileName(self, "保存 CSV", os.getcwd(), "CSV 文件 (*.csv)")
-        if not path: return
-        if not path.lower().endswith('.csv'): path += '.csv'
-        try:
-            df.to_csv(path, index=False)
-            QMessageBox.information(self, "导出成功", f"已保存：\n{path}")
-        except Exception as e:
-            QMessageBox.critical(self, "导出失败", str(e))
 
     def filter_by_start_end_events(self):
         from cpa_utils import filter_incomplete_traces
