@@ -10,6 +10,8 @@ from PyQt5.QtCore import Qt, QPointF, QTimer
 
 from pm4py.algo.discovery.dfg import algorithm as dfg_discovery
 from networkx.drawing.nx_pydot import graphviz_layout
+from remove_self_loop_dialog import RemoveSelfLoopDialog
+from cpa_utils import remove_consecutive_self_loops
 
 import re
 from collections import Counter

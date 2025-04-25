@@ -337,3 +337,34 @@ def filter_incomplete_traces(df, start_event=None, end_event=None, mode="不同�
 
     return df[df["case:concept:name"].isin(keep_cases)].copy()
 
+def remove_consecutive_self_loops(df, case_col="case:concept:name", act_col="concept:name", time_col="time:timestamp", keep="first"):
+    """
+    移除每条 trace 中相邻重复的活动，仅保留首次或最后一次出现。
+    非相邻的相同活动不受影响。
+    """
+    import pandas as pd
+    result = []
+    df = df.sort_values(by=[case_col, time_col]).copy()
+
+    for case_id, group in df.groupby(case_col):
+        group = group.copy()
+        keep_rows = []
+
+        acts = group[act_col].tolist()
+        indices = group.index.tolist()
+
+        i = 0
+        while i < len(acts):
+            j = i
+            while j + 1 < len(acts) and acts[j + 1] == acts[i]:
+                j += 1
+            if keep == "first":
+                keep_rows.append(indices[i])
+            elif keep == "last":
+                keep_rows.append(indices[j])
+            i = j + 1
+
+        result.append(group.loc[keep_rows])
+
+    final_df = pd.concat(result).sort_values(by=[case_col, time_col])
+    return final_df
