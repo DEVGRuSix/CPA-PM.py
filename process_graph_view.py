@@ -28,7 +28,7 @@ class ProcessGraphView(QGraphicsView):
         self.setRenderHint(QPainter.Antialiasing)
         self.setDragMode(QGraphicsView.ScrollHandDrag)
         self.setTransformationAnchor(QGraphicsView.AnchorUnderMouse)
-        self._current_scale = 2.0
+        self._current_scale = 1.0
         self.scale(self._current_scale, self._current_scale)
 
         # ===== 缩放控制按钮（右下角） =====
@@ -232,8 +232,8 @@ class ProcessGraphView(QGraphicsView):
             rect = self.scene.itemsBoundingRect()
             self.fitInView(rect, Qt.KeepAspectRatio)
             self.centerOn(rect.center())
-            self._current_scale = 2.0  # ✅ 这里改为 2.0
-            self.scale(2.0, 2.0)
+            self._current_scale = 1.0  # ✅ 这里改为 2.0
+            self.scale(1.0, 1.0)
             self._update_zoom_label()
 
     def reset_view(self):
