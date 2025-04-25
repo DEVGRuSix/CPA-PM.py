@@ -25,7 +25,13 @@ from remove_self_loop_dialog import RemoveSelfLoopDialog
 
 
 class ProcessAnalysisWindow(QMainWindow):
-    def __init__(self, event_log, parent=None):
+    def __init__(self, event_log, col_mapping=None, parent=None):
+        self.col_mapping = col_mapping or {
+            "case:concept:name": "case:concept:name",
+            "concept:name": "concept:name",
+            "time:timestamp": "time:timestamp"
+        }
+
         super().__init__(parent)
         self.setWindowTitle("流程图分析与交互控制")
         self.setGeometry(200, 100, 1200, 700)
@@ -381,29 +387,16 @@ class ProcessAnalysisWindow(QMainWindow):
         if self.current_log is None:
             return
 
-        try:
-            from csv2xes_improved import CSV2XESConverter  # 动态引用主窗口类
-            main_win = next(w for w in QApplication.topLevelWidgets()
-                            if isinstance(w, CSV2XESConverter))
-            case_col = main_win.cbo_case.currentText() or "case:concept:name"
-            act_col = main_win.cbo_act.currentText() or "concept:name"
-            ts_col = main_win.cbo_time.currentText() or "time:timestamp"
-        except Exception:
-            case_col, act_col, ts_col = "case:concept:name", "concept:name", "time:timestamp"
-
         # 拿到 PM4Py DataFrame
         df = log_converter.apply(self.current_log, variant=log_converter.Variants.TO_DATA_FRAME)
         if df.empty:
             self.dataset_table.clear()
             return
 
-        # 还原列名，仅改三主列，其余保持
-        df = df.rename(columns={
-            "case:concept:name": case_col,
-            "concept:name": act_col,
-            "time:timestamp": ts_col
-        })
+        # 还原列名（使用标准→原始 的 col_mapping）
+        df = df.rename(columns=self.col_mapping)
 
+        act_col = self.col_mapping.get("concept:name", "concept:name")
         self._dataset_df = df.reset_index(drop=True)
         self.visible_rows = 20
         self._refresh_dataset_table()
@@ -441,18 +434,37 @@ class ProcessAnalysisWindow(QMainWindow):
             self.dataset_table.clear()
             return
 
-        nrows = min(self.visible_rows, len(df))
+        # ✅ 删除 lifecycle:transition 列
+        df = df.drop(columns=["lifecycle:transition"], errors="ignore")
+
+        # ✅ 强制列顺序：前三列为固定主列，其他列保持原顺序在后
+        base_cols = ["case:concept:name", "concept:name", "time:timestamp"]
+        other_cols = [col for col in df.columns if col not in base_cols]
+        final_cols = base_cols + other_cols
+        df_display = df[final_cols]
+
+        nrows = min(self.visible_rows, len(df_display))
         self.dataset_table.setRowCount(nrows)
-        self.dataset_table.setColumnCount(len(df.columns))
-        self.dataset_table.setHorizontalHeaderLabels(df.columns.tolist())
+        self.dataset_table.setColumnCount(len(df_display.columns))
+
+        # ✅ 显示列名映射为：Company_ID / event / time
+        col_alias = {
+            "case:concept:name": "Company_ID",
+            "concept:name": "Event",
+            "time:timestamp": "Time"
+        }
+        headers = [col_alias.get(col, col) for col in df_display.columns]
+        self.dataset_table.setHorizontalHeaderLabels(headers)
 
         for r in range(nrows):
-            for c in range(len(df.columns)):
-                val = str(df.iloc[r, c])
+            for c in range(len(df_display.columns)):
+                val = str(df_display.iloc[r, c])
                 item = QTableWidgetItem(val)
                 item.setFlags(item.flags() ^ Qt.ItemIsEditable)
                 self.dataset_table.setItem(r, c, item)
+
         self.dataset_table.resizeColumnsToContents()
+
     def load_more_rows(self):
         """滚动到底时动态加载更多行"""
         scroll_bar = self.dataset_table.verticalScrollBar()
@@ -1109,7 +1121,8 @@ class ProcessAnalysisWindow(QMainWindow):
         })
 
 
-def launch_analysis_window(event_log):
+def launch_analysis_window(event_log, col_mapping=None):
+
     """
     供外部程序调用入口，默认全屏显示并返回窗口对象
     """

@@ -432,7 +432,14 @@ class CSV2XESConverter(QMainWindow):
             try:
                 log = log_converter.apply(df, variant=log_converter.Variants.TO_EVENT_LOG)
                 from process_analysis_window import launch_analysis_window
-                analysis_win = launch_analysis_window(log)
+
+                col_mapping = {
+                    "case:concept:name": case,
+                    "concept:name": act,
+                    "time:timestamp": ts
+                }
+                analysis_win = launch_analysis_window(log, col_mapping)
+
                 analysis_win.raise_()
             except Exception as e:
                 QMessageBox.critical(self, "分析入口错误", str(e))
