@@ -135,12 +135,22 @@ class ProcessGraphView(QGraphicsView):
             start_acts = [trace[0]['concept:name'] for trace in event_log if trace]
             most_common_start, _ = Counter(start_acts).most_common(1)[0]
             root_node = sanitize_label(most_common_start)
-            G.graph['graph'] = {'rankdir': 'TB', 'splines': 'polyline', 'overlap': 'false'}
+
+            # ✅ Disco 风格布局关键参数
+            G.graph['graph'] = {
+                'rankdir': 'TB',  # 自上而下（vertical layout）
+                'splines': 'polyline',  # 折线
+                'overlap': 'false',  # 避免节点重叠
+                'nodesep': '0.6',  # 横向间距
+                'ranksep': '0.7',  # 纵向间距
+                'margin': '0.2'
+            }
+
             pos = graphviz_layout(G, prog='dot', root=root_node)
             pos = {n: (x, -y) for n, (x, y) in pos.items()}
         except Exception as e:
             print("Graphviz layout failed, fallback to spring_layout:", e)
-            pos = nx.spring_layout(G, scale=500, k=150)
+            pos = nx.spring_layout(G, scale=800, k=300)
             pos = {n: (x, -y) for n, (x, y) in pos.items()}
 
         max_edge_weight = max([freq for (_, _), freq in dfg.items()] or [1])
@@ -154,7 +164,7 @@ class ProcessGraphView(QGraphicsView):
 
             edge_key = (src_clean, tgt_clean)
             if edge_key in drawn_edges:
-                continue  # ✅ 不管自环还是正常边，全部去重
+                continue
             drawn_edges.add(edge_key)
 
             if (src_clean, tgt_clean) not in keep_edges:
