@@ -125,10 +125,11 @@ class ProcessGraphView(QGraphicsView):
             label_map[act_clean] = act
 
         act_freqs = sorted(activity_counts.items(), key=lambda x: x[1], reverse=True)
-        keep_acts = set(sanitize_label(act) for act, _ in act_freqs[:max(1, len(act_freqs)*act_percent//100)])
+        keep_acts = set(sanitize_label(act) for act, _ in act_freqs[:max(1, len(act_freqs) * act_percent // 100)])
 
         edge_freqs = sorted(dfg.items(), key=lambda x: x[1], reverse=True)
-        keep_edges = set((sanitize_label(src), sanitize_label(tgt)) for (src, tgt), _ in edge_freqs[:max(1, len(edge_freqs)*edge_percent//100)])
+        keep_edges = set((sanitize_label(src), sanitize_label(tgt)) for (src, tgt), _ in
+                         edge_freqs[:max(1, len(edge_freqs) * edge_percent // 100)])
 
         try:
             start_acts = [trace[0]['concept:name'] for trace in event_log if trace]
@@ -163,7 +164,6 @@ class ProcessGraphView(QGraphicsView):
             pen = QPen(pen_color, pen_width)
 
             if src_clean == tgt_clean:
-                # ✅ 自循环边：画圆弧
                 loop_radius = 30
                 arc_path = QPainterPath()
                 arc_path.moveTo(x1, y1)
@@ -174,7 +174,6 @@ class ProcessGraphView(QGraphicsView):
                 loop_item.setToolTip(f"{src} → {tgt}\n频次: {weight}")
                 self.scene.addItem(loop_item)
 
-                # 可选：在自环旁边加频次数字
                 freq_text = QGraphicsTextItem(str(weight))
                 freq_text.setFont(QFont("Arial", 9))
                 freq_text.setDefaultTextColor(Qt.darkGray)
@@ -182,7 +181,6 @@ class ProcessGraphView(QGraphicsView):
                 freq_text.setZValue(2)
                 self.scene.addItem(freq_text)
             else:
-                # 正常边
                 line = QGraphicsPathItem()
                 path = QPainterPath(QPointF(x1, y1))
                 path.lineTo(QPointF(x2, y2))
@@ -239,7 +237,7 @@ class ProcessGraphView(QGraphicsView):
                 tw = fm.horizontalAdvance(line)
                 line_item = QGraphicsTextItem(line)
                 line_item.setFont(font)
-                line_item.setPos(x - tw/2, current_y)
+                line_item.setPos(x - tw / 2, current_y)
                 current_y += fm.boundingRect(line).height()
                 line_item.setZValue(3)
                 self.scene.addItem(line_item)
@@ -248,15 +246,14 @@ class ProcessGraphView(QGraphicsView):
             node_item.setData(0, act_name)
             node_item.mousePressEvent = self._make_node_click_handler(act_name, freq_count)
 
-        self.auto_fit_view()
+        QTimer.singleShot(0, self.auto_fit_view)
 
     def auto_fit_view(self):
         if self.scene.items():
             rect = self.scene.itemsBoundingRect()
             self.fitInView(rect, Qt.KeepAspectRatio)
             self.centerOn(rect.center())
-            self._current_scale = 1.0  # ✅ 这里改为 2.0
-            self.scale(1.0, 1.0)
+            self._current_scale = 1.0  # 与视觉保持一致
             self._update_zoom_label()
 
     def reset_view(self):

@@ -268,7 +268,7 @@ class ProcessAnalysisWindow(QMainWindow):
         control_layout.addWidget(adv_group)
         control_layout.addStretch()
         splitter_h.addWidget(control_panel)
-        splitter_h.setSizes([800, 300])
+        splitter_h.setSizes([2000, 50])
 
         self.merge_rules = []  # 每条规则是一个 dict
         self.merge_list_panel = QWidget()
