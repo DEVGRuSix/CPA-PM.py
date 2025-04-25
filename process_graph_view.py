@@ -156,6 +156,21 @@ class ProcessGraphView(QGraphicsView):
         max_edge_weight = max([freq for (_, _), freq in dfg.items()] or [1])
         max_node_count = max(activity_counts.values() or [1])
 
+        # ===== 统一节点宽度：找出最长 label 的宽度并存入 self =====
+        max_text_width = 0
+        font = QFont("Arial", 10)
+        fm = QFontMetrics(font)
+        for act_clean in keep_acts:
+            act_name = label_map.get(act_clean, act_clean)
+            freq_count = activity_counts.get(act_name, 1)
+            node_text = f"{act_name}\n({freq_count})"
+            lines = node_text.split('\n')
+            text_width = max(fm.horizontalAdvance(line) for line in lines)
+            max_text_width = max(max_text_width, text_width)
+
+        padding_w = 12
+        self.max_node_width = max(70, max_text_width + padding_w * 2)  # 用于箭头计算
+
         drawn_edges = set()
 
         for (src, tgt), weight in dfg.items():
@@ -182,10 +197,18 @@ class ProcessGraphView(QGraphicsView):
             pen = QPen(pen_color, pen_width)
 
             if src_clean == tgt_clean:
-                loop_radius = 30
+                loop_width = 50
+                loop_height = 30
+
+                # 起点右上角
+                loop_center_x = x1 + self.max_node_width / 2
+                loop_center_y = y1
+
                 arc_path = QPainterPath()
-                arc_path.moveTo(x1, y1)
-                arc_path.arcTo(x1 - loop_radius, y1 - loop_radius * 2, loop_radius * 2, loop_radius * 2, 0, 270)
+                arc_path.moveTo(loop_center_x, loop_center_y - loop_height / 2)
+                arc_path.arcTo(loop_center_x - loop_width / 2, loop_center_y - loop_height / 2,
+                               loop_width, loop_height, 90, -180)
+
                 loop_item = QGraphicsPathItem(arc_path)
                 loop_item.setPen(pen)
                 loop_item.setZValue(0)
@@ -193,11 +216,13 @@ class ProcessGraphView(QGraphicsView):
                 self.scene.addItem(loop_item)
 
                 freq_text = QGraphicsTextItem(str(weight))
-                freq_text.setFont(QFont("Arial", 9))
+                freq_text.setFont(QFont("Arial", 12))
                 freq_text.setDefaultTextColor(Qt.darkGray)
-                freq_text.setPos(x1 + loop_radius, y1 - loop_radius * 2)
+                freq_text.setPos(loop_center_x + loop_width / 2 + 4, loop_center_y - loop_height / 2)
                 freq_text.setZValue(2)
                 self.scene.addItem(freq_text)
+
+
             else:
                 line = QGraphicsPathItem()
                 path = QPainterPath(QPointF(x1, y1))
@@ -208,16 +233,27 @@ class ProcessGraphView(QGraphicsView):
                 line.setToolTip(f"{src} → {tgt}\n频次: {weight}")
                 self.scene.addItem(line)
 
-                mid_x = (x1 + x2) / 2
-                mid_y = (y1 + y2) / 2
+                dx = x2 - x1
+                dy = y2 - y1
+                is_vertical = abs(dy) > abs(dx)
+
+                fx = x1 + dx * 0.33
+                fy = y1 + dy * 0.33
+
                 freq_text = QGraphicsTextItem(str(weight))
-                freq_text.setFont(QFont("Arial", 9))
+                freq_text.setFont(QFont("Arial", 12))
                 freq_text.setDefaultTextColor(Qt.darkGray)
-                freq_text.setPos(mid_x, mid_y)
+                if is_vertical:
+                    freq_text.setPos(fx + 10, fy)
+                else:
+                    freq_text.setPos(fx, fy - 14)
+
                 freq_text.setZValue(2)
                 self.scene.addItem(freq_text)
 
                 self._add_arrow_head(x1, y1, x2, y2, pen)
+
+
 
         for act_clean in keep_acts:
             if act_clean not in pos:
@@ -236,7 +272,7 @@ class ProcessGraphView(QGraphicsView):
             padding_w, padding_h = 12, 8
             min_width, min_height = 70, 40
 
-            rect_w = max(min_width, text_width + padding_w * 2)
+            rect_w = self.max_node_width
             rect_h = max(min_height, text_height + padding_h * 2)
 
             path = QPainterPath()
@@ -296,14 +332,22 @@ class ProcessGraphView(QGraphicsView):
         return handler
 
     def _add_arrow_head(self, x1, y1, x2, y2, pen):
-        arrow_size = 5.0
+        arrow_size = 15.0  # 放大箭头尺寸
         dx = x2 - x1
         dy = y2 - y1
         angle = math.atan2(dy, dx)
 
-        ratio = 0.55
-        arrow_x = x1 + ratio * dx
-        arrow_y = y1 + ratio * dy
+        # 获取目标节点宽度（来自 draw_from_event_log 中统一设定）
+        target_width = getattr(self, 'max_node_width', 70)  # 默认最小值
+        distance_to_edge = target_width / 2 + 5  # 加一点偏移
+
+        line_length = math.hypot(dx, dy)
+        if line_length == 0:
+            return  # 避免除以零
+        effective_ratio = max(0, (line_length - distance_to_edge) / line_length)
+
+        arrow_x = x1 + effective_ratio * dx
+        arrow_y = y1 + effective_ratio * dy
 
         p1 = QPointF(arrow_x, arrow_y)
         p2 = QPointF(arrow_x - arrow_size * math.cos(angle - math.radians(20)),
@@ -320,3 +364,4 @@ class ProcessGraphView(QGraphicsView):
         arrow_item.setPen(pen)
         arrow_item.setZValue(10)
         self.scene.addItem(arrow_item)
+
