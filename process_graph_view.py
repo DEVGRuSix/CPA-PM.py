@@ -146,9 +146,17 @@ class ProcessGraphView(QGraphicsView):
         max_edge_weight = max([freq for (_, _), freq in dfg.items()] or [1])
         max_node_count = max(activity_counts.values() or [1])
 
+        drawn_edges = set()
+
         for (src, tgt), weight in dfg.items():
             src_clean = sanitize_label(src)
             tgt_clean = sanitize_label(tgt)
+
+            edge_key = (src_clean, tgt_clean)
+            if edge_key in drawn_edges:
+                continue  # ✅ 不管自环还是正常边，全部去重
+            drawn_edges.add(edge_key)
+
             if (src_clean, tgt_clean) not in keep_edges:
                 continue
             if src_clean not in keep_acts or tgt_clean not in keep_acts:
