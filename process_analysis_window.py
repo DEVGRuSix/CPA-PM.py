@@ -100,62 +100,46 @@ class ProcessAnalysisWindow(QMainWindow):
         control_panel = QWidget()
         control_layout = QVBoxLayout(control_panel)
 
-        # 按钮：保留首次活动
-        btn_cpa_first_only = QPushButton("CPA：保留首次活动")
-        btn_cpa_first_only.clicked.connect(self.cpa_keep_first)
-        control_layout.addWidget(btn_cpa_first_only)
+        # —— 高级筛选与操作区 ——
+        adv_group = QGroupBox("高级筛选与操作")
+        adv_layout = QVBoxLayout()
 
-        # 标签+SpinBox：过滤低频活动
-        lbl_freq = QLabel("过滤低频活动（最小出现次数）：")
+        # ① 起止事件筛选
+        h_start_end = QHBoxLayout()
+        h_start_end.addWidget(QLabel("起始事件:"))
+        self.cbo_filter_start = QComboBox()
+        self.cbo_filter_start.setEditable(True)
+        self.cbo_filter_start.setInsertPolicy(QComboBox.NoInsert)
+        h_start_end.addWidget(self.cbo_filter_start)
+
+        h_start_end.addWidget(QLabel("结束事件:"))
+        self.cbo_filter_end = QComboBox()
+        self.cbo_filter_end.setEditable(True)
+        self.cbo_filter_end.setInsertPolicy(QComboBox.NoInsert)
+        h_start_end.addWidget(self.cbo_filter_end)
+
+        btn_filter_start_end = QPushButton("筛选")
+        btn_filter_start_end.clicked.connect(self.filter_by_start_end_events)
+        h_start_end.addWidget(btn_filter_start_end)
+
+        adv_layout.addLayout(h_start_end)
+
+        # ② 过滤低频活动（新的位置）
+        h_freq = QHBoxLayout()
+        h_freq.addWidget(QLabel("过滤低频活动 ≥"))
         self.freq_spin = QSpinBox()
         self.freq_spin.setMinimum(1)
         self.freq_spin.setMaximum(999)
         self.freq_spin.setValue(2)
+        h_freq.addWidget(self.freq_spin)
+
         btn_filter_freq = QPushButton("应用频次过滤")
         btn_filter_freq.clicked.connect(self.filter_events_by_global_frequency)
+        h_freq.addWidget(btn_filter_freq)
 
-        control_layout.addWidget(lbl_freq)
-        control_layout.addWidget(self.freq_spin)
-        control_layout.addWidget(btn_filter_freq)
+        adv_layout.addLayout(h_freq)
 
-        # 重置日志
-        btn_reset = QPushButton("重置为原始日志")
-        btn_reset.clicked.connect(self.reset_log)
-        control_layout.addWidget(btn_reset)
-
-        btn_merge_activity = QPushButton("活动合并")
-        btn_merge_activity.clicked.connect(self.open_merge_activity_dialog)
-        control_layout.addWidget(btn_merge_activity)
-
-        btn_aggregate_activity = QPushButton("活动聚合")
-        btn_aggregate_activity.clicked.connect(self.open_aggregate_activity_dialog)
-        control_layout.addWidget(btn_aggregate_activity)
-
-        # —— 新增：高级筛选与操作区 ——
-        adv_group = QGroupBox("高级筛选与操作")
-        adv_layout = QVBoxLayout()
-
-        # ── 起止事件筛选 ───────────────────────────────
-        h8 = QHBoxLayout()
-        h8.addWidget(QLabel("起始事件:"))
-        self.cbo_filter_start = QComboBox()
-        self.cbo_filter_start.setEditable(True)
-        self.cbo_filter_start.setInsertPolicy(QComboBox.NoInsert)
-        h8.addWidget(self.cbo_filter_start)
-
-        h8.addWidget(QLabel("结束事件:"))
-        self.cbo_filter_end = QComboBox()
-        self.cbo_filter_end.setEditable(True)
-        self.cbo_filter_end.setInsertPolicy(QComboBox.NoInsert)
-        h8.addWidget(self.cbo_filter_end)
-
-        btn_filter_start_end = QPushButton("筛选")
-        btn_filter_start_end.clicked.connect(self.filter_by_start_end_events)
-        h8.addWidget(btn_filter_start_end)
-
-        adv_layout.addLayout(h8)
-
-        # 2) 删除过短案例（按事件数）
+        # ③ 删除过短案例（按事件数）
         h_short = QHBoxLayout()
         h_short.addWidget(QLabel("筛选流程事件数 ≥"))
         self.spin_trace_len = QSpinBox()
@@ -169,7 +153,7 @@ class ProcessAnalysisWindow(QMainWindow):
 
         adv_layout.addLayout(h_short)
 
-        # ✅ 新：删除持续过短/过长 trace
+        # ④ 流程持续时间筛选
         h_dur = QHBoxLayout()
         h_dur.addWidget(QLabel("流程持续时间范围 (秒):"))
 
@@ -193,9 +177,8 @@ class ProcessAnalysisWindow(QMainWindow):
 
         adv_layout.addLayout(h_dur)
 
-        # 4) 流程起止时间筛选（trace级别）
+        # ⑤ 流程起止时间筛选
         layout_trace_time = QHBoxLayout()
-
         layout_trace_time.addWidget(QLabel("开始时间:"))
         self.dt_trace_start = QDateTimeEdit(QDateTime.currentDateTime())
         self.dt_trace_start.setCalendarPopup(True)
@@ -216,18 +199,29 @@ class ProcessAnalysisWindow(QMainWindow):
 
         adv_layout.addLayout(layout_trace_time)
 
-        # 5) 清除自循环片段
+        # ⑥ 活动合并按钮
+        btn_merge_activity = QPushButton("活动合并")
+        btn_merge_activity.clicked.connect(self.open_merge_activity_dialog)
+        adv_layout.addWidget(btn_merge_activity)
+
+        # ⑦ 活动聚合按钮
+        btn_aggregate_activity = QPushButton("活动聚合")
+        btn_aggregate_activity.clicked.connect(self.open_aggregate_activity_dialog)
+        adv_layout.addWidget(btn_aggregate_activity)
+
+        # ⑧ 清除自循环片段
         btn_remove_loops = QPushButton("清除自循环片段")
         btn_remove_loops.clicked.connect(self.remove_self_loops)
         adv_layout.addWidget(btn_remove_loops)
 
-        # ✅ 追加：操作历史记录栏 + 删除/撤销/重做按钮 + 滑块控制
+        # ⑨ 已定义操作记录列表
         adv_layout.addWidget(QLabel("已定义的活动处理操作（可排序）:"))
         self.activity_ops = []
         self.activity_ops_list = QListWidget()
         self.activity_ops_list.setDragDropMode(QListWidget.InternalMove)
         adv_layout.addWidget(self.activity_ops_list)
 
+        # ⑩ 删除/撤销/重做按钮行
         btns_layout = QHBoxLayout()
         btn_remove_selected_op = QPushButton("删除选中操作")
         btn_remove_selected_op.clicked.connect(self.remove_selected_activity_op)
@@ -245,6 +239,12 @@ class ProcessAnalysisWindow(QMainWindow):
         btn_container.setLayout(btns_layout)
         adv_layout.addWidget(btn_container)
 
+        # ⑪ 重置为原始日志按钮（新位置）
+        btn_reset = QPushButton("重置为原始日志")
+        btn_reset.clicked.connect(self.reset_log)
+        adv_layout.addWidget(btn_reset)
+
+        # ⑫ 滑块（节点比例 / 边比例）
         self.label_act_slider = QLabel("活动节点显示比例：")
         self.slider_act = QSlider(Qt.Horizontal)
         self.slider_act.setMinimum(1)
@@ -266,7 +266,6 @@ class ProcessAnalysisWindow(QMainWindow):
 
         adv_group.setLayout(adv_layout)
         control_layout.addWidget(adv_group)
-
         control_layout.addStretch()
         splitter_h.addWidget(control_panel)
         splitter_h.setSizes([800, 300])
@@ -372,38 +371,6 @@ class ProcessAnalysisWindow(QMainWindow):
             self.update_dataset_preview()
         else:
             QMessageBox.information(self, "提示", "没有可以重做的操作。")
-
-    def cpa_keep_first(self):
-        """
-        保留每条 trace 中每种活动的首次出现
-        """
-        if self.current_log is None:
-            QMessageBox.warning(self, "无数据", "当前日志为空，无法保留首次出现。")
-            return
-        self.redo_stack.clear()
-
-        try:
-            from cpa_utils import keep_first_occurrence_only
-            self.log_history.append(self.current_log)
-
-            new_log = keep_first_occurrence_only(self.current_log)
-            if not new_log:
-                QMessageBox.warning(self, "无数据", "执行后日志为空。")
-                self.log_history.pop()
-                return
-
-            self.current_log = new_log
-            self.update_graph_with_filter()
-            QMessageBox.information(self, "完成", "已保留每条trace的首次活动事件。")
-        except Exception as e:
-            if self.log_history:
-                self.log_history.pop()
-            QMessageBox.critical(self, "出错", str(e))
-
-        self.update_dataset_preview()
-        self.activity_ops_history.append(self.activity_ops.copy())  # ✅ 添加这一行
-        self.activity_ops.append({"type": "aggregate", "activities": ["ALL"], "strategy": "first"})
-        self.update_activity_ops_list()
 
     def update_dataset_preview(self):
         """
@@ -1135,14 +1102,11 @@ class ProcessAnalysisWindow(QMainWindow):
             QMessageBox.warning(self, "结果为空", "清除后日志为空，请检查数据。")
             return
 
-        self.activity_ops_history.append(self.activity_ops.copy())
-        self.redo_stack.clear()
-        self.activity_ops.append({
+        desc = "清除自循环片段（保留首次）" if strategy == "first" else "清除自循环片段（保留最后）"
+        self.apply_dataframe_op(df2, desc, extra_op={
             "type": "remove_self_loops",
             "strategy": strategy
         })
-        self.update_activity_ops_list()
-        self.apply_dataframe_direct(df2)
 
 
 def launch_analysis_window(event_log):
