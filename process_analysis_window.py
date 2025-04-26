@@ -313,6 +313,33 @@ class ProcessAnalysisWindow(QMainWindow):
         adv_layout.addWidget(self.label_edge_slider)
         adv_layout.addWidget(self.slider_edge)
 
+        layout_summary_time = QHBoxLayout()
+
+        self.spin_time_value_1 = QSpinBox()
+        self.spin_time_value_1.setRange(0, 10000)
+        layout_summary_time.addWidget(self.spin_time_value_1)
+
+        self.cbo_time_unit_1 = QComboBox()
+        self.cbo_time_unit_1.addItems(["分钟", "小时", "天"])
+        layout_summary_time.addWidget(self.cbo_time_unit_1)
+
+        layout_summary_time.addWidget(QLabel(" ~ "))
+
+        self.spin_time_value_2 = QSpinBox()
+        self.spin_time_value_2.setRange(0, 10000)
+        layout_summary_time.addWidget(self.spin_time_value_2)
+
+        self.cbo_time_unit_2 = QComboBox()
+        self.cbo_time_unit_2.addItems(["分钟", "小时", "天"])
+        layout_summary_time.addWidget(self.cbo_time_unit_2)
+
+        adv_layout.addLayout(layout_summary_time)
+
+        # --- 新增：生成统计指标按钮 ---
+        btn_summary_stats = QPushButton("生成统计指标")
+        btn_summary_stats.clicked.connect(self.generate_summary_statistics)
+        adv_layout.addWidget(btn_summary_stats)
+
         # 查看 Cases 按钮
         btn_cases = QPushButton("查看 Cases")
         btn_cases.clicked.connect(self.open_cases_window)
@@ -1342,6 +1369,36 @@ class ProcessAnalysisWindow(QMainWindow):
             "start": start,
             "end": end
         })
+
+    def generate_summary_statistics(self):
+        from StatisticWindow import StatisticWindow
+        from pm4py.objects.conversion.log import converter as log_converter
+
+        df = log_converter.apply(self.current_log, variant=log_converter.Variants.TO_DATA_FRAME)
+
+        value1 = self.spin_time_value_1.value()
+        unit1 = self.cbo_time_unit_1.currentText()
+
+        value2 = self.spin_time_value_2.value()
+        unit2 = self.cbo_time_unit_2.currentText()
+
+        if value1 <= 0 and value2 <= 0:
+            QMessageBox.warning(self, "输入无效", "请输入至少一个时间阈值（第一个或第二个）")
+            return
+
+        def to_minutes(val, unit):
+            if unit == "分钟":
+                return val
+            elif unit == "小时":
+                return val * 60
+            elif unit == "天":
+                return val * 24 * 60
+
+        min1 = to_minutes(value1, unit1) if value1 > 0 else None
+        min2 = to_minutes(value2, unit2) if value2 > 0 else None
+
+        self.stats_win = StatisticWindow(df, threshold_min1=min1, threshold_min2=min2)
+        self.stats_win.show()
 
 
 def launch_analysis_window(event_log, col_mapping=None):
