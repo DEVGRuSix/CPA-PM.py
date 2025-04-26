@@ -368,3 +368,28 @@ def remove_consecutive_self_loops(df, case_col="case:concept:name", act_col="con
 
     final_df = pd.concat(result).sort_values(by=[case_col, time_col])
     return final_df
+
+def filter_traces_containing_start_end(df, start_event=None, end_event=None):
+    """
+    保留包含起始事件和结束事件，且顺序正确的 trace。
+    - 若只填 start_event，则保留包含该事件的流程
+    - 若只填 end_event，则保留包含该事件的流程
+    - 若两者都填，start 必须在 end 之前
+    """
+    df = df.sort_values(["case:concept:name", "time:timestamp"])
+    keep_cases = []
+
+    for case_id, group in df.groupby("case:concept:name"):
+        events = group["concept:name"].tolist()
+        if start_event and end_event:
+            if start_event in events and end_event in events:
+                if events.index(start_event) < events.index(end_event):
+                    keep_cases.append(case_id)
+        elif start_event:
+            if start_event in events:
+                keep_cases.append(case_id)
+        elif end_event:
+            if end_event in events:
+                keep_cases.append(case_id)
+
+    return df[df["case:concept:name"].isin(keep_cases)].copy()

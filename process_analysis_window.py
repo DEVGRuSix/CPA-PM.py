@@ -230,6 +230,24 @@ class ProcessAnalysisWindow(QMainWindow):
 
         adv_layout.addLayout(layout_del)
 
+        # 包含起止事件筛选
+        layout_contain_start_end = QHBoxLayout()
+        layout_contain_start_end.addWidget(QLabel("包含起始事件:"))
+        self.cbo_contain_start = QComboBox()
+        self.cbo_contain_start.setEditable(True)
+        layout_contain_start_end.addWidget(self.cbo_contain_start)
+
+        layout_contain_start_end.addWidget(QLabel("包含结束事件:"))
+        self.cbo_contain_end = QComboBox()
+        self.cbo_contain_end.setEditable(True)
+        layout_contain_start_end.addWidget(self.cbo_contain_end)
+
+        btn_filter_contain = QPushButton("筛选")
+        btn_filter_contain.clicked.connect(self.filter_by_contain_start_end)
+        layout_contain_start_end.addWidget(btn_filter_contain)
+
+        adv_layout.addLayout(layout_contain_start_end)
+
         # ⑥ 活动合并按钮
         btn_merge_activity = QPushButton("活动合并")
         btn_merge_activity.clicked.connect(self.open_merge_activity_dialog)
@@ -443,6 +461,21 @@ class ProcessAnalysisWindow(QMainWindow):
                 completer.setFilterMode(Qt.MatchContains)
                 completer.setCaseSensitivity(Qt.CaseInsensitive)
                 cbo.setCompleter(completer)
+
+        if hasattr(self, "cbo_contain_start"):# 宽松筛选
+            acts = self._dataset_df["concept:name"].dropna().astype(str).unique().tolist()
+            acts.sort()
+            for cbo in [self.cbo_contain_start, self.cbo_contain_end]:
+                cbo.blockSignals(True)
+                cbo.clear()
+                cbo.addItem("")  # 空值表示未选
+                cbo.addItems(acts)
+                completer = QCompleter(acts, cbo)
+                completer.setFilterMode(Qt.MatchContains)
+                completer.setCaseSensitivity(Qt.CaseInsensitive)
+                cbo.setCompleter(completer)
+                cbo.blockSignals(False)
+
         # ✅ 更新起止筛选下拉框
         if hasattr(self, "cbo_filter_start"):
             acts = self._dataset_df["concept:name"].dropna().astype(str).unique().tolist()
@@ -731,6 +764,8 @@ class ProcessAnalysisWindow(QMainWindow):
             elif op["type"] == "delete_condition":
                 level = op.get("level", "事件级")
                 desc = f"删除{'事件' if level == '事件级' else '流程'}中满足 {op['col']} {op['op']} {op['val']} 的记录"
+            elif op["type"] == "filter_contain_order":
+                desc = f"包含起止事件筛选（{op.get('start') or '-'} → {op.get('end') or '-'})"
 
             else:
                 desc = f"未知操作"
@@ -809,6 +844,10 @@ class ProcessAnalysisWindow(QMainWindow):
                 else:  # 流程级
                     match_cases = df.query(expr, local_dict={"val_eval": val_eval})["case:concept:name"].unique()
                     df = df[~df["case:concept:name"].isin(match_cases)]
+
+            elif op["type"] == "filter_contain_order":
+                from cpa_utils import filter_traces_containing_start_end
+                df = filter_traces_containing_start_end(df, start_event=op.get("start"), end_event=op.get("end"))
 
         df["lifecycle:transition"] = "complete"
         self.current_log = log_converter.apply(df, variant=log_converter.Variants.TO_EVENT_LOG)
@@ -1278,6 +1317,31 @@ class ProcessAnalysisWindow(QMainWindow):
         df = log_converter.apply(self.current_log, variant=log_converter.Variants.TO_DATA_FRAME)
         self.cases_win = CasesWindow(df, self.col_mapping)
         self.cases_win.show()
+
+    def filter_by_contain_start_end(self):
+        from cpa_utils import filter_traces_containing_start_end
+        from pm4py.objects.conversion.log import converter as log_converter
+
+        start = self.cbo_contain_start.currentText().strip()
+        end = self.cbo_contain_end.currentText().strip()
+
+        if not start and not end:
+            QMessageBox.warning(self, "提示", "请至少选择起始或结束事件。")
+            return
+
+        df = log_converter.apply(self.current_log, variant=log_converter.Variants.TO_DATA_FRAME)
+        df2 = filter_traces_containing_start_end(df, start_event=start or None, end_event=end or None)
+
+        if df2.empty:
+            QMessageBox.warning(self, "无数据", "筛选结果为空，请检查条件。")
+            return
+
+        desc = f"包含起止事件筛选（{start or '-'} → {end or '-'})"
+        self.apply_dataframe_op(df2, desc, extra_op={
+            "type": "filter_contain_order",
+            "start": start,
+            "end": end
+        })
 
 
 def launch_analysis_window(event_log, col_mapping=None):
