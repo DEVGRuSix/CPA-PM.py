@@ -345,6 +345,11 @@ class ProcessAnalysisWindow(QMainWindow):
         btn_cases.clicked.connect(self.open_cases_window)
         adv_layout.addWidget(btn_cases)
 
+        # 导出 XES 文件按钮
+        btn_export_xes = QPushButton("导出 XES 文件")
+        btn_export_xes.clicked.connect(self.export_xes_file)
+        adv_layout.addWidget(btn_export_xes)
+
         adv_group.setLayout(adv_layout)
         control_layout.addWidget(adv_group)
         control_layout.addStretch()
@@ -1344,6 +1349,31 @@ class ProcessAnalysisWindow(QMainWindow):
         df = log_converter.apply(self.current_log, variant=log_converter.Variants.TO_DATA_FRAME)
         self.cases_win = CasesWindow(df, self.col_mapping)
         self.cases_win.show()
+
+    def export_xes_file(self):
+        """
+        导出当前日志为 XES 文件
+        """
+        from pm4py.objects.conversion.log import converter as log_converter
+        from pm4py.objects.log.exporter.xes import exporter as xes_exporter
+        import os
+
+        if self.current_log is None:
+            QMessageBox.warning(self, "无数据", "当前日志为空，无法导出 XES 文件。")
+            return
+
+        save_path, _ = QFileDialog.getSaveFileName(self, "保存 XES 文件", os.getcwd(), "XES 文件 (*.xes)")
+        if not save_path:
+            return
+        if not save_path.lower().endswith(".xes"):
+            save_path += ".xes"
+
+        try:
+            # 转换为 XES 格式
+            xes_exporter.apply(self.current_log, save_path)
+            QMessageBox.information(self, "导出成功", f"已成功导出为 XES 文件：\n{save_path}")
+        except Exception as e:
+            QMessageBox.critical(self, "导出失败", f"导出 XES 文件时发生错误：\n{str(e)}")
 
     def filter_by_contain_start_end(self):
         from cpa_utils import filter_traces_containing_start_end
