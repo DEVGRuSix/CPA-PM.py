@@ -205,11 +205,29 @@ class CSV2XESConverter(QMainWindow):
 
     # ---- 文件处理 ----
     def open_file(self):
-        path, _ = QFileDialog.getOpenFileName(self, "选择 CSV", os.getcwd(), "CSV (*.csv)")
+        path, _ = QFileDialog.getOpenFileName(self, "选择文件", os.getcwd(), "CSV/XES (*.csv *.xes)")
+
         if not path:
             return
+        import tempfile
+
         try:
+            if path.lower().endswith(".xes"):
+                from pm4py.objects.log.importer.xes import importer as xes_importer
+                from pm4py.objects.log.util import dataframe_utils
+
+                # 读取 XES 文件
+                log = xes_importer.apply(path)
+                df = log_converter.apply(log, variant=log_converter.Variants.TO_DATA_FRAME)
+
+                # 创建临时 CSV 文件
+                temp_file = tempfile.NamedTemporaryFile(delete=False, suffix=".csv")
+                df.to_csv(temp_file.name, index=False)
+                path = temp_file.name  # 更新路径为临时 CSV 文件
+
+            # 使用更新的路径加载 CSV
             df = pd.read_csv(path, engine="pyarrow", low_memory=True)
+
         except UnicodeDecodeError:
             with open(path, 'rb') as fh:
                 enc = chardet.detect(fh.read(200_000))['encoding'] or 'utf-8'
